@@ -22,6 +22,8 @@ class Deals extends Model
         'start_date',
         'end_date',
         'expired_date',
+        'no_faktur_pajak',
+        'priority_id',
         'id_source',
         'id_stage',
         'id_product',
@@ -52,5 +54,10 @@ class Deals extends Model
     public function getProduct()
     {
         return $this->belongsTo('App\Models\Product', 'id_product', 'id');
+    }
+
+    public function getPriority()
+    {
+        return $this->belongsTo('App\Models\Priority', 'priority_id', 'id');
     }
 }

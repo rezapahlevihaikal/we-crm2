@@ -63,7 +63,8 @@
                                 <td>{{$item->no_faktur_pajak}}</td>
                                 <td>{{$item->invoice_number}}</td>
                                 <td>
-                                  <button type="submit" class="btn btn-primary">G</button>
+                                  {{-- <button type="submit" onclick="window.location='{{url('/generateDeals')}}'" class="btn btn-success"><i class="far fa-file-alt"></i></button> --}}
+                                  <a href="/generateDeals">e</a>
                                 </td>
                               </tr>
                             @endforeach

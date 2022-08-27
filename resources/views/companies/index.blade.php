@@ -3,11 +3,18 @@
 @section('content')
 @include('layouts.headers.header')
 <div class="container-fluid mt--7">
-    <div class="row">
+    <div class="card shadow">
         <div class="col-xl-12 mb-5 mb-xl-0">
-
-          <button type="button" data-toggle="modal" data-target="#exampleModal" class="btn btn-success"><i class="fas fa-plus"></i> Add Data</button>
-
+          <div class="card-header border-0">
+            <div class="row align-items-center">
+                <div class="col">
+                    <h3 class="mb-0">Daftar Perusahaan</h3>
+                </div>
+                <div class="col text-right">
+                  <button type="button" data-toggle="modal" data-target="#exampleModal" class="btn btn-success"><i class="fas fa-plus"></i> Tambah Data Perusahaan</button>
+                </div>
+            </div>
+        </div>
           <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
               <div class="modal-content">

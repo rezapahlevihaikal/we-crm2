@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Invoice;
 use App\Models\Deals;
 use DB;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 
 class InvoiceController extends Controller
@@ -23,6 +24,52 @@ class InvoiceController extends Controller
         //
         $dataDealsIn = Deals::where('id_stage', 3)->get();
         return view('invoice.index', compact('dataDealsIn'));
+    }
+
+    public function requestInvoice()
+    {
+        $dataDealsIn = Deals::where('id_stage', 3)->get();
+        return view('invoice.indexRequest', compact('dataDealsIn'));
+    }
+
+    public function detailInvoice($id)
+    {
+        $dataDealsIn = Deals::findOrFail($id);
+        return view('invoice.detailInvoice', compact('dataDealsIn'));
+    }
+
+    public function createInvoice(Request $request, $id)
+    {
+        
+        $dataDealsIn = Deals::find($id);
+        $dataDealsIn->update([
+            'id_stage' => 5,
+        ]);
+
+        
+        $dataCreateIn = Invoice::create([
+            'deals_id' => $dataDealsIn->id
+        ]);
+
+        if ($dataCreateIn) {
+            return redirect()->route('requestInvoice')->withStatus('data berhasil di generate');
+        } else {
+            return redirect()->back()->withErrors('data gagal di generate');
+        }
+        
+    }
+
+    public function generateDeals()
+    {
+        // $no = 1;
+        // $invoice = Invoice::findOrFail($id);
+        // $pdf = PDF::loadview('invoice.invoice_page', compact('no', 'invoice'));
+        // $pdf->setPaper('legal', 'potrait');
+        // return $pdf->stream();
+        $pdf = Pdf::loadView('invoice.invoice_page');
+        return $pdf->stream('invoice.pdf');
+        
+        
     }
 
     /**

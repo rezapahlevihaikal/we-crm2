@@ -3,7 +3,14 @@
 @section('content')
 @include('layouts.headers.header')
     <div class="container-fluid mt--7">
-        <div class="card">
+        <div class="card shadow">
+            <div class="card-header border-0">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <h3 class="mb-0">Edit Data Divisi</h3>
+                    </div>
+                </div>
+            </div>
             <div class="card-body">
                 <form class="" action="{{ route('divisi.update', $dataDivisi->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf

@@ -8,6 +8,7 @@ use App\Models\Companies;
 use App\Models\Source;
 use App\Models\Stages;
 use App\Models\Product;
+use App\Models\Priority;
 use Ramsey\Uuid\Uuid;
 use Illuminate\Support\Str;
 use Illuminate\Support\Carbon;
@@ -52,8 +53,9 @@ class DealsController extends Controller
         $dataSource = Source::get(['id', 'nama_source']);
         $dataStage = Stages::get(['id', 'nama_stage']);
         $dataProduct = Product::get(['id', 'name']);
+        $dataPriority = Priority::get(['id', 'nama_priority']);
     
-        return view('deals.create', compact('dataCoreBisnis', 'dataCompany', 'dataSource', 'dataStage', 'dataProduct'));
+        return view('deals.create', compact('dataCoreBisnis', 'dataCompany', 'dataSource', 'dataStage', 'dataProduct', 'dataPriority'));
     }
 
     /**
@@ -82,6 +84,7 @@ class DealsController extends Controller
             'id_source' => $request->id_source,
             'id_stage' => $request->id_stage,
             'id_product' => $request->id_product,
+            'priority_id' => $request->priority_id,
             'invoice_number' => $defaultHeader . $dateNow ."E". str_pad($order->id + 1, 4, "0", STR_PAD_LEFT),
             'description' => $request->description
         ]);
