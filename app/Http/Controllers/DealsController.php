@@ -28,7 +28,7 @@ class DealsController extends Controller
      */
     public function index()
     {
-        if (Auth::user()->id_role == 4 ) {
+        if (Auth::user()->id_role == 4 || Auth::user()->id_role == 1 ) {
             $dataDeals = Deals::all();   
         }
         else {
@@ -67,6 +67,26 @@ class DealsController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'file' => 'required|mimes:jpg,jpeg,png,doc,docx,xlx,xlsx,pdf|max:2048'
+        ]);
+
+        $rules = [
+            'file' => 'required|mimes:jpg,jpeg,png,doc,docx,xlx,xlsx,pdf|max:2048'
+        ];
+
+        $customMessage = [
+            'required' => 'The :attribute field is required.',
+            'max' => 'The :attribute max :value'
+        ];
+
+        $this->validate($request, $rules, $customMessage);
+
+
+        $filename = Carbon::now().'.'.$request->file->extension();
+        // dd($filename);
+        $request->file->move(public_path('uploads'), $filename);
+        
         $defaultHeader = 'WE';
         $dateNow = Carbon::now()->format('y');
         
@@ -81,6 +101,7 @@ class DealsController extends Controller
             'start_date' => $request->start_date,
             'end_date' => $request->end_date,
             'expired_date' => $request->expired_date,
+            'file'=> $filename,
             'id_source' => $request->id_source,
             'id_stage' => $request->id_stage,
             'id_product' => $request->id_product,

@@ -20,24 +20,26 @@
                     <table class="table table-bordered text-center" id="table-os">
                         <thead class="thead-light">
                             <tr>
-                                <th scope="col">{{ __('Name')}}</th>
                                 <th scope="col">{{ __('Author') }}</th>
-                                <th scope="col">{{ __('Stage') }}</th>
-                                <th scope="col">{{ __('Priority') }}</th>
-                                <th scope="col">{{ __('Core Bisnis') }}</th>
+                                <th scope="col">{{ __('Product')}}</th>
                                 <th scope="col">{{ __('Company') }}</th>
                                 <th scope="col">{{ __('Size') }}</th>
+                                <th scope="col">{{ __('Stage') }}</th>
                                 <th scope="col">{{ __('Schedule') }}</th>
-                                <th scope="col">{{ __('Source') }}</th>
-                                <th scope="col">{{ __('Product') }}</th>
+                                <th scope="col">{{ __('Source') }}</th> 
                                 <th scope="col">{{ __('Action') }}</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($dataDeals as $item)
                               <tr style="text-align: center">
-                                <td><a href="{{route('deals.edit', $item->id)}}" title="{{$item->name}}">{!! Str::limit($item->name, 45) !!}</a></td>
                                 <td>{{$item->author}} <br> {{$item->created_at}} </td>
+                                <td><a href="{{route('deals.edit', $item->id)}}" title="{{$item->getProduct->name ?? "Belum Dilengkapi"}}">{!! Str::limit($item->getProduct->name ?? "Belum Dilengkapi", 45) !!}</a></td>
+                                <td title="{{$item->getCompany->company_name ?? "Belum Dilengkapi"}}">{!! Str::limit($item->getCompany->company_name ?? "Belum Dilengkapi", 45) !!}</td>
+                                <td>
+                                  Rp {{number_format($item->size)}}
+                                </td>
+                                
                                 <td>
                                   @if($item->id_stage == 1)
                                     <button type="button" class="btn btn-primary">{{$item->getStage->nama_stage}}</button>
@@ -55,18 +57,11 @@
                                     <button type="button" class="btn btn-dark">{{$item->getStage->nama_stage}}</button>
                                   @endif
                                 </td>
-                                <td>{{$item->getPriority->nama_priority ?? null}}</td>
-                                <td>{{$item->getCoreBisnis->nama_core_bisnis ?? null}}</td>
-                                <td title="{{$item->getCompany->company_name ?? null}}">{!! Str::limit($item->getCompany->company_name ?? null, 45) !!}</td>
-                                <td>
-                                    Rp {{number_format($item->size)}}
+                                <td>start : {{$item->start_date ?? "Belum Dilengkapi"}}
+                                     <br> end : {{$item->end_date ?? "Belum Dilengkapi"}} 
+                                     <br> exp : {{$item->expired_date ?? "Belum Dilengkapi"}} 
                                 </td>
-                                <td>start : {{$item->start_date}}
-                                     <br> end : {{$item->end_date}} 
-                                     <br> exp : {{$item->expired_date}} 
-                                </td>
-                                <td>{{$item->getSource->nama_source ?? null}}</td>
-                                <td title="{{$item->getProduct->name ?? null}}">{!! Str::limit($item->getProduct->name ?? null, 45) !!}</td>
+                                <td>{{$item->getSource->nama_source ?? "Belum Dilengkapi"}}</td>
                                 <td>
                                   <form action="{{route('deals.destroy',$item->id)}}" method="POST">
                                     @csrf
@@ -89,7 +84,8 @@
     <script type="text/javascript">
        $(document).ready( function () {
             $('#table-os').DataTable({
-                scrollX: true
+                scrollX: true,
+                "order": [[ 1, "desc" ]]
             });
         } );
     </script>

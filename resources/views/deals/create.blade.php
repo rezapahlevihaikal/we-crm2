@@ -77,13 +77,14 @@
                             </select>
                         </div>
                         <div class="col">
-                            <label for="demo_overview_minimal">Priority</label>
-                            <select data-live-search="true" id="priority" class="form-control" data-role="select-dropdown" data-profile="minimal" name="id_stage" value="" selected="">
-                                <option value="">PILIH PRIORITY</option>
-                                @foreach ($dataPriority as $item)
-                                <option value="{{ $item->id }}">{{ $item->nama_priority}}</option>
-                                @endforeach
-                            </select>
+                            <label for="demo_overview_minimal">File (Max : 2 MB)</label>
+                            <input id="" class="form-control @error('file') is-invalid @enderror" type="file" name="file" value=""/>
+                            @error('file')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{$message}}</strong>
+                                </span>
+                            @enderror
+                            
                         </div>
                     </div>
                     <div class="row" style="padding-top: 10px">
@@ -108,7 +109,7 @@
                     </div>
                     <br>
                     <button class="btn btn-success" onclick="window.location='{{url('/deals')}}'" type="reset">Back</button>
-                    <button class="btn btn-primary" type="submit">Update Data</button>
+                    <button class="btn btn-primary" type="submit">Create Data</button>
                   </form>
             </div>
         </div>

@@ -25,6 +25,7 @@ class Deals extends Model
         'no_faktur_pajak',
         'priority_id',
         'id_source',
+        'file',
         'id_stage',
         'id_product',
         'invoice_number',
