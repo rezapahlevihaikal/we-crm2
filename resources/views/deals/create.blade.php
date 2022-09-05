@@ -16,10 +16,10 @@
                     @csrf
                     @method('POST')
                     <div class="row" style="padding-top: 10px">
-                        <div class="col">
+                        {{-- <div class="col">
                             <label for="formGroupExampleInput2">Nama</label>
                             <input id="" class="form-control" type="text" name="name" value=""/>
-                        </div>
+                        </div> --}}
                         <div class="col">
                             <label for="formGroupExampleInput2">Size</label>
                             <div class="input-group mb-2">

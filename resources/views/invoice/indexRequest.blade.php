@@ -42,9 +42,8 @@
                             <tr>
                                 <th scope="col">{{ __('Nama Deals / Author')}}</th>
                                 <th scope="col">{{ __('Company') }}</th>
-                                {{-- <th scope="col">{{ __('No. Faktur Pajak') }}</th> --}}
-                                <th scope="col">{{ __('No. Invoice') }}</th>
-                                <th scope="col">{{ __('Action') }}</th>
+                                <th scope="col">{{ __('Size') }}</th>
+                                
                             </tr>
                         </thead>
                         <tbody>
@@ -55,18 +54,8 @@
                                   <br>
                                   Author : {{$item->author}}
                                 </td>
-                                <td>{{$item->getCompany->company_name ?? null}}</td>
-                                {{-- <td>
-                                    Rp {{number_format($item->size)}}
-                                    <br>
-                                    PPN = Rp {{number_format($item->ppn)}}
-                                </td> --}}
-                                {{-- <td>{{$item->no_faktur_pajak}}</td> --}}
-                                <td>{{$item->invoice_number}}</td>
-                                <td>
-                                  {{-- <button type="submit" onclick="window.location='{{url('/generateDeals')}}'" class="btn btn-success"><i class="far fa-file-alt"></i></button> --}}
-                                  {{-- <a href="/generateDeals">e</a> --}}
-                                </td>
+                                <td>{{$item->getCompany->company_name ?? "Belum Dilengkapi"}}</td>
+                                <td>Rp{{number_format($item->size)}}</td>
                               </tr>
                             @endforeach
                           </tbody>
