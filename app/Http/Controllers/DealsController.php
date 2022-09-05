@@ -82,15 +82,19 @@ class DealsController extends Controller
 
         $this->validate($request, $rules, $customMessage);
 
+        $order = Deals::orderBy('created_at', 'DESC')->first();
 
-        $filename = Carbon::now().'.'.$request->file->extension();
+        $nameDoc = Carbon::now()->format('ymd');
+        $headerNameDoc = 'FileDeals';
+        $sourceDoc = Auth::user()->id;
+        $filename = $headerNameDoc."_".$nameDoc."_".$sourceDoc.".".$request->file->extension();
         // dd($filename);
         $request->file->move(public_path('uploads'), $filename);
         
         $defaultHeader = 'WE';
         $dateNow = Carbon::now()->format('y');
         
-        $order = Deals::orderBy('created_at', 'DESC')->first();
+        
         $dataDeals = Deals::create([
             'name' => $request->name,
             'size' => $request->size,
@@ -158,7 +162,59 @@ class DealsController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $request->validate([
+            'file' => 'required|mimes:jpg,jpeg,png,doc,docx,xlx,xlsx,pdf|max:2048'
+        ]);
+
+        $rules = [
+            'file' => 'required|mimes:jpg,jpeg,png,doc,docx,xlx,xlsx,pdf|max:2048'
+        ];
+
+        $customMessage = [
+            'required' => 'The :attribute field is required.',
+            'max' => 'The :attribute max :value'
+        ];
+
+        $this->validate($request, $rules, $customMessage);
+
+        $order = Deals::orderBy('created_at', 'DESC')->first();
+
+        $nameDoc = Carbon::now()->format('ymd');
+        $headerNameDoc = 'FileDeals';
+        $sourceDoc = Auth::user()->id;
+        $filename = $headerNameDoc."_".$nameDoc."_".$sourceDoc."_".str_pad($order->id + 1, 4, "0", STR_PAD_LEFT).".".$request->file->extension();
+        // dd($filename);
+        
+
         $dataDeals = Deals::findOrFail($id);
+
+        // if ($filename == null) {
+        //     $request->file->move(public_path('uploads'), $filename);
+        // } else {
+        //     Deals::delete(public_path('uploads'), $filename);
+        //     $request->file->move(public_path('uploads'), $filename);
+        // }
+        
+
+        // if($request->hasFile('file')){
+            
+        //     $request->validate([
+        //         'file' => 'required|mimes:jpg,jpeg,png,doc,docx,xlx,xlsx,pdf|max:2048'
+        //     ]);
+
+        //     $nameDoc = Carbon::now()->format('ymd');
+        //     $headerNameDoc = 'FileDeals';
+        //     $sourceDoc = Auth::user()->name;
+           
+        //     $filename = $headerNameDoc."_".$nameDoc."_".$sourceDoc.".".$request->file->extension();
+            
+        //     $request->file->move(public_path('uploads'), $filename);
+
+        //     if ($filename) {
+        //         Deals::delete(public_path('uploads'), $filename);
+        //     }
+        // }
+        
         $dataDeals->update([
             'name' => $request->name,
             'size' => $request->size,
@@ -168,6 +224,7 @@ class DealsController extends Controller
             'expired_date' => $request->expired_date,
             'id_source' => $request->id_source,
             'id_stage' => $request->id_stage,
+            'file' => $filename,
             'id_product' => $request->id_product,
             'description' => $request->description
         ]);

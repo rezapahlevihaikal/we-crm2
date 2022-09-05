@@ -36,6 +36,11 @@
                                 <label class="custom-control-label" for="customControlAutosizing">PPN 11%</label>
                             </div>
                         </div> --}}
+
+                        <div class="col">
+                            <label for="">File (Max : 2 MB)</label>
+                            <input class="form-control" type="file" name="file" >
+                        </div>
                     </div>
                     <div class="row" style="padding-top: 10px">
                         <div class="col">
