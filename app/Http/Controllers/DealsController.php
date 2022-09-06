@@ -189,7 +189,7 @@ class DealsController extends Controller
             $headerNameDoc = 'FileDeals';
             $sourceDoc = Auth::user()->id;
 
-            if ($request->file) {
+            if ($request->file) { 
                 
                 
                 $filename = $headerNameDoc."_".$nameDoc."_".$sourceDoc."_".str_pad($order->id + 1, 4, "0", STR_PAD_LEFT).".".$request->file->extension();        
