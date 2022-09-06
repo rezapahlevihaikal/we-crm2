@@ -22,8 +22,9 @@ class InvoiceController extends Controller
     public function index()
     {
         //
-        $dataDealsIn = Deals::where('id_stage', 3)->get();
-        return view('invoice.index', compact('dataDealsIn'));
+        // $dataDealsIn = Deals::where('id_stage', 3)->get();
+        // return view('invoice.index', compact('dataDealsIn'));
+        
     }
 
     public function requestInvoice()

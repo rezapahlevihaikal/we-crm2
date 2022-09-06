@@ -190,7 +190,8 @@ class DealsController extends Controller
             $sourceDoc = Auth::user()->id;
 
             if ($request->file) {
-                dd($request->file);
+                
+                
                 $filename = $headerNameDoc."_".$nameDoc."_".$sourceDoc."_".str_pad($order->id + 1, 4, "0", STR_PAD_LEFT).".".$request->file->extension();        
                 if (!$filename) {
                     $request->file->move(public_path('uploads'), $filename);

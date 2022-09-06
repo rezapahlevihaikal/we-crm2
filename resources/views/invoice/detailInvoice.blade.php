@@ -10,9 +10,21 @@
             <div class="card-body">
                     <table class="table table-borderless">
                         <tbody>
-                            <tr>
+                            {{-- <tr>
                                 <th scope="col">Nama Deals</th>
                                 <td>{{$dataDealsIn->name}}</td>
+                            </tr> --}}
+                            <tr>
+                                <th scope="col">Perusahaan</th>
+                                <td>
+                                    {{$dataDealsIn->getCompany->company_name ?? 'Belum dilengkapi'}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="col">Author</th>
+                                <td>
+                                    {{$dataDealsIn->author}}
+                                </td>
                             </tr>
                             <tr>
                                 <th scope="col">Size</th>
@@ -21,10 +33,6 @@
                             <tr>
                                 <th scope="col">Pajak</th>
                                 <td>Rp {{number_format($dataDealsIn->ppn)}}</td>
-                            </tr>
-                            <tr>
-                                <th scope="col">Perusahaan</th>
-                                <td>{{$dataDealsIn->getCompany->company_name ?? 'Belum dilengkapi'}}</td>
                             </tr>
                             <tr>
                                 <th scope="col">Produk</th>
