@@ -77,7 +77,7 @@
                             </select>
                         </div>
                         <div class="col">
-                            <label for="demo_overview_minimal">File (Max : 2 MB)</label>
+                            <label for="demo_overview_minimal">File (Max : 5 MB)</label>
                             <input id="" class="form-control @error('file') is-invalid @enderror" type="file" name="file" value=""/>
                             @error('file')
                                 <span class="invalid-feedback" role="alert">

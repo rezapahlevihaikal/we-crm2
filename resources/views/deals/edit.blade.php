@@ -38,7 +38,7 @@
                         </div> --}}
 
                         <div class="col">
-                            <label for="">File (Max : 2 MB)</label>
+                            <label for="">File (Max : 5 MB)</label>
                             <input class="form-control" type="file" name="file" >
                         </div>
                     </div>

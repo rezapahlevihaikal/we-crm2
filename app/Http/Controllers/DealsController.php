@@ -13,6 +13,7 @@ use Ramsey\Uuid\Uuid;
 use Illuminate\Support\Str;
 use Illuminate\Support\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Auth;
 
 class DealsController extends Controller
@@ -68,11 +69,11 @@ class DealsController extends Controller
     {
         //
         $request->validate([
-            'file' => 'required|mimes:jpg,jpeg,png,doc,docx,xlx,xlsx,pdf|max:2048'
+            'file' => 'required|mimes:jpg,jpeg,png,doc,docx,xlx,xlsx,pdf|max:5120'
         ]);
 
         $rules = [
-            'file' => 'required|mimes:jpg,jpeg,png,doc,docx,xlx,xlsx,pdf|max:2048'
+            'file' => 'required|mimes:jpg,jpeg,png,doc,docx,xlx,xlsx,pdf|max:5120'
         ];
 
         $customMessage = [
@@ -163,11 +164,11 @@ class DealsController extends Controller
     {
         //
         $request->validate([
-            'file' => 'required|mimes:jpg,jpeg,png,doc,docx,xlx,xlsx,pdf|max:2048'
+            'file' => 'required|mimes:jpg,jpeg,png,doc,docx,xlx,xlsx,pdf|max:5120'
         ]);
 
         $rules = [
-            'file' => 'required|mimes:jpg,jpeg,png,doc,docx,xlx,xlsx,pdf|max:2048'
+            'file' => 'required|mimes:jpg,jpeg,png,doc,docx,xlx,xlsx,pdf|max:5120'
         ];
 
         $customMessage = [
@@ -188,12 +189,13 @@ class DealsController extends Controller
 
         $dataDeals = Deals::findOrFail($id);
 
-        // if ($filename == null) {
-        //     $request->file->move(public_path('uploads'), $filename);
-        // } else {
-        //     Deals::delete(public_path('uploads'), $filename);
-        //     $request->file->move(public_path('uploads'), $filename);
-        // }
+        if (!$filename) {
+            $request->file->move(public_path('uploads'), $filename);
+        } else {
+            File::delete(public_path('uploads'), $filename);
+            $request->file->move(public_path('uploads'), $filename);
+        }
+        
         
 
         // if($request->hasFile('file')){
