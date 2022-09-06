@@ -68,16 +68,17 @@ class DealsController extends Controller
     public function store(Request $request)
     {
         //
+        $filename = null;
         $request->validate([
-            'file' => 'required|mimes:jpg,jpeg,png,doc,docx,xlx,xlsx,pdf|max:5120'
+            'file' => 'nullable|mimes:jpg,jpeg,png,doc,docx,xlx,xlsx,pdf|max:5120'
         ]);
 
         $rules = [
-            'file' => 'required|mimes:jpg,jpeg,png,doc,docx,xlx,xlsx,pdf|max:5120'
+            'file' => 'nullable|mimes:jpg,jpeg,png,doc,docx,xlx,xlsx,pdf|max:5120'
         ];
 
         $customMessage = [
-            'required' => 'The :attribute field is required.',
+            
             'max' => 'The :attribute max :value'
         ];
 
@@ -88,9 +89,11 @@ class DealsController extends Controller
         $nameDoc = Carbon::now()->format('ymd');
         $headerNameDoc = 'FileDeals';
         $sourceDoc = Auth::user()->id;
-        $filename = $headerNameDoc."_".$nameDoc."_".$sourceDoc.".".$request->file->extension();
-        // dd($filename);
-        $request->file->move(public_path('uploads'), $filename);
+
+        if ($request->file) {
+            $filename = $headerNameDoc."_".$nameDoc."_".$sourceDoc."_".str_pad($order->id + 1, 4, "0", STR_PAD_LEFT).".".$request->file->extension();        
+            $request->file->move(public_path('uploads'), $filename);
+        }        
         
         $defaultHeader = 'WE';
         $dateNow = Carbon::now()->format('y');
@@ -163,40 +166,43 @@ class DealsController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $filename = null;
         $request->validate([
-            'file' => 'required|mimes:jpg,jpeg,png,doc,docx,xlx,xlsx,pdf|max:5120'
+            'file' => 'nullable|mimes:jpg,jpeg,png,doc,docx,xlx,xlsx,pdf|max:5120'
         ]);
 
         $rules = [
-            'file' => 'required|mimes:jpg,jpeg,png,doc,docx,xlx,xlsx,pdf|max:5120'
+            'file' => 'nullable|mimes:jpg,jpeg,png,doc,docx,xlx,xlsx,pdf|max:5120'
         ];
 
         $customMessage = [
-            'required' => 'The :attribute field is required.',
+            
             'max' => 'The :attribute max :value'
         ];
 
         $this->validate($request, $rules, $customMessage);
 
-        $order = Deals::orderBy('created_at', 'DESC')->first();
+        
+            $order = Deals::orderBy('created_at', 'DESC')->first();
 
-        $nameDoc = Carbon::now()->format('ymd');
-        $headerNameDoc = 'FileDeals';
-        $sourceDoc = Auth::user()->id;
-        $filename = $headerNameDoc."_".$nameDoc."_".$sourceDoc."_".str_pad($order->id + 1, 4, "0", STR_PAD_LEFT).".".$request->file->extension();
-        // dd($filename);
+            $nameDoc = Carbon::now()->format('ymd');
+            $headerNameDoc = 'FileDeals';
+            $sourceDoc = Auth::user()->id;
+
+            if ($request->file) {
+                dd($request->file);
+                $filename = $headerNameDoc."_".$nameDoc."_".$sourceDoc."_".str_pad($order->id + 1, 4, "0", STR_PAD_LEFT).".".$request->file->extension();        
+                if (!$filename) {
+                    $request->file->move(public_path('uploads'), $filename);
+                } else {
+                    File::delete(public_path('uploads'), $filename);
+                    $request->file->move(public_path('uploads'), $filename);
+                }
+            }
+            
         
 
         $dataDeals = Deals::findOrFail($id);
-
-        if (!$filename) {
-            $request->file->move(public_path('uploads'), $filename);
-        } else {
-            File::delete(public_path('uploads'), $filename);
-            $request->file->move(public_path('uploads'), $filename);
-        }
-        
-        
 
         // if($request->hasFile('file')){
             
