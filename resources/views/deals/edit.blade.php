@@ -39,7 +39,8 @@
 
                         <div class="col">
                             <label for="">File (Max : 5 MB)</label>
-                            <input class="form-control" type="file" name="file" >
+                            <input class="form-control" type="file" name="file" value="{{$dataDeals->file}}">
+                            <a href="{{route('deals.downloadFileDeals', $dataDeals->id)}}">{{$dataDeals->file}}</a>
                         </div>
                     </div>
                     <div class="row" style="padding-top: 10px">

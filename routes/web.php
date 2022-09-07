@@ -110,6 +110,7 @@ Route::prefix('deals')->group(function(){
 	Route::get('edit/{id}', [DealsController::class, 'edit'])->name('deals.edit');
 	Route::post('update/{id}', [DealsController::class, 'update'])->name('deals.update');
 	Route::post('delete/{id}', [DealsController::class, 'destroy'])->name('deals.destroy');
+	Route::get('downloadFileDeals/{id}', [DealsController::class, 'downloadFileDeals'])->name('deals.downloadFileDeals');
 });
 
 Route::prefix('products')->group(function(){
@@ -136,6 +137,7 @@ Route::get('generateDeals', [InvoiceController::class, 'generateDeals'])->name('
 Route::get('request-invoice-deals',[InvoiceController::class, 'requestInvoice'])->name('requestInvoice');
 Route::get('detail-invoice-deals/{id}', [InvoiceController::class, 'detailInvoice'])->name('detailInvoice');
 Route::post('create-invoice/{id}', [InvoiceController::class, 'createInvoice'])->name('createInvoice');
+
 
 Route::prefix('bankAcc')->group(function(){
 	Route::get('/', [BankAccController::class, 'index'])->name('bankAcc');

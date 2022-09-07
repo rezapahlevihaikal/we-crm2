@@ -13,6 +13,26 @@ class Invoice extends Model
 
     protected $fillable =
     [
-        'deals_id'
+        'deals_id',
+        'inv_date',
+        'exp_inv_date',
+        'billed_value',
+        'faktur_pajak',
+        'ppn',
+        'inv_status_id',
+        'pic_inv',
+        'inv_number',
+        'company_id',
+        'inv_desc'
     ];
+
+    public function getDeals()
+    {
+        return $this->belongsTo('App\Models\Deals', 'id_deals', 'id');
+    }
+
+    public function getCompany()
+    {
+        return $this->belongsTo('App\Models\Companies', 'company_id', 'id');
+    }
 }

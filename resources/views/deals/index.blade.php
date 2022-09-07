@@ -85,7 +85,8 @@
        $(document).ready( function () {
             $('#table-os').DataTable({
                 scrollX: true,
-                "order": [[ 1, "desc" ]]
+                ordering: false,
+                // "order": [[ 1, "desc" ]]
             });
         } );
     </script>

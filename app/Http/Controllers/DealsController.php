@@ -10,10 +10,12 @@ use App\Models\Stages;
 use App\Models\Product;
 use App\Models\Priority;
 use Ramsey\Uuid\Uuid;
+use DB;
 use Illuminate\Support\Str;
 use Illuminate\Support\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 
 class DealsController extends Controller
@@ -30,7 +32,7 @@ class DealsController extends Controller
     public function index()
     {
         if (Auth::user()->id_role == 4 || Auth::user()->id_role == 1 ) {
-            $dataDeals = Deals::all();   
+            $dataDeals = Deals::latest('id')->get();
         }
         else {
             $dataDeals = Deals::where('id_core_bisnis', Auth::user()->id_core_bisnis)
@@ -190,8 +192,6 @@ class DealsController extends Controller
             $sourceDoc = Auth::user()->id;
 
             if ($request->file) { 
-                
-                
                 $filename = $headerNameDoc."_".$nameDoc."_".$sourceDoc."_".str_pad($order->id + 1, 4, "0", STR_PAD_LEFT).".".$request->file->extension();        
                 if (!$filename) {
                     $request->file->move(public_path('uploads'), $filename);
@@ -201,29 +201,8 @@ class DealsController extends Controller
                 }
             }
             
-        
-
         $dataDeals = Deals::findOrFail($id);
 
-        // if($request->hasFile('file')){
-            
-        //     $request->validate([
-        //         'file' => 'required|mimes:jpg,jpeg,png,doc,docx,xlx,xlsx,pdf|max:2048'
-        //     ]);
-
-        //     $nameDoc = Carbon::now()->format('ymd');
-        //     $headerNameDoc = 'FileDeals';
-        //     $sourceDoc = Auth::user()->name;
-           
-        //     $filename = $headerNameDoc."_".$nameDoc."_".$sourceDoc.".".$request->file->extension();
-            
-        //     $request->file->move(public_path('uploads'), $filename);
-
-        //     if ($filename) {
-        //         Deals::delete(public_path('uploads'), $filename);
-        //     }
-        // }
-        
         $dataDeals->update([
             'name' => $request->name,
             'size' => $request->size,
@@ -244,6 +223,14 @@ class DealsController extends Controller
         else {
             return redirect()->back()->withErrors('data gagal diupdate');
         }
+    }
+
+    public function downloadFileDeals($id)
+    {
+        $dataDeals = Deals::where('id', $id)->firstOrFail();
+        $filePath = public_path('uploads/'. $dataDeals->file);
+        // dd($filePath);
+        return response()->download($filePath);
     }
 
     /**
