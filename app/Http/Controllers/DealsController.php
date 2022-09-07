@@ -32,12 +32,12 @@ class DealsController extends Controller
     public function index()
     {
         if (Auth::user()->id_role == 4 || Auth::user()->id_role == 1 ) {
-            $dataDeals = Deals::latest('id')->get();
+            $dataDeals = Deals::latest('updated_at')->get();
         }
         else {
             $dataDeals = Deals::where('id_core_bisnis', Auth::user()->id_core_bisnis)
                          ->with(['getCoreBisnis', 'getCompany', 'getSource', 'getStage', 'getProduct'])
-                         ->get();
+                         ->latest('updated_at')->get();
         }
 
         return view('deals.index', compact('dataDeals'));
