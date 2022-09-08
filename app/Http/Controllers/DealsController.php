@@ -93,6 +93,7 @@ class DealsController extends Controller
         $sourceDoc = Auth::user()->id;
 
         if ($request->file) {
+            
             $filename = $headerNameDoc."_".$nameDoc."_".$sourceDoc."_".str_pad($order->id + 1, 4, "0", STR_PAD_LEFT).".".$request->file->extension();        
             $request->file->move(public_path('uploads'), $filename);
         }        
@@ -168,40 +169,26 @@ class DealsController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $filename = null;
         $request->validate([
             'file' => 'nullable|mimes:jpg,jpeg,png,doc,docx,xlx,xlsx,pdf|max:5120'
         ]);
 
-        $rules = [
-            'file' => 'nullable|mimes:jpg,jpeg,png,doc,docx,xlx,xlsx,pdf|max:5120'
-        ];
-
-        $customMessage = [
-            
-            'max' => 'The :attribute max :value'
-        ];
-
-        $this->validate($request, $rules, $customMessage);
-
-        
-            $order = Deals::orderBy('created_at', 'DESC')->first();
-
-            $nameDoc = Carbon::now()->format('ymd');
-            $headerNameDoc = 'FileDeals';
-            $sourceDoc = Auth::user()->id;
-
-            if ($request->file) { 
-                $filename = $headerNameDoc."_".$nameDoc."_".$sourceDoc."_".str_pad($order->id + 1, 4, "0", STR_PAD_LEFT).".".$request->file->extension();        
-                if (!$filename) {
-                    $request->file->move(public_path('uploads'), $filename);
-                } else {
-                    File::delete(public_path('uploads'), $filename);
-                    $request->file->move(public_path('uploads'), $filename);
-                }
-            }
-            
         $dataDeals = Deals::findOrFail($id);
+
+        $order = Deals::orderBy('created_at', 'DESC')->first();
+
+        $nameDoc = Carbon::now()->format('ymd');
+        $headerNameDoc = 'FileDeals';
+        $sourceDoc = Auth::user()->id;
+
+        if ($request->has('file')) {
+            $filename = $headerNameDoc."_".$nameDoc."_".$sourceDoc."_".str_pad($order->id + 1, 4, "0", STR_PAD_LEFT).".".$request->file->getClientOriginalExtension();
+            File::delete(public_path('uploads'), $dataDeals->file);
+            $request->file->move(public_path('uploads'), $filename);
+        }
+        else {
+            $filename = $dataDeals->file;
+        }
 
         $dataDeals->update([
             'name' => $request->name,
@@ -222,7 +209,7 @@ class DealsController extends Controller
         }
         else {
             return redirect()->back()->withErrors('data gagal diupdate');
-        }
+        }   
     }
 
     public function downloadFileDeals($id)
