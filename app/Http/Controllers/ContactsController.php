@@ -59,6 +59,7 @@ class ContactsController extends Controller
         $dataContact = Contacts::create([
             'name' => $request->name,
             'author' => Auth::user()->name,
+            'id_author'=> Auth::user()->id,
             'phone_number' => $request->phone_number,
             'email' => $request->email,
             'id_company' => $request->id_company,
@@ -115,6 +116,7 @@ class ContactsController extends Controller
         $dataContact->update([
             'name' => $request->name,
             'author' => Auth::user()->name,
+            'id_author'=> Auth::user()->id,
             'phone_number' => $request->phone_number,
             'email' => $request->email,
             'id_company' => $request->id_company,

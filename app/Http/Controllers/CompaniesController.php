@@ -45,6 +45,7 @@ class CompaniesController extends Controller
         $dataCompanies = Companies::create([
             'company_name' => $request->company_name,
             'author' => Auth::user()->name,
+            'id_author'=> Auth::user()->id,
             'phone_number_company' => $request->phone_number_company,
             'address' => $request->address,
             'zipcode' => $request->zipcode,
@@ -100,6 +101,7 @@ class CompaniesController extends Controller
         $dataCompanies->update([
             'company_name' => $request->company_name,
             'author' => Auth::user()->name,
+            'id_author'=> Auth::user()->id,
             'phone_number_company' => $request->phone_number_company,
             'address' => $request->address,
             'zipcode' => $request->zipcode,
