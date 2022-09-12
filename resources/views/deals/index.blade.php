@@ -33,7 +33,7 @@
                         <tbody>
                             @foreach($dataDeals as $item)
                               <tr style="text-align: center">
-                                <td>{{$item->getUser->name}} <br> {{$item->created_at}} </td>
+                                <td>{{$item->getUser->name ?? 'Belum dilengkapi'}} <br> {{$item->created_at}} </td>
                                 <td><a href="{{route('deals.edit', $item->id)}}" title="{{$item->getProduct->name ?? "Belum Dilengkapi"}}">{!! Str::limit($item->getProduct->name ?? "Belum Dilengkapi", 45) !!}</a></td>
                                 <td title="{{$item->getCompany->company_name ?? "Belum Dilengkapi"}}">{!! Str::limit($item->getCompany->company_name ?? "Belum Dilengkapi", 45) !!}</td>
                                 <td>
