@@ -23,7 +23,7 @@
                             <tr>
                                 <th scope="col">Author</th>
                                 <td>
-                                    {{$dataDealsIn->author}}
+                                    {{$dataDealsIn->getUser->name ?? 'Belum Dilengkapi'}}
                                 </td>
                             </tr>
                             <tr>
@@ -57,6 +57,14 @@
                             <tr>
                                 <th scope="col">Expired Date</th>
                                 <td>{{$dataDealsIn->expired_date ?? 'Belum dilengkapi'}}</td>
+                            </tr>
+                            <tr>
+                                <th scope="col">file</th>
+                                <td><a href="{{route('downloadMediaOrder', $dataDealsIn->id)}}">{{$dataDealsIn->file ?? 'Belum dilengkapi'}}</a></td>
+                            </tr>
+                            <tr>
+                                <th scope="col">Note</th>
+                                <td>{{$dataDealsIn->description ?? 'Belum dilengkapi'}}</td>
                             </tr>
                         </tbody>
                     </table>

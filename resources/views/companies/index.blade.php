@@ -86,12 +86,12 @@
                             @foreach($dataCompanies as $item)
                               <tr style="text-align: center">
                                 <td><a href="{{route('companies.edit', $item->id)}}" title="">{!! Str::limit($item->company_name, 40) !!}</a></td>
-                                <td>{{$item->author}} <br> {{$item->created_at}} </td>
-                                <td>{{$item->phone_number_company}}</td>
+                                <td>{{$item->getUser->name}} <br> {{$item->created_at}} </td>
+                                <td>{{$item->phone_number_company ?? 'Belum Dilengkapi'}}</td>
                                 <td>{!! Str::limit($item->address, 40) !!}</td>
-                                <td>{{$item->zipcode}}</td>
-                                <td>{{$item->website}}</td>
-                                <td>{{$item->nama_dirut}}</td>
+                                <td>{{$item->zipcode ?? 'Belum Dilengkapi'}}</td>
+                                <td>{{$item->website ?? 'Belum Dilengkapi'}}</td>
+                                <td>{{$item->nama_dirut ?? 'Belum Dilengkapi'}}</td>
                                 <td>
                                   <form action="{{route('companies.destroy',$item->id)}}" method="POST">
                                     @csrf

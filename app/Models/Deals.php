@@ -15,6 +15,7 @@ class Deals extends Model
     [
         'name',
         'author',
+        'id_author',
         'id_core_bisnis',
         'id_company',
         'size',
@@ -31,6 +32,11 @@ class Deals extends Model
         'invoice_number',
         'description'
     ];
+
+    public function getUser()
+    {
+        return $this->belongsTo('App\Models\User', 'id_author', 'id');
+    }
 
     public function getCoreBisnis()
     {

@@ -87,12 +87,12 @@
                             @foreach($dataContact as $item)
                               <tr style="text-align: center">
                                 <td><a href="{{route('contacts.edit', $item->id)}}" title="">{{$item->name}}</a></td>
-                                <td>{{$item->author}}</td>
-                                <td>{{$item->phone_number}}</td>
-                                <td>{{$item->getCompany->company_name ?? null}}</td>
-                                <td>{{$item->address}}</td>
-                                <td>{{$item->getDivisi->nama_divisi ?? null}}</td>
-                                <td>{{$item->getCoreBisnis->nama_core_bisnis ?? null}}</td>
+                                <td>{{$item->getUser->name ?? 'Belum Dilengkapi'}}</td>
+                                <td>{{$item->phone_number ?? 'Belum Dlengkapi'}}</td>
+                                <td>{{$item->getCompany->company_name ?? 'Belum Dilengkapi'}}</td>
+                                <td>{{$item->address ?? 'Belum Dilengkapi'}}</td>
+                                <td>{{$item->getDivisi->nama_divisi ?? 'Belum Dilengkapi'}}</td>
+                                <td>{{$item->getCoreBisnis->nama_core_bisnis ?? 'Belum Dilengkapi'}}</td>
                                 <td>
                                   <form action="{{route('contacts.destroy',$item->id)}}" method="POST">
                                     @csrf

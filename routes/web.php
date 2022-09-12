@@ -131,12 +131,15 @@ Route::prefix('source')->group(function(){
 
 Route::prefix('invoice')->group(function(){
 	Route::get('/', [InvoiceController::class, 'index'])->name('invoice');
+	Route::get('editRequest/{id}', [InvoiceController::class, 'editRequest'])->name('invoice.editRequest');
+	Route::post('updateRequest/{id}', [InvoiceController::class, 'updateRequest'])->name('invoice.updateRequest');
 });
 
 Route::get('generateDeals', [InvoiceController::class, 'generateDeals'])->name('generateDeals');
 Route::get('request-invoice-deals',[InvoiceController::class, 'requestInvoice'])->name('requestInvoice');
 Route::get('detail-invoice-deals/{id}', [InvoiceController::class, 'detailInvoice'])->name('detailInvoice');
 Route::post('create-invoice/{id}', [InvoiceController::class, 'createInvoice'])->name('createInvoice');
+Route::get('downloadMediaOrder/{id}', [InvoiceController::class, 'downloadMediaOrder'])->name('downloadMediaOrder');
 
 
 Route::prefix('bankAcc')->group(function(){

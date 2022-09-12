@@ -15,6 +15,7 @@ class Contacts extends Model
     [
         'name',
         'author',
+        'id_author',
         'phone_number',
         'email',
         'id_company',
@@ -23,6 +24,11 @@ class Contacts extends Model
         'id_core_bisnis',
         'note'
     ];
+
+    public function getUser()
+    {
+        return $this->belongsTo('App\Models\User', 'id_author', 'id');
+    }
 
     public function getCompany()
     {

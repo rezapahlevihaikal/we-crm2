@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Invoice;
 use App\Models\Deals;
+use App\Models\InvStatus;
 use DB;
+use Illuminate\Support\Carbon;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class InvoiceController extends Controller
@@ -21,15 +24,14 @@ class InvoiceController extends Controller
      */
     public function index()
     {
-        //
-        // $dataDealsIn = Deals::where('id_stage', 3)->get();
-        // return view('invoice.index', compact('dataDealsIn'));
+        $dataInvoice = Invoice::all();
+        return view('invoice.index', compact('dataInvoice'));
         
     }
 
     public function requestInvoice()
     {
-        $dataDealsIn = Deals::where('id_stage', 3)->get();
+        $dataDealsIn = Deals::where('id_stage', 3, 5)->latest('id')->get();
         return view('invoice.indexRequest', compact('dataDealsIn'));
     }
 
@@ -47,9 +49,41 @@ class InvoiceController extends Controller
             'id_stage' => 5,
         ]);
 
+        //==== deklarasi format nomor invoice====
+        $formatHeader = 'WE';
+        $dateNow = Carbon::now()->format('y');
+        $order = Invoice::orderBy('created_at', 'desc')->first();
+        //=======================================
+
+        //======== Deklarasi Kode Sales ==========
+        $midSalesAttribute = Auth::user()->initial;
+        $endSalesAttribute = Auth::user()->id;
+        //========================================
+
+        //======== Deklarasi Nomor Order =========
+        $headerOrder = $dataDealsIn->id_author;
+        $attOrder = $dataDealsIn->id;
+        //========================================
+        
         
         $dataCreateIn = Invoice::create([
-            'deals_id' => $dataDealsIn->id
+            'deals_id' => $dataDealsIn->id,
+            'inv_date' => $request->inv_date,
+            'exp_inv_date' => $request->exp_inv_date,
+            'billed_value' => $request->billed_value,
+            'product_id' => $dataDealsIn->id_product,
+            'size' => $dataDealsIn->size,
+            'sales_code' => $midSalesAttribute . $endSalesAttribute,
+            'no_order' => $headerOrder . $attOrder,
+            'author' => $dataDealsIn->id_author,
+            'faktur_pajak' => $request->faktur_pajak,
+            'ppn' => $request->input('ppn') ? $dataDealsIn->size * 11 / 100 : 0,
+            'inv_status_id' => $request->inv_status_id,
+            'pic_inv' => $request->pic_inv,
+            'inv_number' => $formatHeader . $dateNow . "E" . str_pad($order->id + 1, 4, "0", STR_PAD_LEFT),
+            'company_id' => $dataDealsIn->id_company,
+            'inv_desc' => $request->inv_desc,
+
         ]);
 
         if ($dataCreateIn) {
@@ -58,6 +92,26 @@ class InvoiceController extends Controller
             return redirect()->back()->withErrors('data gagal di generate');
         }
         
+    }
+
+    public function downloadMediaOrder($id)
+    {
+        $dataDealsIn = Deals::where('id', $id)->firstOrFail();
+        $filePath = public_path('uploads/'. $dataDealsIn->file);
+        
+        return response()->download($filePath);
+    }
+
+    public function editRequest($id)
+    {
+        $dataStatusInv = InvStatus::get(['id', 'name']);
+        $dataInvoice = Invoice::findOrFail($id);
+        return view('invoice.edit', compact('dataInvoice', 'dataStatusInv'));
+    }
+
+    public function updateRequest(Request $request, $id)
+    {
+
     }
 
     public function generateDeals()

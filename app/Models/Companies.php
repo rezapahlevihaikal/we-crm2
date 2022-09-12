@@ -14,6 +14,7 @@ class Companies extends Model
     protected $fillable = [
         'company_name',
         'author',
+        'id_author',
         'phone_number_company',
         'address',
         'zipcode',
@@ -23,4 +24,9 @@ class Companies extends Model
         'note_2',
         'note_3'
     ];
+
+    public function getUser()
+    {
+        return $this->belongsTo('App\Models\User', 'id_author', 'id');
+    }
 }
