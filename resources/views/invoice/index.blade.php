@@ -10,9 +10,9 @@
                     <div class="col">
                         <h3 class="mb-0">Daftar Invoice</h3>
                     </div>
-                    <div class="col text-right">
-                      <button type="button" onclick="window.location='{{url('#')}}'" class="btn btn-success"><i class="fas fa-plus"></i> Tambah Data Invoice</button>
-                    </div>
+                    {{-- <div class="col text-right">
+                      <button type="button" onclick="window.location='{{url('/invoice/createSingleInvoice')}}'" class="btn btn-success"><i class="fas fa-plus"></i> Tambah Data Invoice</button>
+                    </div> --}}
                 </div>
             </div>
             <div class="card bg-secondary-default shadow">
@@ -38,8 +38,20 @@
                                 <td>
                                     Rp {{number_format($item->billed_value)}}
                                 </td>
-                                <td>{{$item->getStatus->name ?? 'Belum ada status'}}</td>
-                                <td>#</td>
+                                <td>
+                                    @if ($item->inv_status_id == 1)
+                                        <button type="button" class="btn btn-primary">{{$item->getStatus->name ?? 'Belum ada status'}}</button>
+                                    @elseif($item->inv_status_id == 2)
+                                        <button type="button" class="btn btn-secondary">{{$item->getStatus->name ?? 'Belum ada status'}}</button>
+                                    @elseif($item->inv_status_id == 3)
+                                        <button type="button" class="btn btn-warning">{{$item->getStatus->name ?? 'Belum ada status'}}</button>
+                                    @elseif($item->inv_status_id == 4)
+                                        <button type="button" class="btn btn-success">{{$item->getStatus->name ?? 'Belum ada status'}}</button>
+                                    @endif
+                                </td>
+                                <td>
+                                    <a class="btn btn-danger" href="{{route('generateDeals', $item->id)}}" role="button"><i class="fas fa-file-pdf"></i></a>
+                                </td>
                               </tr>
                             @endforeach
                           </tbody>

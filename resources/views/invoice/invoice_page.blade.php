@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Test Template Invoice Warta Ekonomi</title>
+    <title>INV-{{$dataInvoice->inv_number}}</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 </head>
 <style type="text/css">
@@ -26,11 +26,20 @@
     .w-100{
         width: 100%;
     }
+    .w-10{
+        width: 10%;
+    }
+    .w-25{
+        width: 25%;
+    }
+    .w-40{
+        width: 40%;
+    }
     .w-50{
         width:50%;   
     }
-    .w-85{
-        width:85%;   
+    .w-75{
+        width:75%;   
     }
     .w-15{
         width:15%;   
@@ -91,10 +100,10 @@
 </div>
 <div class="add-detail mt-10">
     <div class="w-50 float-left mt-10">
-        <p class="m-0 pt-5 text-bold w-100">Tanggal - <span class="gray-color">#6</span></p>
-        <p class="m-0 pt-5 text-bold w-100">Nomor Invoice - <span class="gray-color">162695CDFS</span></p>
-        <p class="m-0 pt-5 text-bold w-100">Kode Sales - <span class="gray-color">03-06-2022</span></p>
-        <p class="m-0 pt-5 text-bold w-100">Kode Kustomer - <span class="gray-color">03-06-2022</span></p>
+        <p class="m-0 pt-5 text-bold w-100">Tanggal - <span class="gray-color">{{$dataInvoice->inv_date}}</span></p>
+        <p class="m-0 pt-5 text-bold w-100">Nomor Invoice - <span class="gray-color">{{$dataInvoice->inv_number}}</span></p>
+        <p class="m-0 pt-5 text-bold w-100">Kode Sales - <span class="gray-color">{{$dataInvoice->sales_code}}</span></p>
+        <p class="m-0 pt-5 text-bold w-100">Nomor Order - <span class="gray-color">{{$dataInvoice->no_order}}</span></p>
     </div>
     {{-- <div class="w-50 float-left logo mt-10">
         <img src="https://www.nicesnippets.com/image/imgpsh_fullsize.png"> <span>Nicesnippets.com</span>     
@@ -104,28 +113,24 @@
 <div class="table-section bill-tbl w-100 mt-10">
     <table class="table w-100 mt-10">
         <tr>
-            <th class="w-50">From</th>
-            <th class="w-50">To</th>
+            <th class="w-50">Dari</th>
+            <th class="w-50">Kepada</th>
         </tr>
         <tr>
             <td>
                 <div class="box-text">
-                    <p>Gujarat</p>
-                    <p>360004</p>
-                    <p>Near Haveli Road,</p>
-                    <p>Lal Darvaja,</p>
-                    <p>India</p>
-                    <p>Contact : 1234567890</p>
+                    <p> <b>PT. Kuadran Satu Komunika</b></p>
+                    <p>Jl. Tebet Raya No. 85A</p>
+                    <p>Tebet - Jakarta Selatan 12820</p>
+                    <p>Telp: +62 21 82850466</p>
+                    <p>NPWP 82.417.388.4-015.000</p>
                 </div>
             </td>
             <td>
                 <div class="box-text">
-                    <p>Rajkot</p>
-                    <p>360012</p>
-                    <p>Hanumanji Temple,</p>
-                    <p>Lati Ploat</p>
-                    <p>Gujarat</p>
-                    <p>Contact : 1234567890</p>
+                    <p> <b>{{$dataInvoice->getCompany->company_name}}</b></p>
+                    <p>{{$dataInvoice->getCompany->address}}</p>
+                    <p>{{$dataInvoice->getCompany->zipcode}}</p>
                 </div>
             </td>
         </tr>
@@ -134,65 +139,46 @@
 <div class="table-section bill-tbl w-100 mt-10">
     <table class="table w-100 mt-10">
         <tr>
-            <th class="w-50">Payment Method</th>
-            <th class="w-50">Shipping Method</th>
+            <th class="w-100">Metode Pembayaran</th>
         </tr>
         <tr>
-            <td>Cash On Delivery</td>
-            <td>Free Shipping - Free Shipping</td>
+            <td>
+                <p>Transfer Atas Nama :</p>
+                <p> <b>PT. Kuadran Satu Komunika</b></p>
+                <p>Bank BRI</p>
+                <p><b>Acc No. 0335.01.00224430.8</b></p>
+            </td>
         </tr>
     </table>
 </div>
 <div class="table-section bill-tbl w-100 mt-10">
     <table class="table w-100 mt-10">
         <tr>
-            <th class="w-50">SKU</th>
-            <th class="w-50">Product Name</th>
-            <th class="w-50">Price</th>
-            <th class="w-50">Qty</th>
-            <th class="w-50">Subtotal</th>
-            <th class="w-50">Tax Amount</th>
-            <th class="w-50">Grand Total</th>
+            <th class="w-40">Keterangan</th>
+            <th class="w-10">Unit</th>
+            <th class="w-25">Harga Satuan</th>
+            <th class="w-25">Jumlah Harga</th>
+           
         </tr>
         <tr align="center">
-            <td>$656</td>
-            <td>Mobile</td>
-            <td>$204.2</td>
-            <td>3</td>
-            <td>$500</td>
-            <td>$50</td>
-            <td>$100.60</td>
-        </tr>
-        <tr align="center">
-            <td>$656</td>
-            <td>Mobile</td>
-            <td>$254.2</td>
-            <td>2</td>
-            <td>$500</td>
-            <td>$50</td>
-            <td>$120.00</td>
-        </tr>
-        <tr align="center">
-            <td>$656</td>
-            <td>Mobile</td>
-            <td>$554.2</td>
-            <td>5</td>
-            <td>$500</td>
-            <td>$50</td>
-            <td>$100.00</td>
+            <td>{{$dataInvoice->getProduct->name}}</td>
+            <td>{{$dataInvoice->getProduct->quantity}}</td>
+            <td>@currency($dataInvoice->size)</td>
+            <td>@currency($dataInvoice->size)</td>
+            
         </tr>
         <tr>
-            <td colspan="7">
+            <td colspan="4">
                 <div class="total-part">
-                    <div class="total-left w-85 float-left" align="right">
+                    <div class="total-left w-75 float-left" align="right">
                         <p>Sub Total</p>
-                        <p>Tax (18%)</p>
-                        <p>Total Payable</p>
+                        <p>PPN 11%</p>
+                        <p>Total Keseluruhan</p>
                     </div>
-                    <div class="total-right w-15 float-left text-bold" align="right">
-                        <p>$20</p>
-                        <p>$20</p>
-                        <p>$330.00</p>
+                    <div class="total-right w-25 float-left text-bold" align="right">
+                        <p>@currency($dataInvoice->size)</p>
+                        <p>@currency($dataInvoice->ppn)</p>
+                        <p>@currency($dataInvoice->size + $dataInvoice->ppn)</p>
                     </div>
                     <div style="clear: both;"></div>
                 </div> 
