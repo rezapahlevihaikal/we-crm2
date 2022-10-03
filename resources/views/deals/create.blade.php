@@ -29,14 +29,23 @@
                                 <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="" name="size">
                             </div>
                         </div>
-                        {{-- <div class="col">
+                    </div>
+                    {{-- <div class="row" style="padding-top: 10px;">
+                        <div class="col">
                             <label for="formGroupExampleInput2">Pajak</label>
                             <div class="custom-control custom-checkbox mr-sm-2">
                                 <input type="checkbox" class="custom-control-input" value="11" name="ppn" id="customControlAutosizing">
                                 <label class="custom-control-label" for="customControlAutosizing">PPN 11%</label>
                             </div>
-                        </div> --}}
-                    </div>
+                        </div>
+                        <div class="col">
+                            <label for="formGroupExampleInput2"></label>
+                            <div class="custom-control custom-checkbox mr-sm-2">
+                                <input type="checkbox" class="custom-control-input" value="11" name="pph_23" id="customControlAutosizing2">
+                                <label class="custom-control-label" for="customControlAutosizing2">PPH 23</label>
+                            </div>
+                        </div>
+                    </div> --}}
                     <div class="row" style="padding-top: 10px">
                         <div class="col">
                             <label for="demo_overview_minimal">Perusahaan</label>

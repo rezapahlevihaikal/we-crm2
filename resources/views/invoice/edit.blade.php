@@ -17,12 +17,9 @@
                     @method('POST')
                     <div class="row" style="">
                         <div class="col">
-                            <label for="formGroupExampleInput2">Size</label>
+                            <label for="formGroupExampleInput2">Amount PO</label>
                             <div class="input-group mb-2">
-                                <div class="input-group-prepend">
-                                  <div class="input-group-text">Rp</div>
-                                </div>
-                                <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="" name="size" value="{{$dataInvoice->size}}" readonly>
+                                <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="" name="amount_po" value="@currency($dataInvoice->getDeals->amount_po)" readonly>
                             </div>
                         </div>
                         <div class="col">
@@ -30,7 +27,7 @@
                             <input class="form-control" type="text" name="inv_number" id="disabledTextInput" value="{{$dataInvoice->inv_number}}" readonly>
                         </div>
                         <div class="col">
-                            <label for="demo_overview_minimal">Author</label>
+                            <label for="demo_overview_minimal">Nama AE</label>
                             <input class="form-control" type="text" name="inv_numbers" id="disabledTextInput" value="{{$dataInvoice->getUser->name ?? 'tidak ada'}}" readonly>
                         </div>
                     </div>
@@ -50,12 +47,9 @@
                     </div>
                     <div class="row" style="padding-top: 10px">
                         <div class="col">
-                            <label for="formGroupExampleInput2">Billed Value</label>
+                            <label for="formGroupExampleInput2">Harga Pokok</label>
                             <div class="input-group mb-2">
-                                <div class="input-group-prepend">
-                                  <div class="input-group-text">Rp</div>
-                                </div>
-                                <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="" name="billed_value" value="{{$dataInvoice->billed_value}}">
+                                <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="" name="based_value" value="@currency($dataInvoice->getDeals->amount_po)" readonly>
                             </div>
                         </div>
                         <div class="col">
@@ -84,15 +78,8 @@
                             </select>
                         </div>
                         <div class="col">
-                            <label for="demo_overview_minimal">PIC</label>
+                            <label for="demo_overview_minimal">UP</label>
                             <input class="form-control" type="text" name="pic_inv" id="" value="{{$dataInvoice->pic_inv}}" >
-                        </div>
-                        <div class="col">
-                            <label for="formGroupExampleInput2">Pajak</label>
-                            <div class="custom-control custom-checkbox mr-sm-2">
-                                <input type="checkbox" class="custom-control-input" value="11" name="ppn" id="customControlAutosizing">
-                                <label class="custom-control-label" for="customControlAutosizing">PPN 11%</label>
-                            </div>
                         </div>
                     </div>
                     <div class="row" style="padding-top: 10px">

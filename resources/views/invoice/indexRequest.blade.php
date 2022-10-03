@@ -34,7 +34,7 @@
                                 <td>
                                   <a href="{{route('detailInvoice', $item->id)}}">{{$item->getCompany->company_name ?? "Belum Dilengkapi"}}</a>
                                   <br>
-                                  Author : {{$item->author}}
+                                  AE Name : {{$item->author}}
                                 </td>
                                 <td>Rp{{number_format($item->size)}}</td>
                                 <td>

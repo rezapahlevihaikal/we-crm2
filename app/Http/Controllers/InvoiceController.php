@@ -27,7 +27,7 @@ class InvoiceController extends Controller
      */
     public function index()
     {
-        $dataInvoice = Invoice::all();
+        $dataInvoice = Invoice::latest('id')->get();
         return view('invoice.index', compact('dataInvoice'));
         
     }
@@ -44,6 +44,7 @@ class InvoiceController extends Controller
         return view('invoice.detailInvoice', compact('dataDealsIn'));
     }
 
+    //---------------------- Generate data deals ke invoice --------------------------
     public function createInvoice(Request $request, $id)
     {
         
@@ -53,7 +54,68 @@ class InvoiceController extends Controller
         ]);
 
         //==== deklarasi format nomor invoice====
-        $formatHeader = 'WE';
+            //------------------ Deklarasi format header invoice --------------
+            if ($dataDealsIn->getUser->id_divisi == 1) {
+                $formatHeader = 'WE';
+            }
+            elseif ($dataDealsIn->getUser->id_divisi == 2) {
+                $formatHeader = 'HS';
+            }
+            elseif ($dataDealsIn->getUser->id_divisi == 3) {
+                $formatHeader = 'PP';
+            }
+            elseif ($dataDealsIn->getUser->id_divisi == 4) {
+                $formatHeader = 'Q1';
+            }
+            elseif ($dataDealsIn->getUser->id_divisi == 6) {
+                $formatHeader = 'FF';
+            }
+            //================================================================
+
+            //------------------ Deklarasi format subhead invoice ------------
+            if ($dataDealsIn->getUser->id_core_bisnis == 1) {
+                $subHeader = 'ADSWE';
+            }
+            elseif ($dataDealsIn->getUser->id_core_bisnis == 2) {
+                $subHeader = 'ADSHS';
+            }
+            elseif ($dataDealsIn->getUser->id_core_bisnis == 3) {
+                $subHeader = 'AWDWE';
+            }
+            elseif ($dataDealsIn->getUser->id_core_bisnis == 4) {
+                $subHeader = 'AWDHS';
+            }
+            elseif ($dataDealsIn->getUser->id_core_bisnis == 5) {
+                $subHeader = 'PRGWE';
+            }
+            elseif ($dataDealsIn->getUser->id_core_bisnis == 6) {
+                $subHeader = 'PRGHS';
+            }
+            elseif ($dataDealsIn->getUser->id_core_bisnis == 7) {
+                $subHeader = 'PRGPP';
+            }
+            elseif ($dataDealsIn->getUser->id_core_bisnis == 8) {
+                $subHeader = 'SMNHS';
+            }
+            elseif ($dataDealsIn->getUser->id_core_bisnis == 9) {
+                $subHeader = 'SMNBF';
+            }
+            elseif ($dataDealsIn->getUser->id_core_bisnis == 10) {
+                $subHeader = 'WEA';
+            }
+            elseif ($dataDealsIn->getUser->id_core_bisnis == 11) {
+                $subHeader = 'YT';
+            }
+            elseif ($dataDealsIn->getUser->id_core_bisnis == 12) {
+                $subHeader = 'IDE';
+            }
+            elseif ($dataDealsIn->getUser->id_core_bisnis == 13) {
+                $subHeader = 'REV';
+            }
+            elseif ($dataDealsIn->getUser->id_core_bisnis == 14) {
+                $subHeader = 'WEBWE';
+            }
+        
         $dateNow = Carbon::now()->format('y');
         $order = Invoice::orderBy('created_at', 'desc')->first();
         //=======================================
@@ -67,26 +129,47 @@ class InvoiceController extends Controller
         $headerOrder = $dataDealsIn->id_author;
         $attOrder = $dataDealsIn->id;
         //========================================
+
+        //=============== Pengkondsian Nilai Based Value/Harga Pokok ===============
+        if($dataDealsIn->ppn == 1)
+        {
+            $dataBasedValue = $dataDealsIn->amount_po * (100/111);
+        }
+        else {
+            $dataBasedValue = $dataDealsIn->amount_po;
+        }
+        //==========================================================================
+
+        //=================== Pengkondisian Nilai PPH 23 ===========================
+        if ($dataDealsIn->pph_23 == 1) 
+        {
+            $dataPph23 = $dataBasedValue * 2 /100;
+        }
+        else 
+        {
+            $dataPph23 = 0;
+        }
+        //=========================================================================
         
-        
+
         $dataCreateIn = Invoice::create([
             'deals_id' => $dataDealsIn->id,
             'inv_date' => $request->inv_date,
             'exp_inv_date' => $request->exp_inv_date,
-            'billed_value' => $request->billed_value,
             'product_id' => $dataDealsIn->id_product,
             'size' => $dataDealsIn->size,
             'sales_code' => $midSalesAttribute . $endSalesAttribute,
             'no_order' => $headerOrder . $attOrder,
             'author' => $dataDealsIn->id_author,
             'faktur_pajak' => $request->faktur_pajak,
-            'ppn' => $request->input('ppn') ? $dataDealsIn->size * 11 / 100 : 0,
-            'inv_status_id' => $request->inv_status_id,
+            'based_value' => $dataBasedValue,
+            'ppn' => $dataBasedValue * 11 / 100,
+            'pph_23' => $dataPph23,
+            'inv_status_id' => 1, //==> status inv auto new ===
             'pic_inv' => $request->pic_inv,
-            'inv_number' => $formatHeader . $dateNow . "E" . str_pad($order->id + 1, 4, "0", STR_PAD_LEFT),
+            'inv_number' => $formatHeader . $dateNow . $subHeader . str_pad($order->id + 1, 4, "0", STR_PAD_LEFT),
             'company_id' => $dataDealsIn->id_company,
             'inv_desc' => $request->inv_desc,
-
         ]);
 
         if ($dataCreateIn) {
@@ -96,6 +179,8 @@ class InvoiceController extends Controller
         }
         
     }
+
+    
 
     public function downloadMediaOrder($id)
     {
@@ -112,18 +197,18 @@ class InvoiceController extends Controller
         return view('invoice.edit', compact('dataInvoice', 'dataStatusInv'));
     }
 
+
+
     public function updateRequest(Request $request, $id)
     {
         $dataInvoice = Invoice::findOrFail($id);
         
         $dataInvoice->update([
-            'billed_value' => $request->billed_value,
             'faktur_pajak' => $request->faktur_pajak,
             'inv_date' => $request->inv_date,
             'exp_inv_date' => $request->exp_inv_date,
             'inv_status_id' => $request->inv_status_id,
             'pic_inv' => $request->pic_inv,
-            'ppn' => $request->input('ppn') ? $request->size * 11 /100 : 0,
             'inv_desc' => $request->inv_desc
         ]);
         
@@ -136,17 +221,35 @@ class InvoiceController extends Controller
         }
     }
 
-    public function generateDeals($id)
+
+
+    public function generateDeals(Request $request,$id)
     {
         $dataInvoice = Invoice::findOrFail($id);
-        $pdf = Pdf::loadView('invoice.invoice_page', compact('dataInvoice'));
 
+        //---------------- Deklarasi Format Receipt-Number dan TF-Number ---------------
+        $bulanRomawi = array("", "I","II","III", "IV", "V","VI","VII","VIII","IX","X", "XI","XII");
+        
+        $order = $dataInvoice->id;
+        $attrFr = 'WE';
+        $attrTF = 'Q1-KEU';
+        $attrReceipt = Carbon::now()->format('Y');
+        //------------------------------------------------------------------------------
+
+        $dataInvoice->update([
+            'receipt_number' => "000".$order."/".$attrFr."/".$bulanRomawi[date('n')]."/".$attrReceipt,
+            'tf_number' => "000".$order."/".$attrTF."/".$bulanRomawi[date('n')]."-".$attrReceipt
+        ]);
+
+        //=============== Generate ke lampiran PDF ==========================
         $headerName = $dataInvoice->inv_number;
-        return $pdf->stream('INV-'.$headerName.'.pdf');
+        $pdf = Pdf::loadView('invoice.invoice_page', compact('dataInvoice'));
+        return $pdf->stream('INVOICE-'.$headerName.'.pdf');
+        //===================================================================
     }
 
     public function createSingleInvoice()
-    {
+    { //===> gajadi dipake
         $dataCompany = Companies::get(['id', 'company_name']);
         $dataProduct = Product::get(['id', 'name']);
         $dataStatusInv = InvStatus::get(['id', 'name']);
@@ -154,22 +257,24 @@ class InvoiceController extends Controller
     }
 
     public function postCreateInvoice(Request $request)
-    {
-        $dataDealsIn = Deals::all();
+    { //===> gajadi dipake
+        $dataDealsIn = Deals::with('getUser')->first();
+        
 
         //==== deklarasi format nomor invoice====
-        $formatHeader = 'WE';
+        $formatHeader = 'FF';
+        $subHeader = 'FIN';
         $dateNow = Carbon::now()->format('y');
         $order = Invoice::orderBy('created_at', 'desc')->first();
         //=======================================
 
         //======== Deklarasi Kode Sales ==========
-        $midSalesAttribute = $dataDealsIn->getUser->initial;
-        $endSalesAttribute = $dataDealsIn->getUser->id;
+        $midSalesAttribute = Auth::user()->initial;
+        $endSalesAttribute = Auth::user()->id;
         //========================================
 
         //======== Deklarasi Nomor Order =========
-        $headerOrder = $dataDealsIn->id_author;
+        $headerOrder = Auth::user()->id;
         $attOrder = $dataDealsIn->id;
         //========================================
 
@@ -183,14 +288,14 @@ class InvoiceController extends Controller
             'no_order' => $headerOrder . $attOrder,
             'author' => $dataDealsIn->id_author,
             'faktur_pajak' => $request->faktur_pajak,
-            'ppn' => $request->input('ppn') ? $dataDealsIn->size * 11 / 100 : 0,
+            // 'ppn' => $request->input('ppn') ? $request->billed_value * 11 / 100 : 0,
             'inv_status_id' => $request->inv_status_id,
             'pic_inv' => $request->pic_inv,
-            'inv_number' => $formatHeader . $dateNow . "E" . str_pad($order->id + 1, 4, "0", STR_PAD_LEFT),
+            'inv_number' => $formatHeader . $dateNow . $subHeader . str_pad($order->id + 1, 4, "0", STR_PAD_LEFT),
             'company_id' => $dataDealsIn->id_company,
             'inv_desc' => $request->inv_desc,
         ]);
-        dd($dataInvoice);
+        
         if($dataInvoice)
         {
             return redirect()->route('invoice')->withStatus('data berhasil diinput');

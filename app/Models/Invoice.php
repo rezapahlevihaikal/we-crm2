@@ -21,19 +21,23 @@ class Invoice extends Model
         'author',
         'sales_code',
         'no_order',
+        'based_value',
         'ppn',
+        'pph_23',
         'size',
         'product_id',
         'inv_status_id',
         'pic_inv',
         'inv_number',
         'company_id',
-        'inv_desc'
+        'inv_desc',
+        'receipt_number',
+        'tf_number'
     ];
 
     public function getDeals()
     {
-        return $this->belongsTo('App\Models\Deals', 'id_deals', 'id');
+        return $this->belongsTo('App\Models\Deals', 'deals_id', 'id');
     }
 
     public function getCompany()

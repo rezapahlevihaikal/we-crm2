@@ -172,7 +172,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('requestInvoice')}}">
-                        <i class="far fa-handshake"></i> {{ __('Deals Request') }}
+                        <i class="far fa-handshake"></i> {{ __('Sales Order') }}
                     </a>
                 </li>
                 <li class="nav-item">

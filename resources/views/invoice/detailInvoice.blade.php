@@ -5,7 +5,7 @@
     <div class="container-fluid mt--7">
         <div class="card">
             <div class="card-header">
-                Detail Invoice From Deals
+                Detail Sales Order
             </div>
             <div class="card-body">
                     <table class="table table-borderless">
@@ -21,18 +21,34 @@
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="col">Author</th>
+                                <th scope="col">AE Name</th>
                                 <td>
                                     {{$dataDealsIn->getUser->name ?? 'Belum Dilengkapi'}}
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="col">Size</th>
-                                <td>Rp {{number_format($dataDealsIn->size)}}</td>
+                                <th scope="col">Amount</th>
+                                <td>@currency($dataDealsIn->amount_po)</td>
                             </tr>
                             <tr>
-                                <th scope="col">Pajak</th>
-                                <td>Rp {{number_format($dataDealsIn->ppn)}}</td>
+                                <th scope="col">PPN 11%</th>
+                                <td>
+                                    @if ($dataDealsIn->ppn == 1)
+                                        <button type="button" class="btn btn-primary btn-sm disabled">Include</button>
+                                    @else
+                                        <button type="button" class="btn btn-success btn-sm disabled">Exlude</button>
+                                    @endif
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="col">PPH 23</th>
+                                <td>
+                                    @if ($dataDealsIn->pph_23 == 1)
+                                        <button type="button" class="btn btn-primary btn-sm disabled">Dengan PPH 23</button>
+                                    @else
+                                        <button type="button" class="btn btn-success btn-sm disabled">Tidak Dengan PPH 23</button>
+                                    @endif
+                                </td>
                             </tr>
                             <tr>
                                 <th scope="col">Produk</th>
@@ -74,7 +90,7 @@
                         @csrf
                         @method('post')
                         @if($dataDealsIn->id_stage == 3)
-                            <button class="btn btn-warning">Create invoice</button>
+                            <button class="btn btn-warning">Generate</button>
                         @endif
                     </form>
                     </div>

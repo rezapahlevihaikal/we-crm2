@@ -29,14 +29,6 @@
                                 <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="" name="size" value="{{$dataDeals->size}}">
                             </div>
                         </div>
-                        {{-- <div class="col">
-                            <label for="formGroupExampleInput2">Pajak</label>
-                            <div class="custom-control custom-checkbox mr-sm-2">
-                                <input type="checkbox" class="custom-control-input" value="11" name="ppn" id="customControlAutosizing">
-                                <label class="custom-control-label" for="customControlAutosizing">PPN 11%</label>
-                            </div>
-                        </div> --}}
-
                         <div class="col">
                             <label for="">File (Max : 5 MB)</label>
                             <input class="form-control" type="file" name="file" value="{{$dataDeals->file}}">
@@ -80,6 +72,17 @@
                         </div>
                     </div>
                     <div class="row" style="padding-top: 10px">
+                            <div class="col">
+                                <label for="formGroupExampleInput2">Amount PO (Diinput bila stage sudah WON)</label>
+                                <div class="input-group mb-2">
+                                    <div class="input-group-prepend">
+                                    <div class="input-group-text">Rp</div>
+                                    </div>
+                                    <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="" name="amount_po" value="{{$dataDeals->amount_po}}">
+                                </div>
+                            </div>
+                    </div>
+                    <div class="row" style="padding-top: 10px">
                         <div class="col">
                             <label for="formGroupExampleInput2">Start Date</label>
                             <input id="" class="form-control" type="date" name="start_date" value="{{$dataDeals->start_date}}"/>
@@ -91,6 +94,22 @@
                         <div class="col">
                             <label for="formGroupExampleInput2">Expired Date</label>
                             <input id="" class="form-control" type="date" name="expired_date" value="{{$dataDeals->expired_date}}"/>
+                        </div>
+                    </div>
+                    <div class="row" style="padding-top: 10px;">
+                        <div class="col">
+                            <label for="formGroupExampleInput2">Pajak (Mohon di klik jika include)</label>
+                            <div class="custom-control custom-checkbox mr-sm-2">
+                                <input type="checkbox" class="custom-control-input" value="11" name="ppn" id="customControlAutosizing">
+                                <label class="custom-control-label" for="customControlAutosizing">PPN 11%</label>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <label for="formGroupExampleInput2"></label>
+                            <div class="custom-control custom-checkbox mr-sm-2">
+                                <input type="checkbox" class="custom-control-input" value="11" name="pph_23" id="customControlAutosizing2">
+                                <label class="custom-control-label" for="customControlAutosizing2">PPH 23</label>
+                            </div>
                         </div>
                     </div>
                     <div class="row" style="padding-top: 10px">

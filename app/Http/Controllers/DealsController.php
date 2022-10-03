@@ -105,7 +105,6 @@ class DealsController extends Controller
         $dataDeals = Deals::create([
             'name' => $request->name,
             'size' => $request->size,
-            'ppn' => $request->input('ppn') ? $request->size * 11 /100 : 0,
             'author' => Auth::user()->name,
             'id_core_bisnis' => Auth::user()->id_core_bisnis,
             'id_company' => $request->id_company,
@@ -194,10 +193,14 @@ class DealsController extends Controller
         $dataDeals->update([
             'name' => $request->name,
             'size' => $request->size,
+            'amount_po' => $request->amount_po,
+            // 'based_value' => $request->input('ppn') ? ( 100 / 111 ) * $request->amount_po : $request->amount_po,
+            'ppn' => $request->input('ppn') ? 1 : 0,
+            'pph_23' => $request->input('pph_23') ? 1 : 0,
             'id_company' => $request->id_company,
             'start_date' => $request->start_date,
             'end_date' => $request->end_date,
-            'id_author'=> Auth::user()->id,
+            // 'id_author'=> Auth::user()->id,
             'expired_date' => $request->expired_date,
             'id_source' => $request->id_source,
             'id_stage' => $request->id_stage,
