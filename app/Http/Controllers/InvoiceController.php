@@ -117,7 +117,7 @@ class InvoiceController extends Controller
             }
         
         $dateNow = Carbon::now()->format('y');
-        $order = Invoice::orderBy('created_at', 'desc')->first();
+        $order = Deals::orderBy('created_at', 'desc')->first();
         //=======================================
 
         //======== Deklarasi Kode Sales ==========
