@@ -34,7 +34,7 @@ class InvoiceController extends Controller
 
     public function requestInvoice()
     {
-        $dataDealsIn = Deals::where('id_stage', 3, 5)->latest('id')->get();
+        $dataDealsIn = Deals::where('id_stage', 3)->where('created_at','>=','2022-10-01')->latest('id')->get();
         return view('invoice.indexRequest', compact('dataDealsIn'));
     }
 

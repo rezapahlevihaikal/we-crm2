@@ -189,7 +189,7 @@ class DealsController extends Controller
         else {
             $filename = $dataDeals->file;
         }
-
+        
         $dataDeals->update([
             'name' => $request->name,
             'size' => $request->size,
@@ -208,7 +208,7 @@ class DealsController extends Controller
             'id_product' => $request->id_product,
             'description' => $request->description
         ]);
-
+        
         if ($dataDeals) {
             return redirect()->route('deals')->withStatus('data berhasil diupdate');
         }
