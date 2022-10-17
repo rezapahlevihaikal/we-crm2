@@ -180,6 +180,11 @@
                         <i class="far fa-file-alt"></i> {{ __('Invoice') }}
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('cashOut')}}">
+                        <i class="fas fa-money-bill-wave"></i> {{ __('Cash Out') }}
+                    </a>
+                </li>
             </ul>
             @elseif(Auth::user()->id_role == 4)
             <ul class="navbar-nav">

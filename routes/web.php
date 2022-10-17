@@ -13,6 +13,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SourceController;
 use App\Http\Controllers\BankAccController;
 use App\Http\Controllers\InvoiceController;
+use App\Http\Controllers\CashOutController;
 
 /*
 |--------------------------------------------------------------------------
@@ -150,6 +151,15 @@ Route::prefix('bankAcc')->group(function(){
 	Route::get('edit/{id}', [BankAccController::class, 'edit'])->name('bankAcc.edit');
 	Route::post('update/{id}', [BankAccController::class, 'update'])->name('bankAcc.update');
 	Route::post('delete/{id}', [BankAccController::class, 'destroy'])->name('bankAcc.destroy');
+});
+
+Route::prefix('cashOut')->group(function(){
+	Route::get('/', [CashOutController::class, 'index'])->name('cashOut');
+	Route::get('create', [CashOutController::class, 'create'])->name('cashOut.name');
+	Route::post('store', [CashOutController::class, 'store'])->name('cashOut.store');
+	Route::get('edit/{id}', [CashOutController::class, 'edit'])->name('cashOut.edit');
+	Route::post('update/{id}', [CashOutController::class, 'update'])->name('cashOut.update');
+	Route::post('delete/{id}', [CashOutController::class, 'destroy'])->name('cashOut.destroy');
 });
 
 
