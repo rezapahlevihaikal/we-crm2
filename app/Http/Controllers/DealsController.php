@@ -182,7 +182,7 @@ class DealsController extends Controller
         $sourceDoc = Auth::user()->id;
 
         if ($request->has('file')) {
-            $filename = $headerNameDoc."_".$nameDoc."_".$sourceDoc."_".str_pad($order->id + 1, 4, "0", STR_PAD_LEFT).".".$request->file->getClientOriginalExtension();
+            $filename = time().".".$request->file->getClientOriginalExtension();
             File::delete(public_path('uploads'), $dataDeals->file);
             $request->file->move(public_path('uploads'), $filename);
         }
