@@ -69,4 +69,14 @@ class Deals extends Model
     {
         return $this->belongsTo('App\Models\Priority', 'priority_id', 'id');
     }
+
+    public function getStatusPpn()
+    {
+        return $this->belongsTo('App\Models\StatusTax', 'ppn', 'id');
+    }
+
+    public function getStatusPph()
+    {
+        return $this->belongsTo('App\Models\StatusPph', 'pph_23', 'value');
+    }
 }

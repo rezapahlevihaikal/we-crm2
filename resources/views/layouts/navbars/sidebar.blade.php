@@ -208,7 +208,11 @@
                         <i class="far fa-handshake"></i> {{ __('Deals') }}
                     </a>
                 </li>
-                
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('requestInvoice')}}">
+                        <i class="far fa-handshake"></i> {{ __('Sales Order') }}
+                    </a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('invoice')}}">
                         <i class="far fa-file-alt"></i> {{ __('Invoice') }}

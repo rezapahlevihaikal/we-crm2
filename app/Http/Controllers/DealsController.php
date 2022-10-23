@@ -9,6 +9,8 @@ use App\Models\Source;
 use App\Models\Stages;
 use App\Models\Product;
 use App\Models\Priority;
+use App\Models\StatusTax;
+use App\Models\StatusPph;
 use Ramsey\Uuid\Uuid;
 use DB;
 use Illuminate\Support\Str;
@@ -94,7 +96,7 @@ class DealsController extends Controller
 
         if ($request->file) {
             
-            $filename = $headerNameDoc."_".$nameDoc."_".$sourceDoc."_".str_pad($order->id + 1, 4, "0", STR_PAD_LEFT).".".$request->file->extension();        
+            $filename = $headerNameDoc."_".time().".".$request->file->extension();        
             $request->file->move(public_path('uploads'), $filename);
         }        
         
@@ -104,7 +106,7 @@ class DealsController extends Controller
         
         $dataDeals = Deals::create([
             'name' => $request->name,
-            'size' => $request->size,
+            'size' => str_replace('.', '', $request->size),
             'author' => Auth::user()->name,
             'id_core_bisnis' => Auth::user()->id_core_bisnis,
             'id_company' => $request->id_company,
@@ -113,6 +115,8 @@ class DealsController extends Controller
             'end_date' => $request->end_date,
             'expired_date' => $request->expired_date,
             'file'=> $filename,
+            'ppn' => 2,
+            'pph_23' => 2,
             'id_source' => $request->id_source,
             'id_stage' => $request->id_stage,
             'id_product' => $request->id_product,
@@ -154,9 +158,11 @@ class DealsController extends Controller
         $dataSource = Source::get(['id', 'nama_source']);
         $dataStage = Stages::get(['id', 'nama_stage']);
         $dataProduct = Product::get(['id', 'name']);
+        $dataStatusTax = StatusTax::get(['id', 'name', 'value']);
+        $dataStatusPph = StatusPph::get(['id', 'name', 'value']);
         $dataDeals = Deals::findOrFail($id);
 
-        return view('deals.edit', compact('dataCompany', 'dataSource', 'dataStage', 'dataProduct', 'dataDeals'));
+        return view('deals.edit', compact('dataCompany', 'dataSource', 'dataStage', 'dataProduct', 'dataDeals', 'dataStatusTax', 'dataStatusPph'));
     }
 
     /**
@@ -169,6 +175,7 @@ class DealsController extends Controller
     public function update(Request $request, $id)
     {
         //
+       
         $request->validate([
             'file' => 'nullable|mimes:jpg,jpeg,png,doc,docx,xlx,xlsx,pdf|max:5120'
         ]);
@@ -182,7 +189,7 @@ class DealsController extends Controller
         $sourceDoc = Auth::user()->id;
 
         if ($request->has('file')) {
-            $filename = time().".".$request->file->getClientOriginalExtension();
+            $filename = $headerNameDoc."_".time().".".$request->file->getClientOriginalExtension();
             File::delete(public_path('uploads'), $dataDeals->file);
             $request->file->move(public_path('uploads'), $filename);
         }
@@ -192,11 +199,11 @@ class DealsController extends Controller
         
         $dataDeals->update([
             'name' => $request->name,
-            'size' => $request->size,
-            'amount_po' => $request->amount_po,
+            'size' => str_replace('.', '', $request->size),
+            'amount_po' => str_replace('.', '', $request->amount_po),
             // 'based_value' => $request->input('ppn') ? ( 100 / 111 ) * $request->amount_po : $request->amount_po,
-            'ppn' => $request->input('ppn') ? 1 : 0,
-            'pph_23' => $request->input('pph_23') ? 1 : 0,
+            'ppn' => $request->ppn,
+            'pph_23' => $request->pph_23,
             'id_company' => $request->id_company,
             'start_date' => $request->start_date,
             'end_date' => $request->end_date,
@@ -219,7 +226,7 @@ class DealsController extends Controller
 
     public function downloadFileDeals($id)
     {
-        $dataDeals = Deals::where('id', $id)->firstOrFail();
+        $dataDeals = Deals::where('id', $id)->first();
         $filePath = public_path('uploads/'. $dataDeals->file);
         // dd($filePath);
         return response()->download($filePath);

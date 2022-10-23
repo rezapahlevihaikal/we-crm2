@@ -78,7 +78,7 @@
                                     <div class="input-group-prepend">
                                     <div class="input-group-text">Rp</div>
                                     </div>
-                                    <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="" name="amount_po" value="{{$dataDeals->amount_po}}">
+                                    <input type="text" class="form-control" id="amount_po" placeholder="" name="amount_po" value="{{$dataDeals->amount_po}}">
                                 </div>
                             </div>
                     </div>
@@ -98,18 +98,20 @@
                     </div>
                     <div class="row" style="padding-top: 10px;">
                         <div class="col">
-                            <label for="formGroupExampleInput2">Pajak (Mohon di klik jika include)</label>
-                            <div class="custom-control custom-checkbox mr-sm-2">
-                                <input type="checkbox" class="custom-control-input" value="11" name="ppn" id="customControlAutosizing">
-                                <label class="custom-control-label" for="customControlAutosizing">PPN 11%</label>
-                            </div>
+                            <label for="formGroupExampleInput2">PPN 11%</label>
+                            <select id="ppn" class="form-control" data-role="select-dropdown" data-profile="minimal" name="ppn">
+                                @foreach ($dataStatusTax as $item)
+                                <option value="{{ $item->value }}" {{$dataDeals->ppn == $item->value  ? 'selected' : ''}}>{{ $item->name}}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="col">
-                            <label for="formGroupExampleInput2"></label>
-                            <div class="custom-control custom-checkbox mr-sm-2">
-                                <input type="checkbox" class="custom-control-input" value="11" name="pph_23" id="customControlAutosizing2">
-                                <label class="custom-control-label" for="customControlAutosizing2">PPH 23</label>
-                            </div>
+                            <label for="formGroupExampleInput2">PPH 23</label>
+                            <select class="form-control" data-role="select-dropdown" data-profile="minimal" name="pph_23">
+                                @foreach ($dataStatusPph as $item)
+                                    <option value="{{ $item->value }}" {{$dataDeals->pph_23 == $item->value  ? 'selected' : ''}}>{{ $item->name}}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
                     <div class="row" style="padding-top: 10px">
@@ -134,6 +136,10 @@
             $('#product').selectpicker();
             $('#source').selectpicker();
             $('#stage').selectpicker();
+            $('#inlineFormInputGroup').mask('#.##0', {reverse: true});
+            $('#amount_po').mask('#.##0', {reverse: true});
         } );
+
+        
     </script>
 @endpush

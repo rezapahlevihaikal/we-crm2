@@ -26,7 +26,7 @@
                                 <div class="input-group-prepend">
                                   <div class="input-group-text">Rp</div>
                                 </div>
-                                <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="" name="size">
+                                <input type="text" class="form-control" id="size" placeholder="" name="size">
                             </div>
                         </div>
                     </div>
@@ -133,6 +133,7 @@
             $('#source').selectpicker();
             $('#stage').selectpicker();
             $('#priority').selectpicker();
+            $('#size').mask('#.##0', {reverse: true})
         } );
 
 
