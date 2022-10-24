@@ -78,7 +78,7 @@
                                     <div class="input-group-prepend">
                                     <div class="input-group-text">Rp</div>
                                     </div>
-                                    <input type="text" class="form-control" id="amount_po" placeholder="" name="amount_po" value="{{$dataDeals->amount_po}}">
+                                    <input type="text" class="form-control" id="amount_po" placeholder="" name="amount_po" value="{{$dataDeals->amount_po ?? 0}}">
                                 </div>
                             </div>
                     </div>
@@ -138,6 +138,7 @@
             $('#stage').selectpicker();
             $('#inlineFormInputGroup').mask('#.##0', {reverse: true});
             $('#amount_po').mask('#.##0', {reverse: true});
+            
         } );
 
         
