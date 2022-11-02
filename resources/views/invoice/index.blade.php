@@ -21,6 +21,7 @@
                         <thead class="thead-light">
                             <tr>
                                 <th scope="col">{{ __('Product')}}</th>
+                                <th scope="col">{{ __('Date')}}</th>
                                 <th scope="col">{{ __('Company')}}</th>
                                 <th scope="col">{{ __('Amount PO')}}</th>
                                 <th scope="col">{{ __('Status')}}</th>
@@ -33,9 +34,10 @@
                                 <td>
                                     <a href="{{route('invoice.editRequest', $item->id)}}" title="">{{$item->getProduct->name ?? 'Belum dilengkapi'}}</a><br>
                                     AE Name : {{$item->getUser->name ?? 'Belum Dilengkapi'}} <br>
-                                    Tanggal : @date($item->created_at)
                                 </td>
+                                <td>@date($item->created_at)</td>
                                 <td>{{$item->getCompany->company_name ?? 'Belum dilengkapi'}}</td>
+                                
                                 {{-- <td>Rp {{$item->getDeals->amount_po ?? '0'}}</td> --}}
                                 <td>@currency($item->getDeals->amount_po ?? '0')</td>
                                 <td>
@@ -68,7 +70,7 @@
        $(document).ready( function () {
             $('#table-os').DataTable({
                 scrollX: true,
-                ordering: false,
+                // ordering: false,
             });
         } );
     </script>
