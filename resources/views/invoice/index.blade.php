@@ -32,24 +32,25 @@
                               <tr style="text-align: center">
                                 <td>
                                     <a href="{{route('invoice.editRequest', $item->id)}}" title="">{{$item->getProduct->name ?? 'Belum dilengkapi'}}</a><br>
-                                    AE Name : {{$item->getUser->name ?? 'Belum Dilengkapi'}}
+                                    AE Name : {{$item->getUser->name ?? 'Belum Dilengkapi'}} <br>
+                                    Tanggal : @date($item->created_at)
                                 </td>
                                 <td>{{$item->getCompany->company_name ?? 'Belum dilengkapi'}}</td>
                                 {{-- <td>Rp {{$item->getDeals->amount_po ?? '0'}}</td> --}}
                                 <td>@currency($item->getDeals->amount_po ?? '0')</td>
                                 <td>
                                     @if ($item->inv_status_id == 1)
-                                        <button type="button" class="btn btn-primary">{{$item->getStatus->name ?? 'Belum ada status'}}</button>
+                                        <button type="button" class="btn-sm btn-primary">{{$item->getStatus->name ?? 'Belum ada status'}}</button>
                                     @elseif($item->inv_status_id == 2)
-                                        <button type="button" class="btn btn-secondary">{{$item->getStatus->name ?? 'Belum ada status'}}</button>
+                                        <button type="button" class="btn-sm btn-secondary">{{$item->getStatus->name ?? 'Belum ada status'}}</button>
                                     @elseif($item->inv_status_id == 3)
-                                        <button type="button" class="btn btn-warning">{{$item->getStatus->name ?? 'Belum ada status'}}</button>
+                                        <button type="button" class="btn-sm btn-warning">{{$item->getStatus->name ?? 'Belum ada status'}}</button>
                                     @elseif($item->inv_status_id == 4)
-                                        <button type="button" class="btn btn-success">{{$item->getStatus->name ?? 'Belum ada status'}}</button>
+                                        <button type="button" class="btn-sm btn-success">{{$item->getStatus->name ?? 'Belum ada status'}}</button>
                                     @endif
                                 </td>
                                 <td>
-                                    <a class="btn btn-danger" href="{{route('generateDeals', $item->id)}}" role="button"><i class="fas fa-file-pdf"></i></a>
+                                    <a class="btn-sm btn-danger" href="{{route('generateDeals', $item->id)}}" role="button"><i class="fas fa-file-pdf"></i></a>
                                 </td>
                               </tr>
                             @endforeach

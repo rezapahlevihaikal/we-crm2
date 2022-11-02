@@ -17,9 +17,9 @@
                     <table class="table table-bordered text-center" id="table-os">
                         <thead class="thead-light">
                             <tr>
-                                
                                 <th scope="col">{{ __('Company') }}</th>
                                 <th scope="col">{{ __('Size') }}</th>
+                                <th scope="col">{{ __('Date') }}</th>
                                 <th scope="col">{{ __('Status') }}</th>
                             </tr>
                         </thead>
@@ -37,21 +37,22 @@
                                   AE Name : {{$item->author}}
                                 </td>
                                 <td>Rp{{number_format($item->size)}}</td>
+                                <td>@date($item->created_at)</td>
                                 <td>
                                   @if($item->id_stage == 1)
-                                    <button type="button" class="btn btn-primary">{{$item->getStage->nama_stage}}</button>
+                                    <button type="button" class="btn-sm btn-primary">{{$item->getStage->nama_stage}}</button>
                                   @elseif($item->id_stage == 2)
-                                    <button type="button" class="btn btn-secondary">{{$item->getStage->nama_stage}}</button>
+                                    <button type="button" class="btn-sm btn-secondary">{{$item->getStage->nama_stage}}</button>
                                   @elseif($item->id_stage == 3)
-                                    <button type="button" class="btn btn-success">{{$item->getStage->nama_stage}}</button>
+                                    <button type="button" class="btn-sm btn-success">{{$item->getStage->nama_stage}}</button>
                                   @elseif($item->id_stage == 4)
-                                    <button type="button" class="btn btn-danger">{{$item->getStage->nama_stage}}</button>
+                                    <button type="button" class="btn-sm btn-danger">{{$item->getStage->nama_stage}}</button>
                                   @elseif($item->id_stage == 5)
-                                    <button type="button" class="btn btn-warning">{{$item->getStage->nama_stage}}</button>
+                                    <button type="button" class="btn-sm btn-warning">{{$item->getStage->nama_stage}}</button>
                                   @elseif($item->id_stage == 6)
-                                    <button type="button" class="btn btn-info">{{$item->getStage->nama_stage}}</button>
+                                    <button type="button" class="btn-sm btn-info">{{$item->getStage->nama_stage}}</button>
                                   @elseif($item->id_stage == 7)
-                                    <button type="button" class="btn btn-dark">{{$item->getStage->nama_stage}}</button>
+                                    <button type="button" class="btn-sm btn-dark">{{$item->getStage->nama_stage}}</button>
                                   @endif
                                 </td>
                               </tr>
