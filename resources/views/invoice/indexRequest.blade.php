@@ -44,7 +44,8 @@
                                 <td>
                                   <a href="{{route('detailInvoice', $item->id)}}">{{$item->getCompany->company_name ?? "Belum Dilengkapi"}}</a>
                                   <br>
-                                  AE Name : {{$item->author}}
+                                  AE Name : {{$item->author}} <br>
+                                  Event : {{$item->getProduct->name ?? 'Kosong'}}
                                 </td>
                                 <td>Rp{{number_format($item->size)}}</td>
                                 <td>@date($item->created_at)</td>
@@ -80,7 +81,7 @@
     <script type="text/javascript">
        $(document).ready( function () {
             $('#table-os').DataTable({
-                // scrollX: true
+                scrollX: true
                 // ordering: false,
             });
         } );
