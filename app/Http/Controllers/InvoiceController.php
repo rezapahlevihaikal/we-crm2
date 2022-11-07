@@ -8,6 +8,8 @@ use App\Models\InvStatus;
 use App\Models\Companies;
 use App\Models\Product;
 use App\Models\User;
+use App\Models\StatusTax;
+use App\Models\StatusPph;
 use DB;
 use Illuminate\Support\Carbon;
 use Barryvdh\DomPDF\Facade\Pdf;
@@ -37,7 +39,7 @@ class InvoiceController extends Controller
         $dataDealsIn = Deals::where('id_stage', 3)->where('created_at','>=','2022-01-01')->latest('id')->get();
         return view('invoice.indexRequest', compact('dataDealsIn'));
     }
-
+    
     public function detailInvoice($id)
     {
         $dataDealsIn = Deals::findOrFail($id);
@@ -159,15 +161,18 @@ class InvoiceController extends Controller
             'product_id' => $dataDealsIn->id_product,
             'size' => $dataDealsIn->size,
             'sales_code' => $midSalesAttribute . $endSalesAttribute,
-            'no_order' => $headerOrder . $attOrder,
+            // 'no_order' => $headerOrder . $attOrder,
             'author' => $dataDealsIn->id_author,
+            'amount_po' => $dataDealsIn->amount_po,
             'faktur_pajak' => $request->faktur_pajak,
             'based_value' => $dataBasedValue,
             'ppn' => $dataBasedValue * 11 / 100,
             'pph_23' => $dataPph23,
+            'ppn_id' => $dataDealsIn->ppn,
+            'pph_id' => $dataDealsIn->pph_23,
             'inv_status_id' => 1, //==> status inv auto new ===
             'pic_inv' => $request->pic_inv,
-            'inv_number' => $formatHeader . $dateNow . $subHeader . str_pad($order->id + 1, 4, "0", STR_PAD_LEFT),
+            // 'inv_number' => $formatHeader . $dateNow . $subHeader . str_pad($order->id + 1, 4, "0", STR_PAD_LEFT),
             'company_id' => $dataDealsIn->id_company,
             'inv_desc' => $request->inv_desc,
         ]);
@@ -192,9 +197,13 @@ class InvoiceController extends Controller
 
     public function editRequest($id)
     {
+        $dataCompany = Companies::get(['id', 'company_name']);
+        $dataProduct = Product::get(['id', 'name']);
+        $dataPpn = StatusTax::get(['id', 'name', 'value']);
+        $dataPph = StatusPph::get(['id', 'name', 'value']);
         $dataStatusInv = InvStatus::get(['id', 'name']);
         $dataInvoice = Invoice::findOrFail($id);
-        return view('invoice.edit', compact('dataInvoice', 'dataStatusInv'));
+        return view('invoice.edit', compact('dataInvoice', 'dataStatusInv', 'dataCompany', 'dataProduct', 'dataPpn', 'dataPph'));
     }
 
 
@@ -202,8 +211,40 @@ class InvoiceController extends Controller
     public function updateRequest(Request $request, $id)
     {
         $dataInvoice = Invoice::findOrFail($id);
+
+        // $ppnvalue = 0;
+
+        if ($request->ppn_id == 1) {
+            $dataBasedValue = $dataInvoice->amount_po * (100/111);
+            $ppnvalue = $dataInvoice->amount_po - $dataBasedValue;
+        }
+        else {
+            $dataBasedValue = $dataInvoice->amount_po;
+            $ppnvalue = $dataBasedValue * (11/100);
+        }
+
+        if ($request->pph_23 == 1) 
+        {
+            $dataPph23 = $dataBasedValue * 2 /100;
+        }
+        else 
+        {
+            $dataPph23 = 0;
+        }
+
         
         $dataInvoice->update([
+            // 'amount_po' => str_replace('.', '', $request->amount_po),
+            'inv_number' => $request->inv_number,
+            'based_value' => $dataBasedValue,
+            'company_id' => $request->company_id,
+            'no_order' => $request->no_order,
+            'product_id' => $request->product_id,
+            'company_id' => $request->company_id,
+            'address_npwp' => $request->address_npwp,
+            'ppn' => $ppnvalue,
+            'ppn_id' => $request->ppn_id,
+            'pph_id' => $request->pph_id,
             'faktur_pajak' => $request->faktur_pajak,
             'inv_date' => $request->inv_date,
             'exp_inv_date' => $request->exp_inv_date,

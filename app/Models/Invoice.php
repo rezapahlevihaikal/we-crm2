@@ -14,6 +14,7 @@ class Invoice extends Model
     protected $fillable =
     [
         'deals_id',
+        'amount_po',
         'inv_date',
         'exp_inv_date',
         'billed_value',
@@ -24,8 +25,11 @@ class Invoice extends Model
         'based_value',
         'ppn',
         'pph_23',
+        'ppn_id',
+        'pph_id',
         'size',
         'product_id',
+        'address_npwp',
         'inv_status_id',
         'pic_inv',
         'inv_number',
@@ -58,5 +62,15 @@ class Invoice extends Model
     public function getUser()
     {
         return $this->belongsTo('App\Models\User', 'author', 'id');
+    }
+
+    public function getStatusPph()
+    {
+        return $this->belongsTo('App\Models\StatusPph', 'pph_id', 'id');
+    }
+
+    public function getStatusPpn()
+    {
+        return $this->belongsTo('App\Models\StatusTax', 'ppn_id', 'id');
     }
 }

@@ -70,7 +70,7 @@
        $(document).ready( function () {
             $('#table-os').DataTable({
                 scrollX: true,
-                // ordering: false,
+                ordering: false,
             });
         } );
     </script>

@@ -147,24 +147,9 @@
             <td style="border: 1px solid #d2d2d2;">
                 <div class="box-text">
                     <p> <b>{{$dataInvoice->getCompany->company_name}}</b></p>
-                    <p>{{$dataInvoice->getCompany->address}}</p>
+                    <p>{{$dataInvoice->address_npwp}}</p>
                     <p>{{$dataInvoice->getCompany->zipcode}}</p>
                 </div>
-            </td>
-        </tr>
-    </table>
-</div>
-<div class="table-section bill-tbl w-100 mt-10">
-    <table class="table w-100 mt-10" style="border: 1px solid #d2d2d2;">
-        <tr>
-            <th class="w-100">Metode Pembayaran</th>
-        </tr>
-        <tr>
-            <td>
-                <p>Transfer Atas Nama :</p>
-                <p> <b>PT. Kuadran Satu Komunika</b></p>
-                <p>Bank BRI</p>
-                <p><b>Acc No. 0335.01.00224430.8</b></p>
             </td>
         </tr>
     </table>
@@ -214,6 +199,21 @@
         </tr>
     </table>
 </div>
+<div class="table-section bill-tbl w-100 mt-10">
+    <table class="table w-100 mt-10" style="border: 1px solid #d2d2d2;">
+        <tr>
+            <th class="w-100">Metode Pembayaran</th>
+        </tr>
+        <tr>
+            <td>
+                <p>Transfer Atas Nama :</p>
+                <p> <b>PT. Kuadran Satu Komunika</b></p>
+                <p>Bank BRI</p>
+                <p><b>Acc No. 0335.01.00224430.8</b></p>
+            </td>
+        </tr>
+    </table>
+</div>
 
 
 
@@ -240,7 +240,7 @@
                 <td style="border: 1px solid #d2d2d2;">
                     <div class="box-text">
                         <p> <b>{{$dataInvoice->getCompany->company_name}}</b></p>
-                        <p>{{$dataInvoice->getCompany->address}}</p>
+                        <p>{{$dataInvoice->address_npwp}}</p>
                         <p>{{$dataInvoice->getCompany->zipcode}}</p>
                     </div>
                 </td>
@@ -304,7 +304,7 @@
                 <td style="border: 1px solid #d2d2d2;">
                     <div class="box-text">
                         <p><b>{{$dataInvoice->getCompany->company_name}}</b></p>
-                        <p>{{$dataInvoice->getCompany->address}}</p>
+                        <p>{{$dataInvoice->address_npwp}}</p>
                         <p>{{$dataInvoice->getCompany->zipcode}}</p>
                         <p>UP: {{$dataInvoice->pic_inv}}</p>
                         <p>Telp:</p>
@@ -390,7 +390,7 @@
                 <td style="border: 1px solid #d2d2d2;">
                     <div class="box-text">
                         <p><b>{{$dataInvoice->getCompany->company_name}}</b></p>
-                        <p>{{$dataInvoice->getCompany->address}}</p>
+                        <p>{{$dataInvoice->address_npwp}}</p>
                         <p>{{$dataInvoice->getCompany->zipcode}}</p>
                         <p>UP: {{$dataInvoice->pic_inv}}</p>
                         <p>Telp:</p>
@@ -498,7 +498,7 @@
                 <td colspan="3">
                     <div class="box-text">
                         <h2>{{$dataInvoice->getCompany->company_name}}</h2>
-                        <p>{{$dataInvoice->getCompany->address}}</p>
+                        <p>{{$dataInvoice->address_npwp}}</p>
                     </div>
                 </td>
             </tr>

@@ -14,6 +14,16 @@
           </div>
             <div class="card bg-secondary-default shadow">
                 <div class="" style="padding:25px">
+                    {{-- <div class="row" style="padding-bottom: 20px">
+                      <div class="col-4">
+                        <label for="demo_overview_minimal">From</label>
+                        <input class="form-control" type="text" name="min" id="min">
+                      </div>
+                      <div class="col-4">
+                        <label for="demo_overview_minimal">To</label>
+                        <input class="form-control" type="text" name="max" id="max">
+                      </div>
+                    </div> --}}
                     <table class="table table-bordered text-center" id="table-os">
                         <thead class="thead-light">
                             <tr>

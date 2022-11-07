@@ -171,6 +171,17 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="{{ route('companies') }}">
+                        <i class="far fa-building"></i> {{ __('Companies') }}
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('products') }}">
+                        <i class="fab fa-product-hunt"></i>  {{ __('Products') }}
+                        {{-- {{__('Products')}} --}}
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="{{route('requestInvoice')}}">
                         <i class="far fa-handshake"></i> {{ __('Sales Order') }}
                     </a>
@@ -183,6 +194,11 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('cashOut')}}">
                         <i class="fas fa-money-bill-wave"></i> {{ __('Cash Out') }}
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-money-bill-wave"></i> {{ __('Cash In') }}
                     </a>
                 </li>
             </ul>

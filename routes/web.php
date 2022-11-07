@@ -14,6 +14,7 @@ use App\Http\Controllers\SourceController;
 use App\Http\Controllers\BankAccController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\CashOutController;
+use App\Http\Controllers\CashInController;
 
 /*
 |--------------------------------------------------------------------------
@@ -160,6 +161,15 @@ Route::prefix('cashOut')->group(function(){
 	Route::get('edit/{id}', [CashOutController::class, 'edit'])->name('cashOut.edit');
 	Route::post('update/{id}', [CashOutController::class, 'update'])->name('cashOut.update');
 	Route::post('delete/{id}', [CashOutController::class, 'destroy'])->name('cashOut.destroy');
+});
+
+Route::prefix('cashIn')->group(function(){
+	Route::get('/', [CashInController::class, 'index'])->name('cashIn');
+	Route::get('create', [CashInController::class, 'create'])->name('cashIn.name');
+	Route::post('store', [CashInController::class, 'store'])->name('cashIn.store');
+	Route::get('edit/{id}', [CashInController::class, 'edit'])->name('cashIn.edit');
+	Route::post('update/{id}', [CashInController::class, 'update'])->name('cashIn.update');
+	Route::post('delete/{id}', [CashInController::class, 'destroy'])->name('cashIn.destroy');
 });
 
 

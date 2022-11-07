@@ -24,9 +24,13 @@
         <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
         <link type="text/css" rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
 
+        {{-- baru --}}
+        <script type="text/javascript" charset="utf-8" src="https://cdn.datatables.net/datetime/1.1.2/js/dataTables.dateTime.min.js"></script>
+        <link rel="text/css" href="https://cdn.datatables.net/datetime/1.1.2/css/dataTables.dateTime.min.css">
+
         {{-- dateTime --}}
-        <script src="https://cdn.jsdelivr.net/timepicker.js/latest/timepicker.min.js"></script>
-        <link href="https://cdn.jsdelivr.net/timepicker.js/latest/timepicker.min.css" rel="stylesheet"/>
+        {{-- <script src="https://cdn.jsdelivr.net/timepicker.js/latest/timepicker.min.js"></script>
+        <link href="https://cdn.jsdelivr.net/timepicker.js/latest/timepicker.min.css" rel="stylesheet"/> --}}
 
         
 
@@ -68,6 +72,8 @@
 
         
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+
+        {{-- <script src="https://code.jquery.com/jquery-3.5.1.js"></script> --}}
         
     </body>
 </html>

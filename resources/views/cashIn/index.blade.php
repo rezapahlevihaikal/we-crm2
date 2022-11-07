@@ -8,10 +8,10 @@
             <div class="card-header border-0">
                 <div class="row align-items-center">
                     <div class="col">
-                        <h3 class="mb-0">Daftar Cash Out</h3>
+                        <h3 class="mb-0">Daftar Cash In</h3>
                     </div>
                     <div class="col text-right">
-                      <button type="button" onclick="window.location='{{url('/cashOut/create')}}'" class="btn btn-success"><i class="fas fa-plus"></i> Tambah Data Cash Out</button>
+                      <button type="button" onclick="window.location='{{url('/cashIn/create')}}'" class="btn btn-success"><i class="fas fa-plus"></i> Tambah Data Cash In</button>
                     </div>
                 </div>
             </div>
@@ -20,24 +20,29 @@
                     <table class="table table-bordered text-center" id="table-os">
                         <thead class="thead-light">
                             <tr>
-                                <th scope="col">{{ __('Type / Subtype')}}</th>
+                                <th scope="col">{{ __('Invoice')}}</th>
                                 <th scope="col">{{ __('Payments')}}</th>
-                                <th scope="col">{{ __('Price')}}</th>
+                                <th scope="col">{{ __('Bank')}}</th>
+                                <th scope="col">{{ __('Action')}}</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($dataCashOut as $item)
+                            @foreach ($dataCashIn as $item)
                             <tr style="text-align: center">
                                 <td>
-                                    <a href="{{route('cashOut.edit', $item->id)}}">{{$item->getSubTipe->name ?? 'not available'}}</a>
+                                    {{$item->getInvoice->inv_number}} <br>
+                                    {{$item->cash_in_date}}
                                 </td>
                                 <td>
-                                    date : {{$item->tanggal_transaksi}} <br>
-                                    To : {{$item->dibayarkan_kepada}} <br>
-                                    For : {{$item->ket_pembayaran}}
+                                    @currency($item->nominal_cash_in) <br>
+                                    PPN : @currency($item->nominal_ppn) <br>
+                                    PPH : @currency($item->nominal_pph)
                                 </td>
                                 <td>
-                                    @currency($item->nominal)
+                                    {{$item->bank_penerima}}
+                                </td>
+                                <td>
+                                    <a href="{{route('cashIn.edit', $item->id)}}" class="btn btn-success btn-sm" role="button" aria-disabled="true"><i class="fas fa-edit"></i></a>
                                 </td>
                               </tr>
                             @endforeach
