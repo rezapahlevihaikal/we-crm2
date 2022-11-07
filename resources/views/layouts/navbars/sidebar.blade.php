@@ -197,8 +197,8 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="fas fa-money-bill-wave"></i> {{ __('Cash In') }}
+                    <a class="nav-link" href="{{route('cashIn')}}">
+                        <i class="fas fa-coins"></i> {{ __('Cash In') }}
                     </a>
                 </li>
             </ul>
