@@ -214,35 +214,37 @@ class InvoiceController extends Controller
 
         // $ppnvalue = 0;
 
-        if ($request->ppn_id == 1) {
-            $dataBasedValue = $dataInvoice->amount_po * (100/111);
-            $ppnvalue = $dataInvoice->amount_po - $dataBasedValue;
-        }
-        else {
-            $dataBasedValue = $dataInvoice->amount_po;
-            $ppnvalue = $dataBasedValue * (11/100);
-        }
+        // if ($request->ppn_id == 1) {
+        //     $dataBasedValue = $dataInvoice->amount_po * (100/111);
+        //     $ppnvalue = $dataInvoice->amount_po - $dataBasedValue;
+        // }
+        // else {
+        //     $dataBasedValue = $dataInvoice->amount_po;
+        //     $ppnvalue = $dataBasedValue * (11/100);
+        // }
 
-        if ($request->pph_23 == 1) 
-        {
-            $dataPph23 = $dataBasedValue * 2 /100;
-        }
-        else 
-        {
-            $dataPph23 = 0;
-        }
+        // if ($request->pph_23 == 1) 
+        // {
+        //     $dataPph23 = $dataBasedValue * 2 /100;
+        // }
+        // else 
+        // {
+        //     $dataPph23 = 0;
+        // }
 
         
         $dataInvoice->update([
             // 'amount_po' => str_replace('.', '', $request->amount_po),
             'inv_number' => $request->inv_number,
-            'based_value' => $dataBasedValue,
+            // 'based_value' => $dataBasedValue,
             'company_id' => $request->company_id,
             'no_order' => $request->no_order,
             'product_id' => $request->product_id,
             'company_id' => $request->company_id,
             'address_npwp' => $request->address_npwp,
-            'ppn' => $ppnvalue,
+            'based_value' => str_replace('.', '', $request->based_value),
+            'ppn' => str_replace('.', '', $request->ppn),
+            'pph_23' => str_replace('.', '', $request->pph_23),
             'ppn_id' => $request->ppn_id,
             'pph_id' => $request->pph_id,
             'faktur_pajak' => $request->faktur_pajak,

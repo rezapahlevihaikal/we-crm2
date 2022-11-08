@@ -147,7 +147,7 @@
             <td style="border: 1px solid #d2d2d2;">
                 <div class="box-text">
                     <p> <b>{{$dataInvoice->getCompany->company_name}}</b></p>
-                    <p>{{$dataInvoice->address_npwp}}</p>
+                    <p style="line-height: normal">@nl2br($dataInvoice->address_npwp)</p>
                     <p>{{$dataInvoice->getCompany->zipcode}}</p>
                 </div>
             </td>

@@ -32,22 +32,31 @@
                             <label for="demo_overview_minimal">Nomor Invoice</label>
                             <input class="form-control" type="text" name="inv_number" id="disabledTextInput" value="{{$dataInvoice->inv_number}}">
                         </div>
-                        <div class="col-3">
+                        <div class="col">
                             <label for="formGroupExampleInput2">Harga Pokok</label>
                             <div class="input-group mb-2">
-                                <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="" name="based_value" value="@currency($dataInvoice->based_value)" readonly>
+                                <div class="input-group-prepend">
+                                <div class="input-group-text">Rp</div>
+                                </div>
+                                <input type="text" class="form-control" id="based_value" placeholder="" name="based_value" value="{{$dataInvoice->based_value ?? 0}}">
                             </div>
                         </div>
-                        <div class="col-3">
-                            <label for="formGroupExampleInput2">Nilai PPH</label>
-                            <div class="input-group mb-2">
-                                <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="" name="based_value" value="@currency($dataInvoice->pph)" readonly>
-                            </div>
-                        </div>
-                        <div class="col-3">
+                        <div class="col">
                             <label for="formGroupExampleInput2">Nilai PPN</label>
                             <div class="input-group mb-2">
-                                <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="" name="based_value" value="@currency($dataInvoice->ppn)" readonly>
+                                <div class="input-group-prepend">
+                                <div class="input-group-text">Rp</div>
+                                </div>
+                                <input type="text" class="form-control" id="ppn" placeholder="" name="ppn" value="{{$dataInvoice->ppn ?? 0}}">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <label for="formGroupExampleInput2">Nilai PPH</label>
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend">
+                                <div class="input-group-text">Rp</div>
+                                </div>
+                                <input type="text" class="form-control" id="pph" placeholder="" name="pph_23" value="{{$dataInvoice->pph_23 ?? 0}}">
                             </div>
                         </div>
                     </div>
@@ -61,10 +70,16 @@
                                 @endforeach
                             </select>
                         </div>
-                        <div class="col">
-                            <label for="demo_overview_minimal">Alamat NPWP Perusahaan</label>
-                            <input class="form-control" type="text" name="address_npwp" id="disabledTextInput" value="{{$dataInvoice->address_npwp}}">
+                        <div class="col-6">
+                            <label for="demo_overview_minimal">Produk</label>
+                            <select data-live-search="true" id="product" class="form-control" data-role="select-dropdown" data-profile="minimal" name="product_id" value="" selected="">
+                                <option value="">PILIH PRODUK</option>
+                                @foreach ($dataProduct as $item)
+                                <option value="{{ $item->id }}" {{$dataInvoice->product_id == $item->id  ? 'selected' : ''}}>{{ $item->name}}</option>
+                                @endforeach
+                            </select>
                         </div>
+                        
                         
                     </div>
                     <div class="row" style="padding-top: 10px">
@@ -86,18 +101,14 @@
                         </div>
                     </div>
                     <div class="row" style="padding-top: 10px">
-                        <div class="col-6">
-                            <label for="demo_overview_minimal">Produk</label>
-                            <select data-live-search="true" id="product" class="form-control" data-role="select-dropdown" data-profile="minimal" name="product_id" value="" selected="">
-                                <option value="">PILIH PRODUK</option>
-                                @foreach ($dataProduct as $item)
-                                <option value="{{ $item->id }}" {{$dataInvoice->product_id == $item->id  ? 'selected' : ''}}>{{ $item->name}}</option>
-                                @endforeach
-                            </select>
+                        <div class="col">
+                            <label for="demo_overview_minimal">Alamat NPWP Perusahaan</label>
+                            {{-- <input class="form-control" type="text" name="address_npwp" id="disabledTextInput" value="{{$dataInvoice->address_npwp}}"> --}}
+                            <textarea spellcheck="true" class="form-control" name="address_npwp" id="" cols="40" rows="5"> {{$dataInvoice->address_npwp}} </textarea>
                         </div>
                         <div class="col">
                             <label for="demo_overview_minimal">UP</label>
-                            <input class="form-control" type="text" name="pic_inv" id="" value="{{$dataInvoice->pic_inv}}" >
+                            <textarea spellcheck="true" class="form-control" name="pic_inv" id="" cols="40" rows="5"> {{$dataInvoice->pic_inv}} </textarea>
                         </div>
                     </div>
                     <div class="row" style="padding-top: 10px">
@@ -152,7 +163,9 @@
             $('#perusahaan').selectpicker();
             $('#product').selectpicker();
             $('#stage').selectpicker();
-            // $('#amount_po').mask('#.##0', {reverse: true})
+            $('#based_value').mask('#.##0', {reverse: true})
+            $('#ppn').mask('#.##0', {reverse: true})
+            $('#pph').mask('#.##0', {reverse: true})
         } );
     </script>
 @endpush
