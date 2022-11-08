@@ -118,7 +118,7 @@
 <div class="add-detail mt-10">
     <div class="w-50 float-left mt-10">
         <p class="m-0 pt-5 text-bold w-100">INVOICE</p>
-        <p class="m-0 pt-5 text-bold w-100">Tanggal - <span class="gray-color">{{$dataInvoice->inv_date}}</span></p>
+        <p class="m-0 pt-5 text-bold w-100">Tanggal - <span class="gray-color">{{ date('d-m-Y', strtotime($dataInvoice->inv_date)) }}</span></p>
         <p class="m-0 pt-5 text-bold w-100">Nomor Invoice - <span class="gray-color">{{$dataInvoice->inv_number}}</span></p>
         <p class="m-0 pt-5 text-bold w-100">Kode Sales - <span class="gray-color">{{$dataInvoice->sales_code}}</span></p>
         <p class="m-0 pt-5 text-bold w-100">Nomor Order - <span class="gray-color">{{$dataInvoice->no_order}}</span></p>
@@ -226,7 +226,7 @@
     <div class="add-detail mt-10">
         <div class="w-50 float-left mt-10">
             <p class="m-0 pt-5 text-bold w-100">KWITANSI</p>
-            <p class="m-0 pt-5 text-bold w-100">Nomor - <span class="gray-color">{{$dataInvoice->receipt_number}}</span></p>
+            <p class="m-0 pt-5 text-bold w-100">Nomor Invoice - <span class="gray-color">{{$dataInvoice->inv_number}}</span></p>
         </div>
         {{-- <div class="w-50 float-left logo mt-10">
             <img src="https://www.nicesnippets.com/image/imgpsh_fullsize.png"> <span>Nicesnippets.com</span>     
@@ -268,9 +268,12 @@
           
         </div>
         <div class="w-25 float-left">
-            <p>Jakarta, {{$dataInvoice->inv_date}}</p>
+            <p>Jakarta, {{ date('d-m-Y', strtotime($dataInvoice->inv_date)) }}</p>
             <h5 style="text-align: center">Hormat Kami</h5>
             <p></p>    
+            <p></p>
+            <p></p>
+            <p></p>
             <p></p>
             <p></p>
             <h5 style="text-align: center">Ayu Wanda</h5>
@@ -342,7 +345,7 @@
             </tr>
             <tr>
                 <td colspan="2" style="text-align: right">
-                    Jakarta, {{$dataInvoice->inv_date}}
+                    Jakarta, {{ date('d-m-Y', strtotime($dataInvoice->inv_date)) }}
                 </td>
             </tr>
             <tr>
@@ -428,7 +431,7 @@
             </tr>
             <tr>
                 <td colspan="2" style="text-align: right">
-                    Jakarta, {{$dataInvoice->inv_date}}
+                    Jakarta, {{ date('d-m-Y', strtotime($dataInvoice->inv_date)) }}
                 </td>
             </tr>
             <tr>
@@ -462,7 +465,7 @@
         <table class="table w-100 mt-10">
             <tr>
                 <td class="w-25" colspan="3">
-                    <p>Jakarta, {{$dataInvoice->inv_date}}</p>
+                    <p>Jakarta, {{ date('d-m-Y', strtotime($dataInvoice->inv_date)) }}</p>
                 </td>
             </tr>
             <tr>
@@ -576,6 +579,9 @@
                 <td>
                     <p><b>Hormat Kami</b></p>
                     <p></p>    
+                    <p></p>
+                    <p></p>
+                    <p></p>
                     <p></p>
                     <p></p>
                     <p><b>Ayu Wanda P</b></p>
