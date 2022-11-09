@@ -53,6 +53,7 @@
                                 </td>
                                 <td>
                                     <a class="btn-sm btn-danger" href="{{route('generateDeals', $item->id)}}" role="button"><i class="fas fa-file-pdf"></i></a>
+                                    {{-- <a class="btn-sm btn-success" href="{{route('getMediaOrder', $dataDealsIn->id)}}" role="button"><i class="fas fa-file-invoice"></i></a> --}}
                                 </td>
                               </tr>
                             @endforeach

@@ -61,6 +61,12 @@
                         </div>
                     </div>
                     <div class="row" style="padding-top: 10px">
+                        <div class="col">
+                            <label for="demo_overview_minimal">Terbilang</label>
+                            <input class="form-control" type="text" name="terbilang" id="disabledTextInput" value="{{$dataInvoice->terbilang}}">
+                        </div>
+                    </div>
+                    <div class="row" style="padding-top: 10px">
                         <div class="col-6">
                             <label for="demo_overview_minimal">Perusahaan</label>
                             <select data-live-search="true" id="perusahaan" class="form-control" data-role="select-dropdown" data-profile="minimal" name="company_id" value="" selected="">

@@ -146,7 +146,7 @@
             </td>
             <td style="border: 1px solid #d2d2d2;">
                 <div class="box-text">
-                    <p> <b>{{$dataInvoice->getCompany->company_name}}</b></p>
+                    <p style="line-height: normal"><b>{{$dataInvoice->getCompany->company_name}}</b></p>
                     <p style="line-height: normal">@nl2br($dataInvoice->address_npwp)</p>
                     <p>{{$dataInvoice->getCompany->zipcode}}</p>
                 </div>
@@ -196,6 +196,12 @@
                     <div style="clear: both;"></div>
                 </div> 
             </td>
+        </tr>
+        <tr style="border: 1px solid #d2d2d2;">
+            <td colspan="4">
+                <p>Terbilang : <b>"<i>{{ucwords($dataInvoice->terbilang)}}</i>"</b></p>
+            </td>
+
         </tr>
     </table>
 </div>
@@ -250,6 +256,7 @@
                 <td style="border: 1px solid #d2d2d2;">
                     <div class="box-text">
                         <p> <b>@currency($dataInvoice->based_value + $dataInvoice->ppn - $dataInvoice->pph_23)</b></p>
+                        <p> <b>"<i>{{ucwords($dataInvoice->terbilang)}}</i>"</b> </p>
                     </div>
                 </td>
             </tr>
@@ -306,7 +313,7 @@
                 </td>
                 <td style="border: 1px solid #d2d2d2;">
                     <div class="box-text">
-                        <p><b>{{$dataInvoice->getCompany->company_name}}</b></p>
+                        <p style="line-height: normal"><b>{{$dataInvoice->getCompany->company_name}}</b></p>
                         {{-- <p>{{$dataInvoice->address_npwp}}</p>
                         <p>{{$dataInvoice->getCompany->zipcode}}</p> --}}
                         <p style="line-height: normal">@nl2br($dataInvoice->pic_inv)</p>
@@ -366,10 +373,9 @@
             </tr>
         </table>
     </div>
+</div>
 
-    <div>
-        <hr class="dashed">
-    </div>
+<div class="no-break">
     <div class="head-title" style="">
         <p style="text-align:center;"><img src="https://quadrant1komunika.co.id/wp-content/uploads/2021/10/cropped-logo-Q1-02-01.png" style="width: 140px; height: 25px;"></p>
         <h5 style="text-align: center;"><i> a member of </i> <img src="https://wartaekonomi.co.id/img/logo.png" alt="" style="width: 130px; height: 20px; vertical-align:sub;"></h5>
@@ -392,7 +398,7 @@
                 </td>
                 <td style="border: 1px solid #d2d2d2;">
                     <div class="box-text">
-                        <p><b>{{$dataInvoice->getCompany->company_name}}</b></p>
+                        <p style="line-height: normal"><b>{{$dataInvoice->getCompany->company_name}}</b></p>
                         {{-- <p>{{$dataInvoice->address_npwp}}</p>
                         <p>{{$dataInvoice->getCompany->zipcode}}</p> --}}
                         <p style="line-height: normal">@nl2br($dataInvoice->pic_inv)</p>
@@ -501,7 +507,7 @@
                 <td colspan="3">
                     <div class="box-text">
                         <h2>{{$dataInvoice->getCompany->company_name}}</h2>
-                        <p>{{$dataInvoice->address_npwp}}</p>
+                        <p style="line-height: normal">@nl2br($dataInvoice->address_npwp)</p>
                     </div>
                 </td>
             </tr>
@@ -519,7 +525,7 @@
                             Sehubungan <b>Partisipasi Sponsorship</b> "<i><b>{{$dataInvoice->getProduct->name}}</b></i> "
                         </p>
                         <p>
-                            Sebesar <b>@currency($dataInvoice->based_value + $dataInvoice->ppn - $dataInvoice->pph_23)</b>. Dana tersebut ditransfer ke Rekening :
+                            Sebesar <b>@currency($dataInvoice->based_value + $dataInvoice->ppn - $dataInvoice->pph_23) (<i>{{ucwords($dataInvoice->terbilang)}} </i>)</b>. Dana tersebut ditransfer ke Rekening :
                         </p>
                     </div>
                 </td>

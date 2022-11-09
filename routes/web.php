@@ -145,6 +145,7 @@ Route::get('request-invoice-deals',[InvoiceController::class, 'requestInvoice'])
 Route::get('detail-invoice-deals/{id}', [InvoiceController::class, 'detailInvoice'])->name('detailInvoice');
 Route::post('create-invoice/{id}', [InvoiceController::class, 'createInvoice'])->name('createInvoice');
 Route::get('downloadMediaOrder/{id}', [InvoiceController::class, 'downloadMediaOrder'])->name('downloadMediaOrder');
+Route::get('getMediaOrder/{id}', [InvoiceController::class, 'getMediaOrder'])->name('getMediaOrder');
 
 
 Route::prefix('bankAcc')->group(function(){

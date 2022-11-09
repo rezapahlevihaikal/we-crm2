@@ -195,6 +195,14 @@ class InvoiceController extends Controller
         return response()->download($filePath);
     }
 
+    public function getMediaOrder($id)
+    {
+        $dataDealsIn = Deals::where('id', $id)->firstOrFail();
+        $filePath = public_path('uploads/'. $dataDealsIn->file);
+        
+        return response()->download($filePath);
+    }
+
     public function editRequest($id)
     {
         $dataCompany = Companies::get(['id', 'company_name']);
@@ -255,6 +263,7 @@ class InvoiceController extends Controller
             'product_id' => $request->product_id,
             'company_id' => $request->company_id,
             'address_npwp' => $request->address_npwp,
+            'terbilang' => $request->terbilang,
             'based_value' => str_replace('.', '', $request->based_value),
             'ppn' => str_replace('.', '', $ppnvalue),
             'pph_23' => str_replace('.', '', $pphvalue),

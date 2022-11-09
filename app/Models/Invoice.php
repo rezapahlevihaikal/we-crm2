@@ -23,6 +23,7 @@ class Invoice extends Model
         'sales_code',
         'no_order',
         'based_value',
+        'terbilang',
         'ppn',
         'pph_23',
         'ppn_id',
