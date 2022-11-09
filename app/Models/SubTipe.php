@@ -11,6 +11,13 @@ class SubTipe extends Model
 
     protected $table = 'subtipe_cost';
 
+    protected $fillable = [
+        'name',
+        'tipe_id'
+    ];
+
+    public $timestamps = false;
+
     public function getTipeCost()
     {
         return $this->belongsTo('App\Models\TipeCost', 'tipe_id', 'id');

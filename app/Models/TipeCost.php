@@ -10,4 +10,10 @@ class TipeCost extends Model
     use HasFactory;
 
     protected $table = 'tipe_cost';
+
+    protected $fillable = [
+        'nama'
+    ];
+
+    public $timestamps = false;
 }

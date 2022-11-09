@@ -41,7 +41,7 @@ class CostController extends Controller
     public function editTipe($id)
     {
         $dataTipe = TipeCost::find($id);
-        return view('cost.editTipe', compact($dataTipe));
+        return view('cost.editTipe', compact('dataTipe'));
     }
 
     public function updateTipe(Request $request, $id)
