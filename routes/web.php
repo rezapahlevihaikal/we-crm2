@@ -15,6 +15,7 @@ use App\Http\Controllers\BankAccController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\CashOutController;
 use App\Http\Controllers\CashInController;
+use App\Http\Controllers\CostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -156,7 +157,7 @@ Route::prefix('bankAcc')->group(function(){
 
 Route::prefix('cashOut')->group(function(){
 	Route::get('/', [CashOutController::class, 'index'])->name('cashOut');
-	Route::get('create', [CashOutController::class, 'create'])->name('cashOut.name');
+	Route::get('create', [CashOutController::class, 'create'])->name('cashOut.create');
 	Route::post('store', [CashOutController::class, 'store'])->name('cashOut.store');
 	Route::get('edit/{id}', [CashOutController::class, 'edit'])->name('cashOut.edit');
 	Route::post('update/{id}', [CashOutController::class, 'update'])->name('cashOut.update');
@@ -165,11 +166,29 @@ Route::prefix('cashOut')->group(function(){
 
 Route::prefix('cashIn')->group(function(){
 	Route::get('/', [CashInController::class, 'index'])->name('cashIn');
-	Route::get('create', [CashInController::class, 'create'])->name('cashIn.name');
+	Route::get('create', [CashInController::class, 'create'])->name('cashIn.create');
 	Route::post('store', [CashInController::class, 'store'])->name('cashIn.store');
 	Route::get('edit/{id}', [CashInController::class, 'edit'])->name('cashIn.edit');
 	Route::post('update/{id}', [CashInController::class, 'update'])->name('cashIn.update');
 	Route::post('delete/{id}', [CashInController::class, 'destroy'])->name('cashIn.destroy');
+});
+
+Route::prefix('tipeCost')->group(function(){
+	Route::get('/', [CostController::class, 'indexTipe'])->name('tipeCost');
+	// Route::get('create', [CostController::class, 'create'])->name('tipeCost.create');
+	Route::post('store', [CostController::class, 'storeTipe'])->name('tipeCost.store');
+	Route::get('edit/{id}', [CostController::class, 'editTipe'])->name('tipeCost.edit');
+	Route::post('update/{id}', [CostController::class, 'updateTipe'])->name('tipeCost.update');
+	Route::post('delete/{id}', [CostController::class, 'destroyTipe'])->name('tipeCost.destroy');
+});
+
+Route::prefix('subTipe')->group(function(){
+	Route::get('/', [CostController::class, 'indexSub'])->name('subTipe');
+	// Route::get('create', [CostController::class, 'create'])->name('subTipe.create');
+	Route::post('store', [CostController::class, 'storeSub'])->name('subTipe.store');
+	Route::get('edit/{id}', [CostController::class, 'editSub'])->name('subTipe.edit');
+	Route::post('update/{id}', [CostController::class, 'updateSub'])->name('subTipe.update');
+	Route::post('delete/{id}', [CostController::class, 'destroySub'])->name('subTipe.destroy');
 });
 
 
