@@ -197,8 +197,8 @@ class InvoiceController extends Controller
 
     public function getMediaOrder($id)
     {
-        $dataDealsIn = Deals::where('id', $id)->firstOrFail();
-        $filePath = public_path('uploads/'. $dataDealsIn->file);
+        $dataInvoice = Invoice::find($id);
+        $filePath = public_path('uploads/'. $dataInvoice->getDeals->file);
         
         return response()->download($filePath);
     }
