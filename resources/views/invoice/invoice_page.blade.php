@@ -227,7 +227,7 @@
 <div class="no-break">
     <div class="head-title" style="">
         <p style="text-align:center;"><img src="https://quadrant1komunika.co.id/wp-content/uploads/2021/10/cropped-logo-Q1-02-01.png" style="width: 230px; height: 45px;"></p>
-        <h5 style="text-align: center;"><i> a member of </i> <img src="https://wartaekonomi.co.id/img/logo.png" alt="" style="width: 130px; height: 20px; vertical-align:sub;"></h5>
+        <h5 style="text-align: center; margin-top: 5px"><i> a member of </i> <img src="https://wartaekonomi.co.id/img/logo.png" alt="" style="width: 130px; height: 20px; vertical-align:sub;"></h5>
     </div>
     <div class="add-detail mt-10">
         <div class="w-50 float-left mt-10">
@@ -292,8 +292,8 @@
 {{--------------------------------------- Tanda Terima -----------------------------------------}}
 <div class="no-break">
     <div class="head-title" style="">
-        <p style="text-align:center;"><img src="https://quadrant1komunika.co.id/wp-content/uploads/2021/10/cropped-logo-Q1-02-01.png" style="width: 140px; height: 25px;"></p>
-        <h5 style="text-align: center;"><i> a member of </i> <img src="https://wartaekonomi.co.id/img/logo.png" alt="" style="width: 130px; height: 20px; vertical-align:sub;"></h5>
+        <p style="text-align:center;"><img src="https://quadrant1komunika.co.id/wp-content/uploads/2021/10/cropped-logo-Q1-02-01.png" style="width: 80px; height: 15px;"></p>
+        <h5 style="text-align: center; margin-top: 5px"><i> a member of </i> <img src="https://wartaekonomi.co.id/img/logo.png" alt="" style="width: 130px; height: 20px; vertical-align:sub;"></h5>
     </div>
     <div class="table-section bill-tbl w-100">
         <table class="table w-100">
@@ -304,20 +304,21 @@
             <tr>
                 <td class="w-50" style="border: 1px solid #d2d2d2;">
                     <div class="box-text">
-                        <p> <b>PT. Kuadran Satu Komunika</b></p>
-                        <p>Jl. Tebet Raya No. 85A</p>
-                        <p>Tebet - Jakarta Selatan 12820</p>
-                        <p>Telp: +62 21 82850466</p>
-                        <p>NPWP 82.417.388.4-015.000</p>
+                        <p style="line-height: normal">
+                            <b>PT. Kuadran Satu Komunika</b> <br>
+                            Jl. Tebet Raya No. 85A <br>
+                            Telp: +62 21 82850466 <br>
+                            NPWP 82.417.388.4-015.000
+                        </p>
                     </div> 
                 </td>
                 <td style="border: 1px solid #d2d2d2;">
                     <div class="box-text">
-                        <p style="line-height: normal"><b>{{$dataInvoice->getCompany->company_name}}</b></p>
-                        {{-- <p>{{$dataInvoice->address_npwp}}</p>
-                        <p>{{$dataInvoice->getCompany->zipcode}}</p> --}}
-                        <p style="line-height: normal">@nl2br($dataInvoice->pic_inv)</p>
-                        <p>Telp:</p>
+                        <p style="line-height: normal">
+                            <b>{{$dataInvoice->getCompany->company_name}}</b> <br>
+                            @nl2br($dataInvoice->pic_inv) <br>
+                            Telp :
+                        </p>
                     </div>
                 </td>
             </tr>
@@ -373,12 +374,12 @@
             </tr>
         </table>
     </div>
-</div>
-
-<div class="no-break">
+    <div>
+        <hr class="dashed">
+    </div>
     <div class="head-title" style="">
-        <p style="text-align:center;"><img src="https://quadrant1komunika.co.id/wp-content/uploads/2021/10/cropped-logo-Q1-02-01.png" style="width: 140px; height: 25px;"></p>
-        <h5 style="text-align: center;"><i> a member of </i> <img src="https://wartaekonomi.co.id/img/logo.png" alt="" style="width: 130px; height: 20px; vertical-align:sub;"></h5>
+        <p style="text-align:center;"><img src="https://quadrant1komunika.co.id/wp-content/uploads/2021/10/cropped-logo-Q1-02-01.png" style="width: 80px; height: 15px;"></p>
+        <h5 style="text-align: center; margin-top: 5px"><i> a member of </i> <img src="https://wartaekonomi.co.id/img/logo.png" alt="" style="width: 130px; height: 20px; vertical-align:sub;"></h5>
     </div>
     <div class="table-section bill-tbl w-100">
         <table class="table w-100">
@@ -389,20 +390,31 @@
             <tr>
                 <td class="w-50" style="border: 1px solid #d2d2d2;">
                     <div class="box-text">
-                        <p> <b>PT. Kuadran Satu Komunika</b></p>
+                        {{-- <p> <b>PT. Kuadran Satu Komunika</b></p>
                         <p>Jl. Tebet Raya No. 85A</p>
                         <p>Tebet - Jakarta Selatan 12820</p>
                         <p>Telp: +62 21 82850466</p>
-                        <p>NPWP 82.417.388.4-015.000</p>
+                        <p>NPWP 82.417.388.4-015.000</p> --}}
+                        <p style="line-height: normal">
+                            <b>PT. Kuadran Satu Komunika</b> <br>
+                            Jl. Tebet Raya No. 85A <br>
+                            Telp: +62 21 82850466 <br>
+                            NPWP 82.417.388.4-015.000
+                        </p>
                     </div> 
                 </td>
                 <td style="border: 1px solid #d2d2d2;">
                     <div class="box-text">
-                        <p style="line-height: normal"><b>{{$dataInvoice->getCompany->company_name}}</b></p>
-                        {{-- <p>{{$dataInvoice->address_npwp}}</p>
-                        <p>{{$dataInvoice->getCompany->zipcode}}</p> --}}
+                        {{-- <p style="line-height: normal"><b>{{$dataInvoice->getCompany->company_name}}</b></p>
+                        <p>{{$dataInvoice->address_npwp}}</p>
+                        <p>{{$dataInvoice->getCompany->zipcode}}</p>
                         <p style="line-height: normal">@nl2br($dataInvoice->pic_inv)</p>
-                        <p>Telp:</p>
+                        <p>Telp:</p> --}}
+                        <p style="line-height: normal">
+                            <b>{{$dataInvoice->getCompany->company_name}}</b> <br>
+                            @nl2br($dataInvoice->pic_inv) <br>
+                            Telp :
+                        </p>
                     </div>
                 </td>
             </tr>
