@@ -205,10 +205,10 @@
         </tr>
     </table>
 </div>
-<div class="table-section bill-tbl w-100 mt-10">
-    <table class="table w-100 mt-10" style="border: 1px solid #d2d2d2;">
+{{-- <div class="table-section bill-tbl w-100 mt-10">
+    <table class="table w-50 mt-10" style="border: 1px solid #d2d2d2;">
         <tr>
-            <th class="w-100">Metode Pembayaran</th>
+            <th class="w-50">Metode Pembayaran</th>
         </tr>
         <tr>
             <td>
@@ -216,11 +216,42 @@
                 <p> <b>PT. Kuadran Satu Komunika</b></p>
                 <p>Bank BRI</p>
                 <p><b>Acc No. 0335.01.00224430.8</b></p>
+                <p style="line-height: normal">
+                    Transfer Atas Nama : <br>
+                    <b>PT. Kuadran Satu Komunika</b> <br>
+                    Bank BRI <br>
+                    <b>Acc No. 0335.01.00224430.8</b>
+                </p>
             </td>
         </tr>
     </table>
+</div> --}}
+<div class="table-section bill-tbl w-100 mt-10">
+    <table class="table w-100 mt-10" style="border: 1px solid #d2d2d2;">
+        <tr style="border: 1px solid #d2d2d2;">
+            <th style="border: 1px solid #d2d2d2;" class="w-30">Metode Pembayaran</th>
+            <th style="border: 1px solid #d2d2d2;" class="w-70">Homat Kami</th>
+           
+        </tr>
+        <tr align="center" style="border: 1px solid #d2d2d2;">
+            <td style="border: 1px solid #d2d2d2;">
+                <p style="line-height: normal">
+                    Transfer Atas Nama : <br>
+                    <b>PT. Kuadran Satu Komunika</b> <br>
+                    Bank BRI <br>
+                    <b>Acc No. 0335.01.00224430.8</b>
+                </p>
+            </td>
+            <td style="border: 1px solid #d2d2d2;">
+                <p></p>
+                <p></p>
+                <p></p>
+                <p></p>
+                <p>Ayu Wanda</p>
+            </td>           
+        </tr>
+    </table>
 </div>
-
 
 
 {{------------------------------------------ Kwitansi --------------------------------------------}}
@@ -256,6 +287,13 @@
                 <td style="border: 1px solid #d2d2d2;">
                     <div class="box-text">
                         <p> <b>@currency($dataInvoice->based_value + $dataInvoice->ppn - $dataInvoice->pph_23)</b></p>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th class="w-35" style="border: 1px solid #d2d2d2; font-size: 15px">TERBILANG</th>
+                <td style="border: 1px solid #d2d2d2;">
+                    <div class="box-text">
                         <p> <b>"<i>{{ucwords($dataInvoice->terbilang)}}</i>"</b> </p>
                     </div>
                 </td>
