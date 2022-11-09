@@ -232,6 +232,19 @@ class InvoiceController extends Controller
         //     $dataPph23 = 0;
         // }
 
+        if (Empty($request->ppn)) {
+            $ppnvalue = 0;
+        }
+        else {
+            $ppnvalue = $request->ppn;
+        }
+
+        if (Empty($request->pph_23)) {
+            $pphvalue = 0;
+        }
+        else {
+            $pphvalue = $request->pph_23;
+        }
         
         $dataInvoice->update([
             // 'amount_po' => str_replace('.', '', $request->amount_po),
@@ -243,8 +256,8 @@ class InvoiceController extends Controller
             'company_id' => $request->company_id,
             'address_npwp' => $request->address_npwp,
             'based_value' => str_replace('.', '', $request->based_value),
-            'ppn' => str_replace('.', '', $request->ppn),
-            'pph_23' => str_replace('.', '', $request->pph_23),
+            'ppn' => str_replace('.', '', $ppnvalue),
+            'pph_23' => str_replace('.', '', $pphvalue),
             'ppn_id' => $request->ppn_id,
             'pph_id' => $request->pph_id,
             'faktur_pajak' => $request->faktur_pajak,
