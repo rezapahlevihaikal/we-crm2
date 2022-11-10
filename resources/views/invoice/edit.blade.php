@@ -150,13 +150,16 @@
                     </div>
                     <div class="row" style="padding-top: 10px">
                         <div class="col">
-                            <label for="formGroupExampleInput2">Deskripsi</label>
+                            <label for="formGroupExampleInput2">Remarks</label>
                             <textarea class="form-control" name="inv_desc" id="" cols="30" rows="10" >{{$dataInvoice->inv_desc}}</textarea>
                         </div>
                     </div>
                     <br>
                     <button class="btn btn-success" onclick="window.location='{{url('/invoice')}}'" type="reset">Back</button>
-                    <button class="btn btn-primary" type="submit">Update Data</button>
+                    @if ($dataInvoice->inv_status_id != 4 )
+                        <button class="btn btn-primary" type="submit">Update Data</button>
+                    @endif
+                    
                   </form>
             </div>
         </div>

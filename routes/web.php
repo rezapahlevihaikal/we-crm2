@@ -138,6 +138,7 @@ Route::prefix('invoice')->group(function(){
 	Route::post('updateRequest/{id}', [InvoiceController::class, 'updateRequest'])->name('invoice.updateRequest');
 	Route::get('createSingleInvoice', [InvoiceController::class, 'createSingleInvoice'])->name('invoice.createSingleInvoice');
 	Route::post('postCreateInvoice', [InvoiceController::class, 'postCreateInvoice'])->name('invoice.postCreateInvoice');
+	Route::post('delete/{id}', [InvoiceController::class, 'changeStatusData'])->name('invoice.delete');
 });
 
 Route::get('generateDeals/{id}', [InvoiceController::class, 'generateDeals'])->name('generateDeals');

@@ -29,7 +29,7 @@ class InvoiceController extends Controller
      */
     public function index()
     {
-        $dataInvoice = Invoice::latest('id')->get();
+        $dataInvoice = Invoice::where('status_data', '=', '1')->latest('id')->get();
         return view('invoice.index', compact('dataInvoice'));
         
     }
@@ -368,6 +368,17 @@ class InvoiceController extends Controller
         else {
             return redirect()->back()->withErrors('data gagal diinput');
         }
+    }
+
+    public function changeStatusData(Request $request,$id)
+    {
+        $dataInvoice = Invoice::find($id);
+        $statusData = 0;
+        $dataInvoice->update([
+            'status_data' => $statusData
+        ]);
+        
+        return redirect()->back()->with('success', 'data berhasil dihapus');
     }
 
     /**

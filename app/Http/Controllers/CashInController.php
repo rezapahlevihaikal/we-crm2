@@ -35,7 +35,7 @@ class CashInController extends Controller
     public function create()
     {
         //
-        $dataInvoice = Invoice::get(['id', 'inv_number', 'product_id', 'company_id']);
+        $dataInvoice = Invoice::where('inv_status_id', 4)->get(['id', 'inv_number', 'product_id', 'company_id']);
         
         return view('cashIn.create', compact('dataInvoice'));
     }

@@ -24,6 +24,7 @@
                                 <th scope="col">{{ __('Date')}}</th>
                                 <th scope="col">{{ __('Company')}}</th>
                                 <th scope="col">{{ __('Amount PO')}}</th>
+                                <th scope="col">{{ __('Remarks')}}</th>
                                 <th scope="col">{{ __('Status')}}</th>
                                 <th scope="col">{{ __('Action')}}</th>
                             </tr>
@@ -35,11 +36,15 @@
                                     <a href="{{route('invoice.editRequest', $item->id)}}" title="">{{$item->getProduct->name ?? 'Belum dilengkapi'}}</a><br>
                                     AE Name : {{$item->getUser->name ?? 'Belum Dilengkapi'}} <br>
                                 </td>
-                                <td>@date($item->created_at)</td>
+                                <td style="text-align: left">
+                                    Start : {{ $item->inv_date ?? 'Kosong' }} <br>
+                                    Aging / Cash In : {{ $item->exp_inv_date ?? 'Kosong' }}
+                                </td>
                                 <td>{{$item->getCompany->company_name ?? 'Belum dilengkapi'}}</td>
                                 
                                 {{-- <td>Rp {{$item->getDeals->amount_po ?? '0'}}</td> --}}
                                 <td>@currency($item->getDeals->amount_po ?? '0')</td>
+                                <td>{{$item->remarks}}</td>
                                 <td>
                                     @if ($item->inv_status_id == 1)
                                         <button type="button" class="btn-sm btn-primary">{{$item->getStatus->name ?? 'Belum ada status'}}</button>
@@ -52,8 +57,17 @@
                                     @endif
                                 </td>
                                 <td>
-                                    <a class="btn-sm btn-danger" href="{{route('generateDeals', $item->id)}}" role="button"><i class="fas fa-file-pdf"></i></a>
-                                    <a class="btn-sm btn-success" href="{{route('getMediaOrder', $item->id)}}" role="button"><i class="fas fa-file-invoice"></i></a>
+                                    
+                                        <form action="{{route('invoice.delete',$item->id)}}" method="POST">
+                                            <a class="btn-sm btn-info" href="{{route('generateDeals', $item->id)}}" role="button"><i class="fas fa-file-pdf"></i></a>
+                                            <a class="btn-sm btn-success" href="{{route('getMediaOrder', $item->id)}}" role="button"><i class="fas fa-file-invoice"></i></a>
+                                            @csrf
+                                            @method('post')
+                                            @if ($item->inv_status_id == 1)
+                                            <button type="submit" class="btn-sm btn-danger" onclick="return confirm('Yang bener?');"><i class="fas fa-trash"></i></button>
+                                            @endif
+                                        </form>
+                                    
                                 </td>
                               </tr>
                             @endforeach
