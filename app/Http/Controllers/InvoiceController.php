@@ -156,6 +156,7 @@ class InvoiceController extends Controller
 
         $dataCreateIn = Invoice::create([
             'deals_id' => $dataDealsIn->id,
+            'status_data' => 1,
             'inv_date' => $request->inv_date,
             'exp_inv_date' => $request->exp_inv_date,
             'product_id' => $dataDealsIn->id_product,
