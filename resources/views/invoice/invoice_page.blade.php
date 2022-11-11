@@ -263,7 +263,7 @@
     <div class="add-detail mt-10">
         <div class="w-50 float-left mt-10">
             <p class="m-0 pt-5 text-bold w-100">KWITANSI</p>
-            <p class="m-0 pt-5 text-bold w-100">Nomor Invoice - <span class="gray-color">{{$dataInvoice->inv_number}}</span></p>
+            <p class="m-0 pt-5 text-bold w-100">Nomor Kwitansi - <span class="gray-color">{{$dataInvoice->receipt_number}}</span></p>
         </div>
         {{-- <div class="w-50 float-left logo mt-10">
             <img src="https://www.nicesnippets.com/image/imgpsh_fullsize.png"> <span>Nicesnippets.com</span>     

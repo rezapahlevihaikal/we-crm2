@@ -122,10 +122,10 @@
                             <label for="demo_overview_minimal">Kode Kustomer</label>
                             <input class="form-control" type="text" name="no_order" id="disabledTextInput" value="{{$dataInvoice->no_order}}">
                         </div>
-                        {{-- <div class="col">
-                            <label for="demo_overview_minimal">Nomor Faktur Pajak</label>
-                            <input class="form-control" type="text" name="faktur_pajak" value="{{$dataInvoice->faktur_pajak}}">
-                        </div> --}}
+                        <div class="col">
+                            <label for="demo_overview_minimal">Nomor Kwitansi</label>
+                            <input class="form-control" type="text" name="receipt_number" value="{{$dataInvoice->receipt_number}}">
+                        </div>
                     </div>
                     <div class="row" style="padding-top: 10px">
                         <div class="col">
