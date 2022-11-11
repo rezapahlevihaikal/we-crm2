@@ -378,17 +378,19 @@
             </tr>
             <tr>
                 <td style="border: 1px solid #d2d2d2;" class="w-25">
-                    No. Faktur Pajak : {{$dataInvoice->faktur_pajak}}
+                    <p style="line-height: normal">
+                        Ket : "<i><b>{{$dataInvoice->getProduct->name}}</b></i> "
+                    </p>
                 </td>
                 <td style="border: 1px solid #d2d2d2;">
                     Bagian :
                 </td>
             </tr>
-            <tr>
+            {{-- <tr>
                 <td colspan="2" style="border: 1px solid #d2d2d2;" class="w-25">
                     Keterangan :
                 </td>
-            </tr>
+            </tr> --}}
             <tr>
                 <td colspan="2" style="text-align: right">
                     Jakarta, {{ date('d-m-Y', strtotime($dataInvoice->inv_date)) }}
@@ -474,17 +476,19 @@
             </tr>
             <tr>
                 <td style="border: 1px solid #d2d2d2;" class="w-25">
-                    No. Faktur Pajak : {{$dataInvoice->faktur_pajak}}
+                    <p style="line-height: normal">
+                        Ket : "<i><b>{{$dataInvoice->getProduct->name}}</b></i> "
+                    </p>
                 </td>
                 <td style="border: 1px solid #d2d2d2;">
                     Bagian :
                 </td>
             </tr>
-            <tr>
+            {{-- <tr>
                 <td colspan="2" style="border: 1px solid #d2d2d2;" class="w-25">
                     Keterangan :
                 </td>
-            </tr>
+            </tr> --}}
             <tr>
                 <td colspan="2" style="text-align: right">
                     Jakarta, {{ date('d-m-Y', strtotime($dataInvoice->inv_date)) }}
