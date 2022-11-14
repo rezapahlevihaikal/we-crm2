@@ -303,10 +303,10 @@ class InvoiceController extends Controller
         $attrReceipt = Carbon::now()->format('Y');
         //------------------------------------------------------------------------------
 
-        // $dataInvoice->update([
-        //     'receipt_number' => "000".$order."/".$attrFr."/".$bulanRomawi[date('n')]."/".$attrReceipt,
-        //     'tf_number' => "000".$order."/".$attrTF."/".$bulanRomawi[date('n')]."-".$attrReceipt
-        // ]);
+        $dataInvoice->update([
+            // 'receipt_number' => "000".$order."/".$attrFr."/".$bulanRomawi[date('n')]."/".$attrReceipt,
+            'tf_number' => "000".$order."/".$attrTF."/".$bulanRomawi[date('n')]."-".$attrReceipt
+        ]);
 
         //=============== Generate ke lampiran PDF ==========================
         $headerName = $dataInvoice->inv_number;
