@@ -302,7 +302,7 @@
                 <th class="w-35" style="border: 1px solid #d2d2d2;">UNTUK PEMBAYARAN</th>
                 <td style="border: 1px solid #d2d2d2;">
                     <div class="box-text">
-                        <p> <b>"{{$dataInvoice->nama_product}}"</b></p>
+                        <p> <b>"{{$dataInvoice->nama_event}}"</b></p>
                     </div>
                 </td>
             </tr>
@@ -578,7 +578,7 @@
                         <p>
                             Sehubungan <b>Partisipasi Sponsorship</b> "<i><b>{{$dataInvoice->nama_event}}</b></i> "
                         </p>
-                        <p>
+                        <p style="line-height: normal">
                             Sebesar <b>@currency($dataInvoice->based_value + $dataInvoice->ppn - $dataInvoice->pph_23) (<i>{{ucwords($dataInvoice->terbilang)}} </i>)</b>. Dana tersebut ditransfer ke Rekening :
                         </p>
                     </div>
