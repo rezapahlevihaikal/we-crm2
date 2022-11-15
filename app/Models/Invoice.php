@@ -31,6 +31,7 @@ class Invoice extends Model
         'pph_id',
         'size',
         'product_id',
+        'nama_event',
         'address_npwp',
         'inv_status_id',
         'pic_inv',

@@ -164,7 +164,7 @@
            
         </tr>
         <tr align="center" style="border: 1px solid #d2d2d2;">
-            <td style="border: 1px solid #d2d2d2;">{{$dataInvoice->getProduct->name}}</td>
+            <td style="border: 1px solid #d2d2d2;">{{$dataInvoice->nama_event}}</td>
             <td style="border: 1px solid #d2d2d2;">{{$dataInvoice->getProduct->quantity}}</td>
             <td style="border: 1px solid #d2d2d2;">@currency($dataInvoice->based_value)</td>
             <td style="border: 1px solid #d2d2d2;">@currency($dataInvoice->based_value)</td>
@@ -302,7 +302,7 @@
                 <th class="w-35" style="border: 1px solid #d2d2d2;">UNTUK PEMBAYARAN</th>
                 <td style="border: 1px solid #d2d2d2;">
                     <div class="box-text">
-                        <p> <b>"{{$dataInvoice->getProduct->name}}"</b></p>
+                        <p> <b>"{{$dataInvoice->nama_product}}"</b></p>
                     </div>
                 </td>
             </tr>
@@ -379,7 +379,7 @@
             <tr>
                 <td style="border: 1px solid #d2d2d2;" class="w-25">
                     <p style="line-height: normal">
-                        Ket : "<i><b>{{$dataInvoice->getProduct->name}}</b></i> "
+                        Ket : "<i><b>{{$dataInvoice->nama_event}}</b></i> "
                     </p>
                 </td>
                 <td style="border: 1px solid #d2d2d2;">
@@ -477,7 +477,7 @@
             <tr>
                 <td style="border: 1px solid #d2d2d2;" class="w-25">
                     <p style="line-height: normal">
-                        Ket : "<i><b>{{$dataInvoice->getProduct->name}}</b></i> "
+                        Ket : "<i><b>{{$dataInvoice->nama_event}}</b></i> "
                     </p>
                 </td>
                 <td style="border: 1px solid #d2d2d2;">
@@ -576,7 +576,7 @@
                 <td colspan="3">
                     <div class="box-text" style="">
                         <p>
-                            Sehubungan <b>Partisipasi Sponsorship</b> "<i><b>{{$dataInvoice->getProduct->name}}</b></i> "
+                            Sehubungan <b>Partisipasi Sponsorship</b> "<i><b>{{$dataInvoice->nama_event}}</b></i> "
                         </p>
                         <p>
                             Sebesar <b>@currency($dataInvoice->based_value + $dataInvoice->ppn - $dataInvoice->pph_23) (<i>{{ucwords($dataInvoice->terbilang)}} </i>)</b>. Dana tersebut ditransfer ke Rekening :
