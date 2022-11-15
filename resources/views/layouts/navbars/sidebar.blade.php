@@ -191,11 +191,11 @@
                         <i class="far fa-file-alt"></i> {{ __('Invoice') }}
                     </a>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="nav-link" href="{{route('cashOut')}}">
                         <i class="fas fa-money-bill-wave"></i> {{ __('Cash Out') }}
                     </a>
-                </li>
+                </li> --}}
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('cashIn')}}">
                         <i class="fas fa-coins"></i> {{ __('Cash In') }}
@@ -300,6 +300,20 @@
                             </ul>
                         </div>
                     </li>
+            </ul>
+            @elseif(Auth::user()->id_role == 5)
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('home') }}">
+                        <i class="ni ni-tv-2 text-primary"></i> {{ __('Dashboard') }}
+                    </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('cashOut')}}">
+                        <i class="fas fa-money-bill-wave"></i> {{ __('Cash Out') }}
+                    </a>
+                </li>
             </ul>
             @endif
         </div>
