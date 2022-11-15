@@ -76,7 +76,7 @@
                                 @endforeach
                             </select>
                         </div>
-                        <div class="col-6">
+                        {{-- <div class="col-6">
                             <label for="demo_overview_minimal">Produk</label>
                             <select data-live-search="true" id="product" class="form-control" data-role="select-dropdown" data-profile="minimal" name="product_id" value="" selected="">
                                 <option value="">PILIH PRODUK</option>
@@ -84,8 +84,12 @@
                                 <option value="{{ $item->id }}" {{$dataInvoice->product_id == $item->id  ? 'selected' : ''}}>{{ $item->name}}</option>
                                 @endforeach
                             </select>
+                        </div> --}}
+                        <div class="col">
+                            <label for="demo_overview_minimal">Nama Event</label>
+                            {{-- <input class="form-control" type="text" name="nama_event" id="nama_event" value="{{$dataInvoice->nama_event}}"> --}}
+                            <textarea spellcheck="true" class="form-control" name="nama_event" id="" cols="40" rows="5"> {{$dataInvoice->nama_event}} </textarea>
                         </div>
-                        
                         
                     </div>
                     <div class="row" style="padding-top: 10px">
