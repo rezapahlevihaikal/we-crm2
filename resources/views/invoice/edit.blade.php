@@ -133,6 +133,20 @@
                     </div>
                     <div class="row" style="padding-top: 10px">
                         <div class="col">
+                            <label for="demo_overview_minimal">Nama Bank</label>
+                            <input class="form-control" type="text" name="nama_bank" id="disabledTextInput" value="{{$dataInvoice->nama_bank}}" placeholder="diinput jika nama bank berbeda">
+                        </div>
+                        <div class="col">
+                            <label for="demo_overview_minimal">Nomor Rekening</label>
+                            <input class="form-control" type="text" name="nomor_rekening" value="{{$dataInvoice->nomor_rekening}}" placeholder="diinput jika nomor rekening berbeda">
+                        </div>
+                        <div class="col">
+                            <label for="demo_overview_minimal">Kantor Cabang</label>
+                            <input class="form-control" type="text" name="kantor_cabang" id="disabledTextInput" value="{{$dataInvoice->kantor_cabang}}" placeholder="diinput jika kantor cabang berbeda">
+                        </div>
+                    </div>
+                    <div class="row" style="padding-top: 10px">
+                        <div class="col">
                             <label for="demo_overview_minimal">Start Date</label>
                             <input class="form-control" type="date" name="inv_date" id="" value="{{$dataInvoice->inv_date}}" >
                         </div>

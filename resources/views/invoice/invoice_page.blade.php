@@ -238,8 +238,17 @@
                 <p style="line-height: normal">
                     Transfer Atas Nama : <br>
                     <b>PT. Kuadran Satu Komunika</b> <br>
-                    Bank BRI <br>
-                    <b>Acc No. 0335.01.00224430.8</b>
+                    @if(empty($dataInvoice->nama_bank))
+                        Bank BRI
+                    @else
+                        {{$dataInvoice->nama_bank}}
+                    @endif
+                    <br>
+                    @if(empty($dataInvoice->nomor_rekening))
+                        <b>Acc No. 0335.01.00224430.8</b>
+                    @else
+                        Acc No. {{$dataInvoice->nomor_rekening}}
+                    @endif
                 </p>
             </td>
             <td style="border: 1px solid #d2d2d2;">
@@ -603,7 +612,11 @@
                     :
                 </td>
                 <td>
-                    <b>Bank Rakyat Indonesia</b>
+                    @if(empty($dataInvoice->nama_bank))
+                        <b>Bank Rakyat Indonesia</b>
+                    @else
+                        {{$dataInvoice->nama_bank}}
+                    @endif
                 </td>
             </tr>
             <tr>
@@ -614,7 +627,11 @@
                     :
                 </td>
                 <td>
-                    <b>0335-01-002244308</b>
+                    @if(empty($dataInvoice->nomor_rekening))
+                        <b>0335.01.00224430.8</b>
+                    @else
+                        {{$dataInvoice->nomor_rekening}}
+                    @endif
                 </td>
             </tr>
             <tr>
@@ -625,7 +642,12 @@
                     :
                 </td>
                 <td>
-                    <b>Kramat Jakarta Pusat</b>
+                    @if(empty($dataInvoice->kantor_cabang))
+                        <b>Kramat Jakarta Pusat</b>
+                    @else
+                        {{$dataInvoice->kantor_cabang}}
+                    @endif
+                    
                 </td>
             </tr>
             <tr>
