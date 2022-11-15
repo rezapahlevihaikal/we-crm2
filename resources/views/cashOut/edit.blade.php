@@ -77,7 +77,7 @@
                                     <strong>{{$message}}</strong>
                                 </span>
                             @enderror
-                            <a href="">{{$dataCashOut->file}}</a>
+                            <a href="{{route('cashOut.getFileCashOut', $dataCashOut->id)}}">{{$dataCashOut->file}}</a>
                         </div> 
                     </div>
                     <br>

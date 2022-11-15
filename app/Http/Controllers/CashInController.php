@@ -167,6 +167,14 @@ class CashInController extends Controller
         }   
     }
 
+    public function getFileCashIn($id)
+    {
+        $dataCashIn = CashIn::where('id', $id)->first();
+        $filePath = public_path('uploads/'. $dataCashIn->file);
+        // dd($filePath);
+        return response()->download($filePath);
+    }
+
     /**
      * Remove the specified resource from storage.
      *

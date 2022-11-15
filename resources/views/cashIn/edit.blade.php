@@ -7,7 +7,7 @@
             <div class="card-header border-0">
                 <div class="row align-items-center">
                     <div class="col">
-                        <h3 class="mb-0">Buat Cash In Baru</h3>
+                        <h3 class="mb-0">Edit Cash In</h3>
                     </div>
                 </div>
             </div>
@@ -79,7 +79,7 @@
                                     <strong>{{$message}}</strong>
                                 </span>
                             @enderror
-                            {{$dataCashIn->file}}
+                            <a href="{{route('cashIn.getFileCashIn', $dataCashIn->id)}}">{{$dataCashIn->file}}</a>
                         </div> 
                         
                     </div>

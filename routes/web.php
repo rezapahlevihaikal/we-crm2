@@ -163,6 +163,7 @@ Route::prefix('cashOut')->group(function(){
 	Route::post('store', [CashOutController::class, 'store'])->name('cashOut.store');
 	Route::get('edit/{id}', [CashOutController::class, 'edit'])->name('cashOut.edit');
 	Route::post('update/{id}', [CashOutController::class, 'update'])->name('cashOut.update');
+	Route::get('getFileCashOut/{id}', [CashOutController::class, 'getFileCashOut'])->name('cashOut.getFileCashOut');
 	Route::post('delete/{id}', [CashOutController::class, 'destroy'])->name('cashOut.destroy');
 });
 
@@ -172,6 +173,7 @@ Route::prefix('cashIn')->group(function(){
 	Route::post('store', [CashInController::class, 'store'])->name('cashIn.store');
 	Route::get('edit/{id}', [CashInController::class, 'edit'])->name('cashIn.edit');
 	Route::post('update/{id}', [CashInController::class, 'update'])->name('cashIn.update');
+	Route::get('getFileCashIn/{id}', [CashInController::class, 'getFileCashIn'])->name('cashIn.getFileCashIn');
 	Route::post('delete/{id}', [CashInController::class, 'destroy'])->name('cashIn.destroy');
 });
 

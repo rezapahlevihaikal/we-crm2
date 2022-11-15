@@ -171,6 +171,14 @@ class CashOutController extends Controller
         }   
     }
 
+    public function getFileCashOut($id)
+    {
+        $dataCashOut = CashOut::where('id', $id)->first();
+        $filePath = public_path('uploads/'. $dataCashOut->file);
+        // dd($filePath);
+        return response()->download($filePath);
+    }
+
     /**
      * Remove the specified resource from storage.
      *
