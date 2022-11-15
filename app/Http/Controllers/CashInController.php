@@ -69,7 +69,7 @@ class CashInController extends Controller
         $sourceDoc = Auth::user()->id;
 
         if ($request->file) {
-            $filename = $headerNameDoc."_".$nameDoc."_".$sourceDoc."_".".".$request->file->extension();        
+            $filename = $headerNameDoc."_".uniqid()."_".$nameDoc."_".$sourceDoc."_".".".$request->file->extension();        
             $request->file->move(public_path('uploads'), $filename);
         }        
         
@@ -140,7 +140,7 @@ class CashInController extends Controller
         $sourceDoc = Auth::user()->id;
 
         if ($request->has('file')) {
-            $filename = $headerNameDoc."_".$nameDoc."_".$sourceDoc.".".$request->file->getClientOriginalExtension();
+            $filename = $headerNameDoc."_".uniqid()."_".$nameDoc."_".$sourceDoc.".".$request->file->getClientOriginalExtension();
             File::delete(public_path('uploads'), $dataCashIn->file);
             $request->file->move(public_path('uploads'), $filename);
         }
