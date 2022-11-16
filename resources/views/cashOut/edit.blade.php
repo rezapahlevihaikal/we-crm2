@@ -53,17 +53,23 @@
                     <div class="row" style="padding-top: 10px">
                         <div class="col">
                             <label for="demo_overview_minimal">Produk (Diinput untuk keperluan Event)</label>
-                            <select data-live-search="true" id="product" class="form-control" data-role="select-dropdown" data-profile="minimal" name="id_company" value="" selected="">
+                            <select data-live-search="true" id="product" class="form-control" data-role="select-dropdown" data-profile="minimal" name="product_id" value="" selected="">
+                                @if (empty($dataCashOut->product_id))
+                                    <option value="">Pilih Nama Produk</option>
+                                @endif
                                 @foreach ($dataProduct as $item)
-                                <option value="{{ $item->id }}"{{$dataCashOut->product_id == $item->id  ? 'selected' : ''}}>{{ $item->name}}</option>
+                                    <option value="{{ $item->id }}"{{$dataCashOut->product_id == $item->id  ? 'selected' : ''}}>{{ $item->name}}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="col">
                             <label for="demo_overview_minimal">Core Bisnis</label>
-                            <select data-live-search="true" id="source" class="form-control" data-role="select-dropdown" data-profile="minimal" name="id_company" value="" selected="">
+                            <select data-live-search="true" id="source" class="form-control" data-role="select-dropdown" data-profile="minimal" name="core_bisnis_id" value="" selected="">
+                                @if (empty($dataCashOut->core_bisnis_id))
+                                    <option value="">Pilih Nama Core Bisnis</option>
+                                @endif
                                 @foreach ($dataCoreBisnis as $item)
-                                <option value="{{ $item->id }}"{{$dataCashOut->core_bisnis_id == $item->id  ? 'selected' : ''}}>{{ $item->nama_core_bisnis}}</option>
+                                    <option value="{{ $item->id }}"{{$dataCashOut->core_bisnis_id == $item->id  ? 'selected' : ''}}>{{ $item->nama_core_bisnis}}</option>
                                 @endforeach
                             </select>
                         </div>
