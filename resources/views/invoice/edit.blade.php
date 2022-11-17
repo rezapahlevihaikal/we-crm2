@@ -56,14 +56,15 @@
                                 <div class="input-group-prepend">
                                 <div class="input-group-text">Rp</div>
                                 </div>
-                                <input type="text" class="form-control" id="pph" placeholder="" name="pph_23" value="{{$dataInvoice->pph_23 ?? 0}}">
+                                <input type="text" class="form-control" id="pph" placeholder="" name="pph_23" value="{{ $dataInvoice->pph_23 }}">
+                                {{-- <a href="">{{ Terbilang::make($dataInvoice->based_value + $dataInvoice->ppn + $dataInvoice->pph_23, ' rupiah') }}</a> --}}
                             </div>
                         </div>
                     </div>
                     <div class="row" style="padding-top: 10px">
                         <div class="col">
                             <label for="demo_overview_minimal">Terbilang</label>
-                            <input class="form-control" type="text" name="terbilang" id="disabledTextInput" value="{{$dataInvoice->terbilang}}">
+                            <input class="form-control" type="text" name="terbilang" id="disabledTextInput" value="{{Terbilang::make($dataInvoice->based_value + $dataInvoice->ppn + $dataInvoice->pph_23, ' rupiah')}}" disabled>
                         </div>
                     </div>
                     <div class="row" style="padding-top: 10px">

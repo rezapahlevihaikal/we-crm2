@@ -15,6 +15,7 @@
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.4",
         "ramsey/uuid": "^4.2",
+        "riskihajar/terbilang": "^1.2",
         "snapappointments/bootstrap-select": "^1.13"
     },
     "require-dev": {

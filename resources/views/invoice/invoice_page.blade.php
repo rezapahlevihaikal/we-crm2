@@ -199,7 +199,7 @@
         </tr>
         <tr style="border: 1px solid #d2d2d2;">
             <td colspan="4">
-                <p>Terbilang : <b>"<i>{{ucwords($dataInvoice->terbilang)}}</i>"</b></p>
+                <p>Terbilang : <b>"<i>{{ucwords(Terbilang::make($dataInvoice->based_value + $dataInvoice->ppn + $dataInvoice->pph_23, ' rupiah'))}} </i>"</b></p>
             </td>
 
         </tr>
@@ -303,7 +303,7 @@
                 <th class="w-35" style="border: 1px solid #d2d2d2; font-size: 15px">TERBILANG</th>
                 <td style="border: 1px solid #d2d2d2;">
                     <div class="box-text">
-                        <p> <b>"<i>{{ucwords($dataInvoice->terbilang)}}</i>"</b> </p>
+                        <p> <b>"<i>{{ucwords(Terbilang::make($dataInvoice->based_value + $dataInvoice->ppn + $dataInvoice->pph_23, ' rupiah'))}} </i>"</b> </p>
                     </div>
                 </td>
             </tr>
@@ -588,7 +588,7 @@
                             Sehubungan <b>Partisipasi Sponsorship</b> <i><b>{{$dataInvoice->nama_event}}</b></i>
                         </p>
                         <p style="line-height: normal">
-                            Sebesar <b>@currency($dataInvoice->based_value + $dataInvoice->ppn - $dataInvoice->pph_23) (<i>{{ucwords($dataInvoice->terbilang)}} </i>)</b>. Dana tersebut ditransfer ke Rekening :
+                            Sebesar <b>@currency($dataInvoice->based_value + $dataInvoice->ppn - $dataInvoice->pph_23) (<i>{{ucwords(Terbilang::make($dataInvoice->based_value + $dataInvoice->ppn + $dataInvoice->pph_23, ' rupiah'))}} </i>)</b>. Dana tersebut ditransfer ke Rekening :
                         </p>
                     </div>
                 </td>
