@@ -15,6 +15,7 @@ class CashIn extends Model
     [
         'inv_id',
         'cash_in_date',
+        'tipe_cash_id',
         'author_id',
         'nominal_cash_in',
         'nominal_ppn',
@@ -32,5 +33,10 @@ class CashIn extends Model
     public function getUser()
     {
         return $this->hasOne('App\Models\User', 'author_id', 'id');
+    }
+
+    public function getTipeCash()
+    {
+        return $this->belongsTo('App\Models\TipeCashIn', 'tipe_cash_id', 'id');
     }
 }

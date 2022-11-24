@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\CashIn;
 use App\Models\Invoice;
+use App\Models\TipeCashIn;
 use Illuminate\Support\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -36,8 +37,9 @@ class CashInController extends Controller
     {
         //
         $dataInvoice = Invoice::whereIn('inv_status_id', [2, 3, 4])->get(['id', 'inv_number', 'product_id', 'company_id']);
+        $dataTipeCashIn = TipeCashIn::get(['id', 'name']);
         // $dataInvoice = DB::table('invoices')->select('*')->whereIn('inv_status_id',[2, 3])->get(['id', 'inv_number', 'product_id', 'company_id']);
-        return view('cashIn.create', compact('dataInvoice'));
+        return view('cashIn.create', compact('dataInvoice', 'dataTipeCashIn'));
     }
 
     /**
@@ -77,6 +79,7 @@ class CashInController extends Controller
             'inv_id' => $request->inv_id,
             'author_id' => Auth::user()->id,
             'cash_in_date' => $request->cash_in_date,
+            'tipe_cash_id' => $request->tipe_cash_id,
             'nominal_cash_in' => str_replace('.', '', $request->nominal_cash_in),
             'nominal_ppn' => str_replace('.', '', $request->nominal_ppn),
             'nominal_pph' => str_replace('.', '', $request->nominal_pph),
@@ -115,9 +118,10 @@ class CashInController extends Controller
     {
         //
         $dataInvoice = Invoice::get(['id', 'inv_number', 'product_id', 'company_id']);
+        $dataTipeCashIn = TipeCashIn::get(['id', 'name']);
         $dataCashIn = CashIn::find($id);
 
-        return view('cashIn.edit', compact('dataInvoice', 'dataCashIn'));
+        return view('cashIn.edit', compact('dataInvoice', 'dataTipeCashIn', 'dataCashIn'));
     }
 
     /**
@@ -151,6 +155,7 @@ class CashInController extends Controller
         $dataCashIn->update([
             'inv_id' => $request->inv_id,
             'cash_in_date' => $request->cash_in_date,
+            'tipe_cash_id' => $request->tipe_cash_id,
             'nominal_cash_in' => str_replace('.', '', $request->nominal_cash_in),
             'nominal_ppn' => str_replace('.', '', $request->nominal_ppn),
             'nominal_pph' => str_replace('.', '', $request->nominal_pph),

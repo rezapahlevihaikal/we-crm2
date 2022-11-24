@@ -26,6 +26,15 @@
                             </select>
                         </div>
                         <div class="col">
+                            <label for="demo_overview_minimal">Tipe Cash In</label>
+                            <select data-live-search="true" id="inv" class="form-control" data-role="select-dropdown" data-profile="minimal" name="tipe_cash_id" value="" selected="">
+                                <option value="">PILIH TIPE</option>
+                                @foreach ($dataTipeCashIn as $item)
+                                    <option value="{{ $item->id }}"{{$dataCashIn->tipe_cash_id == $item->id  ? 'selected' : ''}}>{{ $item->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col">
                             <label for="demo_overview_minimal">Tanggal Transaksi</label>
                             <input type="date" class="form-control" name="cash_in_date" id="" value="{{$dataCashIn->cash_in_date}}">
                         </div>
