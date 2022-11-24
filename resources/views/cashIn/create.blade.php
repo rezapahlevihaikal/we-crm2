@@ -21,7 +21,7 @@
                             <select data-live-search="true" id="inv" class="form-control" data-role="select-dropdown" data-profile="minimal" name="inv_id" value="" selected="">
                                 <option value="">PILIH INVOICE</option>
                                 @foreach ($dataInvoice as $item)
-                                <option value="{{ $item->id }}">{{ $item->inv_number}} - {{$item->getCompany->company_name ?? 'kosong'}}</option>
+                                <option value="{{ $item->id }}">{{ $item->inv_number}} | {{$item->getCompany->company_name ?? 'kosong'}} - {{$item->getProduct->name}}</option>
                                 @endforeach
                             </select>
                         </div>
