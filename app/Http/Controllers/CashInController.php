@@ -7,6 +7,7 @@ use App\Models\Invoice;
 use App\Models\TipeCashIn;
 use Illuminate\Support\Carbon;
 use Illuminate\Http\Request;
+use  DB;
 use Illuminate\Support\Facades\Auth;
 
 class CashInController extends Controller
@@ -24,7 +25,13 @@ class CashInController extends Controller
     public function index()
     {
         //
-        $dataCashIn = CashIn::all();
+        // $dataCashIn = CashIn::join();
+        $dataCashIn = DB::table('cash_in')
+                    ->select('cash_in.id','inv_id', 'cash_in_date', 'nominal_cash_in', 'nominal_ppn', 'nominal_pph','bank_penerima', 'company_name', 'inv_number', 'products.name')
+                    ->leftJoin('invoices', 'cash_in.inv_id', '=', 'invoices.id')
+                    ->leftJoin('companies', 'invoices.company_id', '=', 'companies.id')
+                    ->leftJoin('products', 'invoices.product_id', '=', 'products.id')
+                    ->get();
         return view('cashIn.index', compact('dataCashIn'));
     }
 

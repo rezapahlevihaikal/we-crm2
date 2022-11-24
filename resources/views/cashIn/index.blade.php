@@ -22,6 +22,7 @@
                             <tr>
                                 <th scope="col">{{ __('Invoice')}}</th>
                                 <th scope="col">{{ __('Payments')}}</th>
+                                <th scope="col">{{ __('Info')}}</th>
                                 <th scope="col">{{ __('Bank')}}</th>
                                 <th scope="col">{{ __('Action')}}</th>
                             </tr>
@@ -30,13 +31,18 @@
                             @foreach ($dataCashIn as $item)
                             <tr style="text-align: center">
                                 <td>
-                                    {{$item->getInvoice->inv_number}} <br>
+                                    {{$item->inv_number ?? 'kosong'}} <br>
                                     {{$item->cash_in_date}}
                                 </td>
                                 <td>
                                     @currency($item->nominal_cash_in) <br>
                                     PPN : @currency($item->nominal_ppn) <br>
                                     PPH : @currency($item->nominal_pph)
+                                </td>
+                                <td>
+                                    {{$item->company_name}}
+                                    <br>
+                                    {{$item->name}}
                                 </td>
                                 <td>
                                     {{$item->bank_penerima}}
