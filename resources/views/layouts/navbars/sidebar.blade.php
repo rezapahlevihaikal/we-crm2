@@ -201,7 +201,7 @@
                         <i class="fas fa-coins"></i> {{ __('Cash In') }}
                     </a>
                 </li>
-                {{-- <li class="nav-item">
+                <li class="nav-item">
                     <a class="nav-link active" href="#navbar-examples" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-examples">
                         <i class="fas fa-cogs"></i>
                         <span class="nav-link-text">{{ __('Properties') }}</span>
@@ -209,18 +209,13 @@
                     <div class="collapse show" id="navbar-examples">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a class="nav-link" href="{{route('tipeCost')}}">
-                                    {{ __('Tipe Cost') }}
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{route('subTipe')}}">
-                                    {{ __('Subtipe Cost') }}
+                                <a class="nav-link" href="#">
+                                    {{ __('Tipe Cash In') }}
                                 </a>
                             </li>
                         </ul>
                     </div>
-                </li> --}}
+                </li>
             </ul>
             @elseif(Auth::user()->id_role == 4)
             <ul class="navbar-nav">

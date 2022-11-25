@@ -16,6 +16,7 @@ use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\CashOutController;
 use App\Http\Controllers\CashInController;
 use App\Http\Controllers\CostController;
+use App\Http\Controllers\TipeCashInController;
 
 /*
 |--------------------------------------------------------------------------
@@ -175,6 +176,15 @@ Route::prefix('cashIn')->group(function(){
 	Route::post('update/{id}', [CashInController::class, 'update'])->name('cashIn.update');
 	Route::get('getFileCashIn/{id}', [CashInController::class, 'getFileCashIn'])->name('cashIn.getFileCashIn');
 	Route::post('delete/{id}', [CashInController::class, 'destroy'])->name('cashIn.destroy');
+});
+
+Route::prefix('tipeCashIn')->group(function(){
+	Route::get('/', [TipeCashInController::class, 'index'])->name('tipeCashIn');
+	// Route::get('create', [TipeCashInController::class, 'create'])->name('tipeCashIn.create');
+	Route::post('store', [TipeCashInController::class, 'store'])->name('tipeCashIn.store');
+	Route::get('edit/{id}', [TipeCashInController::class, 'edit'])->name('tipeCashIn.edit');
+	Route::post('update/{id}', [TipeCashInController::class, 'update'])->name('tipeCashIn.update');
+	Route::post('delete/{id}', [TipeCashInController::class, 'destroy'])->name('tipeCashIn.destroy');
 });
 
 Route::prefix('tipeCost')->group(function(){

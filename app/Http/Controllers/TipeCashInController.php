@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class TipeCashInController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +18,8 @@ class TipeCashInController extends Controller
      */
     public function index()
     {
-        //
+        $data = TipeCashIn::all();
+        return view('cashIn.tipeCashIn.index', compact('data'));
     }
 
     /**
@@ -35,7 +40,16 @@ class TipeCashInController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = TipeCashIn::create([
+            'name' => $request->name
+        ]);
+
+        if ($data) {
+            return redirect()->route('tipeCashIn')->withStatus('data berhasil diinput');
+        }
+        else {
+            return redirect()->back()->withErrors('data gagal diinput');
+        }
     }
 
     /**
@@ -55,9 +69,10 @@ class TipeCashInController extends Controller
      * @param  \App\Models\TipeCashIn  $tipeCashIn
      * @return \Illuminate\Http\Response
      */
-    public function edit(TipeCashIn $tipeCashIn)
+    public function edit($id)
     {
-        //
+        $data = TipeCashIn::find($id);
+        return view('cashIn.tipeCashIn.edit', compact('data'));
     }
 
     /**
@@ -67,9 +82,19 @@ class TipeCashInController extends Controller
      * @param  \App\Models\TipeCashIn  $tipeCashIn
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, TipeCashIn $tipeCashIn)
+    public function update(Request $request, $id)
     {
-        //
+        $data = TipeCashIn::find($id);
+        $data->update([
+            'name' => $request->name
+        ]);
+
+        if ($data) {
+            return redirect()->route('tipeCashIn')->withStatus('data berhasil diupdate');
+        }
+        else {
+            return redirect()->back()->withErrors('data gagal diupdate');
+        }
     }
 
     /**
@@ -78,8 +103,11 @@ class TipeCashInController extends Controller
      * @param  \App\Models\TipeCashIn  $tipeCashIn
      * @return \Illuminate\Http\Response
      */
-    public function destroy(TipeCashIn $tipeCashIn)
+    public function destroy($id)
     {
-        //
+        $data = TipeCashIn::find($id);
+        $data->delete();
+
+        return redirect()->back()->withStatus('data berhasil dihapus');
     }
 }
