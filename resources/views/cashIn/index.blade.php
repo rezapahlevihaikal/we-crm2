@@ -43,6 +43,8 @@
                                     {{$item->company_name}}
                                     <br>
                                     {{$item->name}}
+                                    <br>
+                                    Type : {{$item->name}}
                                 </td>
                                 <td>
                                     {{$item->bank_penerima}}
