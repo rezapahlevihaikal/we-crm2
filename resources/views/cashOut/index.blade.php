@@ -23,6 +23,7 @@
                                 <th scope="col">{{ __('Type / Subtype')}}</th>
                                 <th scope="col">{{ __('Payments')}}</th>
                                 <th scope="col">{{ __('Price')}}</th>
+                                <th scope="col">{{ __('Action')}}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -39,6 +40,13 @@
                                 <td>
                                     @currency($item->nominal)
                                 </td>
+                                <td>
+                                    <form action="{{route('cashOut.destroy',$item->id)}}" method="POST">
+                                      @csrf
+                                      @method('post')
+                                      <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Yang bener?');"><i class="fas fa-trash"></i></button></td>
+                                    </form>
+                                  </td>
                               </tr>
                             @endforeach
                           </tbody>
@@ -54,7 +62,7 @@
     <script type="text/javascript">
        $(document).ready( function () {
             $('#table-os').DataTable({
-                // scrollX: true,
+                scrollX: true,
                 ordering: false,
             });
         } );

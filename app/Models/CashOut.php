@@ -12,6 +12,7 @@ class CashOut extends Model
     protected $table = 'cash_outs';
 
     protected $fillable = [
+        'status_data',
         'subtipe_id',
         'tanggal_transaksi',
         'nominal',

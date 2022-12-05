@@ -23,7 +23,7 @@ class CashOutController extends Controller
     public function index()
     {
         //
-        $dataCashOut = CashOut::all();
+        $dataCashOut = CashOut::where('status_data', '=', '1')->latest('id')->get();
         return view('cashOut.index', compact('dataCashOut'));
     }
 
@@ -76,6 +76,7 @@ class CashOutController extends Controller
         }        
         
         $dataCashOut = CashOut::create([
+            'status_data' => 1,
             'subtipe_id' => $request->subtipe_id,
             'tanggal_transaksi' => $request->tanggal_transaksi,
             'nominal' => $request->nominal,
@@ -186,8 +187,15 @@ class CashOutController extends Controller
      * @param  \App\Models\CashOut  $cashOut
      * @return \Illuminate\Http\Response
      */
-    public function destroy(CashOut $cashOut)
+    public function destroy($id)
     {
         //
+        $dataCashOut = CashOut::find($id);
+        $statusData = 0;
+        $dataCashOut->update([
+            'status_data' => $statusData
+        ]);
+        
+        return redirect()->back()->with('success', 'data berhasil dihapus');
     }
 }
