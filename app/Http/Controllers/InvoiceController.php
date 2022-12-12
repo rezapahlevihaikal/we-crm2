@@ -137,11 +137,18 @@ class InvoiceController extends Controller
         if($dataDealsIn->ppn == 1)
         {
             $dataBasedValue = $dataDealsIn->amount_po * (100/111);
+            $ppn = $dataBasedValue * 11 / 100;
         }
-        else {
+        elseif ($dataDealsIn->ppn == 0) {
             $dataBasedValue = $dataDealsIn->amount_po;
+            $ppn = $dataBasedValue * 11 / 100;
+        }
+        elseif ($dataDealsIn->ppn == 3) {
+            $dataBasedValue = $dataDealsIn->amount_po;
+            $ppn = 0;
         }
         //==========================================================================
+
 
         //=================== Pengkondisian Nilai PPH 23 ===========================
         if ($dataDealsIn->pph_23 == 1) 
@@ -168,7 +175,7 @@ class InvoiceController extends Controller
             'amount_po' => $dataDealsIn->amount_po,
             'faktur_pajak' => $request->faktur_pajak,
             'based_value' => $dataBasedValue,
-            'ppn' => $dataBasedValue * 11 / 100,
+            'ppn' => $ppn,
             'pph_23' => $dataPph23,
             'ppn_id' => $dataDealsIn->ppn,
             'pph_id' => $dataDealsIn->pph_23,
@@ -385,6 +392,11 @@ class InvoiceController extends Controller
             'status_data' => $statusData
         ]);
         
+        Deals::where('id', $dataInvoice->deals_id)
+                    ->update([
+                        'id_stage' => 3
+                    ]);
+
         return redirect()->back()->with('success', 'data berhasil dihapus');
     }
 

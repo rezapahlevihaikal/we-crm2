@@ -35,8 +35,12 @@
                                 <td>
                                     @if ($dataDealsIn->ppn == 1)
                                         <button type="button" class="btn btn-primary btn-sm disabled">Include</button>
-                                    @else
+                                    @elseif ($dataDealsIn->ppn == 0)
                                         <button type="button" class="btn btn-success btn-sm disabled">Exlude</button>
+                                    @elseif ($dataDealsIn->ppn == 3)
+                                        <button type="button" class="btn btn-info btn-sm disabled">0%</button>
+                                    @else
+                                        <button type="button" class="btn btn-success btn-sm disabled">Tidak ada keterangan</button>
                                     @endif
                                 </td>
                             </tr>

@@ -33,7 +33,11 @@
                             @foreach($dataInvoice as $item)
                               <tr style="text-align: center">
                                 <td>
-                                    <a href="{{route('invoice.editRequest', $item->id)}}" title="">{{$item->getProduct->name ?? 'Belum dilengkapi'}}</a><br>
+                                    <a href="{{route('invoice.editRequest', $item->id)}}" title="{{$item->getProduct->name}}">
+                                        {{-- {{$item->getProduct->name ?? 'Belum dilengkapi'}} --}}
+                                        {!! Str::limit($item->getProduct->name, 60 ?? 'belum dilengkapi') !!}
+                                    </a>
+                                    <br>
                                     AE Name : {{$item->getUser->name ?? 'Belum Dilengkapi'}} <br>
                                 </td>
                                 <td style="text-align: left">
