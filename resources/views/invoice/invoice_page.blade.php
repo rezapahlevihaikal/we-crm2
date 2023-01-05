@@ -112,7 +112,7 @@
 <body>
 {{-- Invoice --}}
 <div class="head-title" style="">
-    <p style="text-align:center;"><img src="https://quadrant1komunika.co.id/wp-content/uploads/2021/10/cropped-logo-Q1-02-01.png" style="width: 230px; height: 45px;"></p>
+    <p style="text-align:center;"><img src="https://scontent-sin6-3.xx.fbcdn.net/v/t39.30808-6/309538300_155068320494130_2172210713902274883_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeFA5qHOcOzeIDCUMHRuoDCCr4HMYgOE746vgcxiA4TvjqtsXuBofzqXVgT5D60NLyc2lde-AQDYyfWiz-0A3ccs&_nc_ohc=RiAnH3PqboYAX_aad4S&_nc_pt=1&_nc_ht=scontent-sin6-3.xx&oh=00_AfBuIlQrnqGR8Y9vL7A_GZ6PIdP7BXxg1EZR2er36rczBw&oe=63BC238C" style="width: 100px; height: 70px;"></p>
     <h5 style="text-align: center;"><i> a member of </i> <img src="https://wartaekonomi.co.id/img/logo.png" alt="" style="width: 130px; height: 20px; vertical-align:sub;"></h5>
 </div>
 <div class="add-detail mt-10">
@@ -266,7 +266,7 @@
 {{------------------------------------------ Kwitansi --------------------------------------------}}
 <div class="no-break">
     <div class="head-title" style="">
-        <p style="text-align:center;"><img src="https://quadrant1komunika.co.id/wp-content/uploads/2021/10/cropped-logo-Q1-02-01.png" style="width: 230px; height: 45px;"></p>
+        <p style="text-align:center;"><img src="https://scontent-sin6-3.xx.fbcdn.net/v/t39.30808-6/309538300_155068320494130_2172210713902274883_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeFA5qHOcOzeIDCUMHRuoDCCr4HMYgOE746vgcxiA4TvjqtsXuBofzqXVgT5D60NLyc2lde-AQDYyfWiz-0A3ccs&_nc_ohc=RiAnH3PqboYAX_aad4S&_nc_pt=1&_nc_ht=scontent-sin6-3.xx&oh=00_AfBuIlQrnqGR8Y9vL7A_GZ6PIdP7BXxg1EZR2er36rczBw&oe=63BC238C" style="width: 100px; height: 70px;"></p>
         <h5 style="text-align: center; margin-top: 5px"><i> a member of </i> <img src="https://wartaekonomi.co.id/img/logo.png" alt="" style="width: 130px; height: 20px; vertical-align:sub;"></h5>
     </div>
     <div class="add-detail mt-10">
@@ -339,7 +339,7 @@
 {{--------------------------------------- Tanda Terima -----------------------------------------}}
 <div class="no-break">
     <div class="head-title" style="">
-        <p style="text-align:center;"><img src="https://quadrant1komunika.co.id/wp-content/uploads/2021/10/cropped-logo-Q1-02-01.png" style="width: 80px; height: 15px;"></p>
+        <p style="text-align:center;"><img src="https://scontent-sin6-3.xx.fbcdn.net/v/t39.30808-6/309538300_155068320494130_2172210713902274883_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeFA5qHOcOzeIDCUMHRuoDCCr4HMYgOE746vgcxiA4TvjqtsXuBofzqXVgT5D60NLyc2lde-AQDYyfWiz-0A3ccs&_nc_ohc=RiAnH3PqboYAX_aad4S&_nc_pt=1&_nc_ht=scontent-sin6-3.xx&oh=00_AfBuIlQrnqGR8Y9vL7A_GZ6PIdP7BXxg1EZR2er36rczBw&oe=63BC238C" style="width: 80px; height: 50px;"></p>
         <h5 style="text-align: center; margin-top: 5px"><i> a member of </i> <img src="https://wartaekonomi.co.id/img/logo.png" alt="" style="width: 130px; height: 20px; vertical-align:sub;"></h5>
     </div>
     <div class="table-section bill-tbl w-100">
@@ -427,7 +427,7 @@
         <hr class="dashed">
     </div>
     <div class="head-title" style="">
-        <p style="text-align:center;"><img src="https://quadrant1komunika.co.id/wp-content/uploads/2021/10/cropped-logo-Q1-02-01.png" style="width: 80px; height: 15px;"></p>
+        <p style="text-align:center;"><img src="https://scontent-sin6-3.xx.fbcdn.net/v/t39.30808-6/309538300_155068320494130_2172210713902274883_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeFA5qHOcOzeIDCUMHRuoDCCr4HMYgOE746vgcxiA4TvjqtsXuBofzqXVgT5D60NLyc2lde-AQDYyfWiz-0A3ccs&_nc_ohc=RiAnH3PqboYAX_aad4S&_nc_pt=1&_nc_ht=scontent-sin6-3.xx&oh=00_AfBuIlQrnqGR8Y9vL7A_GZ6PIdP7BXxg1EZR2er36rczBw&oe=63BC238C" style="width: 80px; height: 50px;"></p>
         <h5 style="text-align: center; margin-top: 5px"><i> a member of </i> <img src="https://wartaekonomi.co.id/img/logo.png" alt="" style="width: 130px; height: 20px; vertical-align:sub;"></h5>
     </div>
     <div class="table-section bill-tbl w-100">
@@ -527,7 +527,7 @@
 {{--------------------------------------- Surat Transfer -----------------------------------------}}
 <div class="no-break">
     <div class="head-title" style="">
-        <p style="text-align:center;"><img src="https://quadrant1komunika.co.id/wp-content/uploads/2021/10/cropped-logo-Q1-02-01.png" style="width: 230px; height: 45px;"></p>
+        <p style="text-align:center;"><img src="https://scontent-sin6-3.xx.fbcdn.net/v/t39.30808-6/309538300_155068320494130_2172210713902274883_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeFA5qHOcOzeIDCUMHRuoDCCr4HMYgOE746vgcxiA4TvjqtsXuBofzqXVgT5D60NLyc2lde-AQDYyfWiz-0A3ccs&_nc_ohc=RiAnH3PqboYAX_aad4S&_nc_pt=1&_nc_ht=scontent-sin6-3.xx&oh=00_AfBuIlQrnqGR8Y9vL7A_GZ6PIdP7BXxg1EZR2er36rczBw&oe=63BC238C" style="width: 100px; height: 70px;"></p>
         <h5 style="text-align: center;"><i> a member of </i> <img src="https://wartaekonomi.co.id/img/logo.png" alt="" style="width: 130px; height: 20px; vertical-align:sub;"></h5>
     </div>
     <div class="table-section bill-tbl w-100 mt-10">
