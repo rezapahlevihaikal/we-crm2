@@ -585,8 +585,8 @@
             <tr>
                 <td colspan="3">
                     <div class="box-text" style="">
-                        <p>
-                            Sehubungan <b>Partisipasi Sponsorship</b> <i><b>{{$dataInvoice->nama_event}}</b></i>
+                        <p style="line-height: normal">
+                            Sehubungan <i><b>@nl2br($dataInvoice->nama_event)</b></i> 
                         </p>
                         <p style="line-height: normal">
                             Sebesar <b>@currency($dataInvoice->based_value + $dataInvoice->ppn - $dataInvoice->pph_23) (<i>{{ucwords(Terbilang::make($dataInvoice->based_value + $dataInvoice->ppn + $dataInvoice->pph_23, ' rupiah'))}} </i>)</b>. Dana tersebut ditransfer ke Rekening :
