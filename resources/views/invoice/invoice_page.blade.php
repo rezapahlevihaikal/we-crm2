@@ -147,7 +147,7 @@
             </td>
             <td style="border: 1px solid #d2d2d2;">
                 <div class="box-text">
-                    <p style="line-height: normal"><b>{{$dataInvoice->getCompany->company_name}}</b></p>
+                    {{-- <p style="line-height: normal"><b>{{$dataInvoice->getCompany->company_name}}</b></p> --}}
                     <p style="line-height: normal">@nl2br($dataInvoice->address_npwp)</p>
                     <p>{{$dataInvoice->getCompany->zipcode}}</p>
                 </div>
@@ -286,7 +286,7 @@
                 <th style="border: 1px solid #d2d2d2;" class="w-35">SUDAH DITERIMA DARI</th>
                 <td style="border: 1px solid #d2d2d2;">
                     <div class="box-text">
-                        <p> <b>{{$dataInvoice->getCompany->company_name}}</b></p>
+                        {{-- <p> <b>{{$dataInvoice->getCompany->company_name}}</b></p> --}}
                         <p style="line-height: normal">@nl2br($dataInvoice->address_npwp)</p>
                         <p>{{$dataInvoice->getCompany->zipcode}}</p>
                     </div>
@@ -363,7 +363,7 @@
                 <td style="border: 1px solid #d2d2d2;">
                     <div class="box-text">
                         <p style="line-height: normal">
-                            <b>{{$dataInvoice->getCompany->company_name}}</b> <br>
+                            {{-- <b>{{$dataInvoice->getCompany->company_name}}</b> <br> --}}
                             @nl2br($dataInvoice->pic_inv) <br>
                             Telp :
                         </p>
@@ -461,7 +461,7 @@
                         <p style="line-height: normal">@nl2br($dataInvoice->pic_inv)</p>
                         <p>Telp:</p> --}}
                         <p style="line-height: normal">
-                            <b>{{$dataInvoice->getCompany->company_name}}</b> <br>
+                            {{-- <b>{{$dataInvoice->getCompany->company_name}}</b> <br> --}}
                             @nl2br($dataInvoice->pic_inv) <br>
                             Telp :
                         </p>
@@ -570,7 +570,7 @@
             <tr>
                 <td colspan="3">
                     <div class="box-text">
-                        <h2>{{$dataInvoice->getCompany->company_name}}</h2>
+                        {{-- <h2>{{$dataInvoice->getCompany->company_name}}</h2> --}}
                         <p style="line-height: normal">@nl2br($dataInvoice->address_npwp)</p>
                     </div>
                 </td>
