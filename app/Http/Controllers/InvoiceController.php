@@ -316,7 +316,7 @@ class InvoiceController extends Controller
         //------------------------------------------------------------------------------
 
         $dataInvoice->update([
-            // 'receipt_number' => "000".$order."/".$attrFr."/".$bulanRomawi[date('n')]."/".$attrReceipt,
+            'receipt_number' => "000".$order."/".$attrFr."/".$bulanRomawi[date('n')]."/".$attrReceipt,
             'tf_number' => "000".$order."/".$attrTF."/".$bulanRomawi[date('n')]."-".$attrReceipt
         ]);
 

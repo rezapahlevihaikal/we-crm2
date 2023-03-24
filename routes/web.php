@@ -205,4 +205,11 @@ Route::prefix('subTipe')->group(function(){
 	Route::post('delete/{id}', [CostController::class, 'destroySub'])->name('subTipe.destroy');
 });
 
-
+Route::prefix('subTipe')->group(function(){
+	Route::get('/', [CostController::class, 'indexSub'])->name('subTipe');
+	// Route::get('create', [CostController::class, 'create'])->name('subTipe.create');
+	Route::post('store', [CostController::class, 'storeSub'])->name('subTipe.store');
+	Route::get('edit/{id}', [CostController::class, 'editSub'])->name('subTipe.edit');
+	Route::post('update/{id}', [CostController::class, 'updateSub'])->name('subTipe.update');
+	Route::post('delete/{id}', [CostController::class, 'destroySub'])->name('subTipe.destroy');
+});
