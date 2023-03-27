@@ -148,7 +148,15 @@
             <td style="border: 1px solid #d2d2d2;">
                 <div class="box-text">
                     {{-- <p style="line-height: normal"><b>{{$dataInvoice->getCompany->company_name}}</b></p> --}}
-                    <p style="line-height: normal"><b>@nl2br($dataInvoice->address_npwp)</b></p>
+                    <p style="line-height: normal"><?php $p = explode("\n", nl2br($dataInvoice->address_npwp));
+                        $i=0;
+                        foreach($p as $a) {
+                            if($i==0) echo "<b>".$a."</b>";
+                            else 
+                            echo $a;
+                            $i++;
+                        }
+                         ?></p>
                     <p>{{$dataInvoice->getCompany->zipcode}}</p>
                 </div>
             </td>
@@ -287,7 +295,17 @@
                 <td style="border: 1px solid #d2d2d2;">
                     <div class="box-text">
                         {{-- <p> <b>{{$dataInvoice->getCompany->company_name}}</b></p> --}}
-                        <p style="line-height: normal"> <b>@nl2br($dataInvoice->address_npwp)</b></p>
+                        <p style="line-height: normal">
+                            <?php $p = explode("\n", nl2br($dataInvoice->address_npwp));
+                            $i=0;
+                            foreach($p as $a) {
+                                if($i==0) echo "<b>".$a."</b>";
+                                else 
+                                echo $a;
+                                $i++;
+                            }
+                            ?>
+                        </p>
                         <p>{{$dataInvoice->getCompany->zipcode}}</p>
                     </div>
                 </td>
@@ -364,7 +382,15 @@
                     <div class="box-text">
                         <p style="line-height: normal">
                             {{-- <b>{{$dataInvoice->getCompany->company_name}}</b> <br> --}}
-                            <b>@nl2br($dataInvoice->pic_inv)</b><br>
+                            <?php $p = explode("\n", nl2br($dataInvoice->pic_inv));
+                        $i=0;
+                        foreach($p as $a) {
+                            if($i==0) echo "<b>".$a."</b>";
+                            else 
+                            echo $a;
+                            $i++;
+                        }
+                         ?><br>
                             Telp :
                         </p>
                     </div>
@@ -462,7 +488,15 @@
                         <p>Telp:</p> --}}
                         <p style="line-height: normal">
                             {{-- <b>{{$dataInvoice->getCompany->company_name}}</b> <br> --}}
-                            <b>@nl2br($dataInvoice->pic_inv)</b><br>
+                            <?php $p = explode("\n", nl2br($dataInvoice->pic_inv));
+                        $i=0;
+                        foreach($p as $a) {
+                            if($i==0) echo "<b>".$a."</b>";
+                            else 
+                            echo $a;
+                            $i++;
+                        }
+                         ?><br>
                             Telp :
                         </p>
                     </div>
@@ -571,7 +605,15 @@
                 <td colspan="3">
                     <div class="box-text">
                         {{-- <h2>{{$dataInvoice->getCompany->company_name}}</h2> --}}
-                        <p style="line-height: normal"><b>@nl2br($dataInvoice->address_npwp)</b></p>
+                        <p style="line-height: normal"><?php $p = explode("\n", nl2br($dataInvoice->address_npwp));
+                            $i=0;
+                            foreach($p as $a) {
+                                if($i==0) echo "<b>".$a."</b>";
+                                else 
+                                echo $a;
+                                $i++;
+                            }
+                             ?></p>
                     </div>
                 </td>
             </tr>
