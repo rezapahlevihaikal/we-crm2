@@ -44,7 +44,12 @@ class CashInController extends Controller
     public function create()
     {
         //
-        $dataInvoice = Invoice::whereIn('inv_status_id', [2, 3, 4])->get(['id', 'inv_number', 'product_id', 'company_id']);
+        // $dataInvoice = Invoice::whereIn('inv_status_id', [2, 3, 4])->get(['id', 'inv_number', 'product_id', 'company_id']);
+        $dataInvoice = DB::select('SELECT a.id,inv_number,company_name,c.name FROM invoices a
+        inner join companies b on a.company_id = b.id
+        inner join products c on a.product_id = c.id
+        where inv_status_id =4 and a.id not in (SELECT inv_id FROM cash_in a inner join invoices b on b.id=a.inv_id where inv_status_id=4)');
+        
         $dataTipeCashIn = TipeCashIn::get(['id', 'name']);
         // $dataInvoice = DB::table('invoices')->select('*')->whereIn('inv_status_id',[2, 3])->get(['id', 'inv_number', 'product_id', 'company_id']);
         return view('cashIn.create', compact('dataInvoice', 'dataTipeCashIn'));
