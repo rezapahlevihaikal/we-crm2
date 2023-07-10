@@ -29,7 +29,7 @@
                     </div>
                     <div class="row" style="padding-top: 10px">
                         <div class="col-3">
-                            <label for="demo_overview_minimal">Nomor Invoice</label>
+                            <label for="demo_overview_minimal">Nomor Invoice</label>{{$dataInvoice->deals_id}}
                             <input class="form-control" type="text" name="inv_number" id="disabledTextInput" value="{{$dataInvoice->inv_number}}">
                         </div>
                         <div class="col">

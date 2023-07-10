@@ -249,6 +249,16 @@ class InvoiceController extends Controller
         //     $dataPph23 = 0;
         // }
 
+        $dealsId = $dataInvoice->deals_id;
+
+        if ($request->inv_status_id == 3) {
+           $dataDeals = DB::table('deals')->where('id', $dealsId)->update(['id_stage' => 6]);
+        } 
+        elseif($request->inv_status_id == 4) {
+            $dataDeals = DB::table('deals')->where('id', $dealsId)->update(['id_stage' => 7]);
+        }
+        
+
         if (Empty($request->ppn)) {
             $ppnvalue = 0;
         }

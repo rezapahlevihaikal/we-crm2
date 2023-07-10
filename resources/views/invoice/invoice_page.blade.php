@@ -715,4 +715,175 @@
         </table>
     </div>
 </div>
+
+{{--------------------------------------------Surat pph-------------------------------------------}}
+<div class="no-break">
+    <div class="head-title" style="padding-top:10px">
+        <p style="text-align:center;"><img src="https://quadrant1komunika.co.id/wp-content/uploads/2021/10/cropped-logo-Q1-02-01.png" style="width: 130px; height: 20px; padding-bottom: 15px"></p>
+        <h5 style="text-align: center; margin-top: -3%"><i> a member of </i> <img src="https://wartaekonomi.co.id/img/logo.png" alt="" style="width: 130px; height: 20px; vertical-align:sub;"></h5>
+    </div>
+    <div class="table-section bill-tbl w-100 mt-10">
+        <table class="table w-100 mt-10">
+            <tr>
+                <td class="w-25" colspan="3">
+                    <p>Jakarta, {{ date('d-m-Y', strtotime($dataInvoice->inv_date)) }}</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="w-5">
+                    No.
+                </td>
+                <td class="w-5">
+                    :
+                </td>
+                <td>
+                    {{-- <b>{{$dataInvoice->tf_number}}</b> --}}
+                </td>
+            </tr>
+            <tr>
+                <td class="w-5">
+                    Hal
+                </td>
+                <td class="w-5">
+                    :
+                </td>
+                <td>
+                    <b>Surat Permintaan Bukti Potong PPh 23</b>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <div class="box-text" style="padding-top: 15px">
+                        <p>Kepada Yth,</p>
+                        <p>Divisi Finance & Tax</p>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <div class="box-text">
+                        {{-- <h2>{{$dataInvoice->getCompany->company_name}}</h2> --}}
+                        <p style="line-height: normal"><?php $p = explode("\n", nl2br($dataInvoice->address_npwp));
+                            $i=0;
+                            foreach($p as $a) {
+                                if($i==0) echo "<b>".$a."</b>";
+                                else 
+                                echo $a;
+                                $i++;
+                            }
+                             ?></p>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <div class="box-text" style="padding-top: 15px">
+                        <p>Dengan Hormat,</p>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <div class="box-text" style="">
+                        <p style="line-height: normal; text-indent: 0.2in;">
+                            Dengan ini kami mengajukan permintaan bukti pemotongan PPh Pasal 23 atas Invoice <b>@nl2br($dataInvoice->getCompany->company_name)</b> dengan data sebagai berikut:
+                        </p>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="w-25">
+                    No. Invoice
+                </td>
+                <td class="w-5">
+                    :
+                </td>
+                <td>
+                    {{$dataInvoice->inv_number}}
+                </td>
+            </tr>
+            <tr>
+                <td class="w-15">
+                    Uraian Pekerjaan
+                </td>
+                <td class="w-5">
+                    :
+                </td>
+                <td>
+                    @if(empty($dataInvoice->nama_bank))
+                        <b>Bank Rakyat Indonesia</b>
+                    @else
+                        {{$dataInvoice->nama_bank}}
+                    @endif
+                </td>
+            </tr>
+            <tr>
+                <td class="w-15">
+                    Nilai Invoice
+                </td>
+                <td class="w-5">
+                    :
+                </td>
+                <td>
+                    @if(empty($dataInvoice->nomor_rekening))
+                        <b>0335.01.00224430.8</b>
+                    @else
+                        {{$dataInvoice->nomor_rekening}}
+                    @endif
+                </td>
+            </tr>
+            <tr>
+                <td class="w-15">
+                    Nilai PPh 23
+                </td>
+                <td class="w-5">
+                    :
+                </td>
+                <td>
+                    @if(empty($dataInvoice->kantor_cabang))
+                        <b>Kramat Jakarta Pusat</b>
+                    @else
+                        {{$dataInvoice->kantor_cabang}}
+                    @endif
+                    
+                </td>
+            </tr>
+            <tr>
+                <td class="w-15">
+                    Jumlah Pembayaran
+                </td>
+                <td class="w-5">
+                    :
+                </td>
+                <td>
+                    @if(empty($dataInvoice->kantor_cabang))
+                        <b>Kramat Jakarta Pusat</b>
+                    @else
+                        {{$dataInvoice->kantor_cabang}}
+                    @endif
+                    
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <div class="box-text" style="padding-top: 15px">
+                        <p style="line-height: normal; text-indent: 0.2in;">Mohon dapat mengirimkan bukti potong PPh 23 tersebut ke alamat email <i><b>kuadaran.komunika@gmail.com</b></i> . Demikian Hal ini kami sampaikan, atas perhatiannya kami ucapkan terima kasih.</p>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p><b>Hormat Kami</b></p>
+                    <p></p>    
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p><b>Ayu Wanda P</b></p>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
 </html>
