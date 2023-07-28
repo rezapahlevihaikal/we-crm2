@@ -152,7 +152,7 @@
                             <input class="form-control" type="date" name="inv_date" id="" value="{{$dataInvoice->inv_date}}" >
                         </div>
                         <div class="col">
-                            <label for="demo_overview_minimal">Aging Date</label>
+                            <label for="demo_overview_minimal">Cash In Date</label>
                             <input class="form-control" type="date" name="exp_inv_date" id="" value="{{$dataInvoice->exp_inv_date}}" >
                         </div>
                     </div>
