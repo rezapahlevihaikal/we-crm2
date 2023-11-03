@@ -24,6 +24,7 @@
                                 <th scope="col">{{ __('Date')}}</th>
                                 <th scope="col">{{ __('Company')}}</th>
                                 <th scope="col">{{ __('Amount PO')}}</th>
+                                <th scope="col">{{ __('Harga Pokok')}}</th>
                                 <th scope="col">{{ __('Remarks')}}</th>
                                 <th scope="col">{{ __('Status')}}</th>
                                 <th scope="col">{{ __('Action')}}</th>
@@ -48,6 +49,7 @@
                                 
                                 {{-- <td>Rp {{$item->getDeals->amount_po ?? '0'}}</td> --}}
                                 <td>@currency($item->getDeals->amount_po ?? '0')</td>
+                                <td>@currency($item->based_value)</td>
                                 <td>{{$item->remarks}}</td>
                                 <td>
                                     @if ($item->inv_status_id == 1)
