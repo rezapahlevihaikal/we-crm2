@@ -748,7 +748,7 @@
                     :
                 </td>
                 <td>
-                    <b>Surat Permintaan Bukti Potong PPh 23</b>
+                    <b>Surat Permohonan Pembayaran</b>
                 </td>
             </tr>
             <tr>
