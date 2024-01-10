@@ -591,7 +591,7 @@
                     :
                 </td>
                 <td>
-                    <b>Surat Keterangan Transfer Pembayaran</b>
+                    <b>Surat Permohonan Pembayaran</b>
                 </td>
             </tr>
             <tr>
@@ -748,7 +748,7 @@
                     :
                 </td>
                 <td>
-                    <b>Surat Permohonan Pembayaran</b>
+                    <b>Surat Bukti Potong PPh 21</b>
                 </td>
             </tr>
             <tr>
