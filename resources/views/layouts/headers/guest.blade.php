@@ -3,7 +3,7 @@
         <div class="header-body text-center mb-7">
             <div class="row justify-content-center">
                 <div class="col-lg-7 col-md-6">
-                    <h1 class="text-white">{{ __('Selamat Datang di CRM-APP Warta Ekonomi') }}</h1>
+                    <h1 class="text-white">{{ __('Selamat Datang di WE-Tools') }}</h1>
                 </div>
             </div>
         </div>
